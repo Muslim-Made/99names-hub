@@ -56,9 +56,9 @@ window.NOOR_FACTS = { url: "99names.net", handle: "@official99names", tagline: "
       alt: [
         `The name of the week, number ${o.n} of 99: ${x.tr}, ${x.en}, with its Arabic ${x.ar}.`,
         `What it means: ${plain(o.meaning || x.meaning)} ${plain(o.line || x.line)}`,
-        `The root ${o.root.rootTr}: ${o.root.fam.map((f) => `${plain(f[1])}, ${plain(f[2])}`).join("; ")}.`,
+        `The root ${o.root.rootTr}: ${o.root.fam.map((f) => `${plain(f[1])}, ${plain(f[2]).replace(/\.$/, "")}`).join("; ")}.`,
         `${o.verse.ref} in Arabic and English: ${plain(o.verse.en)}`,
-        `Say ${o.vocTr} when: ${o.when.map(plain).join("; ")}.`,
+        `Say ${o.vocTr} when: ${o.when.map((w) => plain(w).replace(/\.$/, "")).join("; ")}.`,
         `The ${x.tr} card from the deck, with: Keep it near this week. ${plain(o.send)}`,
       ] };
   }
@@ -682,7 +682,7 @@ Sound on. Send this to the one with exams, or post them a card for their desk: 9
 
 ${tags("99NamesOfAllah", "ExamDua", "AsmaUlHusna", "MuslimStudent", "99names")}` }),
       stories: [S.line("16:30", "asr", "Exam season", "Before you<br><em>open the paper.</em>", "Al-Fattah, The Opener.", { kind: "card", n: 18, w: 380 }),
-        S.line("20:00", "isha", "The white days", "Monday, Tuesday<br><em>and Wednesday.</em>", "The 13th to 15th of Jumada al-Akhirah: 23 to 25 November by the Umm al-Qura calendar. Tirmidhi 761. Your local calendar may differ by a day."), S.send(18, "Nayla"), S.reveal(47) ] },
+        S.line("19:00", "isha", "The white days", "Monday, Tuesday<br><em>and Wednesday.</em>", "The 13th to 15th of Jumada al-Akhirah: 23 to 25 November by the Umm al-Qura calendar. Tirmidhi 761. Your local calendar may differ by a day."), S.send(18, "Nayla"), S.reveal(47) ] },
 
     /* ================================================================ WEEK 8 · AL-WADUD · LOVED IN THE MESS */
     { date: "2026-11-23",
