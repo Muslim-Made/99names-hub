@@ -87,6 +87,21 @@ const REELS = {
     T("#bot", [[io(t, 4.3, 10), `<div class="sub">Owner of Majesty and Honour.</div><div class="rtag" style="margin-top:14px">Ar-Rahman · 55:27</div>`],
       [io(t, 16.3, 99), `<div class="sub">Cling to it in your du'a.</div><div class="rtag" style="margin-top:14px">Tirmidhi 3525 · 99names</div>`]]);
   } },
+  hasib: { len: 20, frame(t) {   // counted, and covered: ninety-nine dots light one by one
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
+    const lit = Math.floor(99 * ease((t - 4) / 5.6)), D = 44, G = 20, W = 11 * D + 10 * G, H = 9 * D + 8 * G, x0 = 540 - W / 2, y0 = 1010 - H / 2;
+    let h = "";
+    for (let i = 0; i < 99; i++) { const c = i % 11, r = Math.floor(i / 11), on = i < lit; h += `<i style="position:absolute;left:${x0 + c * (D + G)}px;top:${y0 + r * (D + G)}px;width:${D}px;height:${D}px;border-radius:50%;${on ? "background:#E8A64B" : "border:2px solid var(--rule)"}"></i>`; }
+    ART.push({ type: "rect", x: x0, y: y0, w: W, h: H });
+    $("#art").innerHTML = h;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Hasbunallah.</div>`],
+      [io(t, 4, 10), `<div class="h1">He counts<br><em>everything.</em></div>`],
+      [io(t, 10, 15), `<div class="arl" style="font-size:92px">حَسْبُنَا ٱللَّهُ وَنِعْمَ ٱلْوَكِيلُ</div>`],
+      [io(t, 15, 99), `<div class="h1">You are counted.<br><em>You are covered.</em></div>`]]);
+    T("#bot", [[io(t, -1, 4), `<div class="sub">Allah is enough for us.</div>`],
+      [io(t, 10.3, 15), `<div class="sub">And He is enough.</div><div class="rtag" style="margin-top:14px">Al 'Imran · 3:173</div>`],
+      [io(t, 15.3, 99), `<div class="sub">Al-Hasib, The Reckoner.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
   karim: { len: 18, frame(t) {   // hands raised: the sun rises and is not sent back empty
     sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
     const y = 1260 - 260 * ease(t / 5), sc = t > 5 ? 1 + .08 * Math.sin((t - 5) / 2.2 * Math.PI) : 1, S = 200 * sc;
@@ -228,7 +243,7 @@ const REELS = {
 const P = new URLSearchParams(location.search), DATE = P.get("d");
 const DAY = window.QUIET.days.find((d) => d.date === DATE), REEL = DAY.post.reel, DEF = REELS[REEL.id];
 window.LEN = REEL.len;
-window.HOURS = { jalal: "maghrib,isha", karim: "maghrib", raqib: "isha", mujib: "maghrib,isha", wasi: "maghrib", hakim: "maghrib", wadud: "maghrib", give: "maghrib", rajab: "isha", deal: "asr" }[REEL.id];
+window.HOURS = { hasib: "maghrib", jalal: "maghrib,isha", karim: "maghrib", raqib: "isha", mujib: "maghrib,isha", wasi: "maghrib", hakim: "maghrib", wadud: "maghrib", give: "maghrib", rajab: "isha", deal: "asr" }[REEL.id];
 // every visible word, with the box it takes on the frame
 window.WORDS = () => {
   const out = [];

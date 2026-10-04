@@ -1,9 +1,9 @@
 # The Quiet Months
 
-Two months of finished social content for 99names, Wednesday 14 October to
+Ten weeks of finished social content for 99names, Monday 5 October to
 Sunday 13 December 2026: Jumada al-Ula and Jumada al-Akhirah 1448, ending as
-Rajab opens sixty days before Ramadan. It follows the First Thirty and posts
-**four times a week** instead of daily. Open `index.html`, click a day in the
+Rajab opens sixty days before Ramadan. It replaces the First Thirty (archived 4
+October) and posts **four times a week**. Open `index.html`, click a day in the
 calendar, and everything for that day is drawn at exact size: the post or the
 reel, its caption and alt text, its stories, and which of them Metricool
 publishes alone and which carry a sticker you add by hand. `playbook.html` is
@@ -24,8 +24,8 @@ when, the safe zones, the week in three timezones, and the Metricool setup.
 Every post wears the hour it goes up at. Exceptions follow the calendar:
 GivingTuesday moves the reel to Tuesday 1 December; the Thursday before Black
 Friday carries the season's one single image ("Nothing is on sale"); 1 Rajab is
-a story. In all: 35 posts (22 carousels, 12 reels, 1 single) and 96 stories
-(52 auto, 44 with a sticker).
+a story. In all: 40 posts (26 carousels, 13 reels, 1 single) and 110 stories
+(59 auto, 51 with a sticker).
 
 ## The rule
 
@@ -43,7 +43,7 @@ envelopes, dots and the hour dial each get a cell of their own.
   Thirty's pieces (`window.NOOR` from `../thirty/thirty.js`), and runs the page
 - `quiet.css` · the almanac grammar and the calendar; loads after `thirty.css`
 - `check.mjs` · the safety net (below); `contact.py` · grid and contact sheets
-- `reel.html` + `reels.mjs` + `audio.py` · the twelve reels, frame by frame
+- `reel.html` + `reels.mjs` + `audio.py` · the thirteen reels, frame by frame
 - `schedule.mjs` · JPEGs, reels and the Metricool CSVs into `out/`
 - `playbook.html` · the research and the rules; `grid.jpg` is its grid preview
 
@@ -52,7 +52,7 @@ envelopes, dots and the hour dial each get a cell of their own.
 ```
 node check.mjs                  # every sheet: DOM, safe zones, text-on-drawing, contrast; exports to _check/export
 python3 contact.py              # _check/grid.jpg, carousels, stories.jpg, and grid.jpg for the playbook
-node reels.mjs                  # the 12 reels into reels/ (about two minutes each); refuses any that fail
+node reels.mjs                  # the 13 reels into reels/ (about two minutes each); refuses any that fail
 node schedule.mjs               # out/media (JPEG + MP4), out/metricool-NN.csv, out/manifest.json, out/metricool.zip
 ```
 

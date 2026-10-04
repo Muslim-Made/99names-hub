@@ -1,6 +1,6 @@
 /* ============================================================
    99NAMES · NOOR · THE QUIET MONTHS · data.js
-   Wednesday 14 October to Sunday 13 December 2026.
+   Monday 5 October to Sunday 13 December 2026. Replaces the First Thirty.
    Jumada al-Ula and Jumada al-Akhirah 1448, the two quiet months
    of the Hijri year, ending as Rajab opens sixty days before Ramadan.
 
@@ -14,7 +14,7 @@
    question, so Metricool publishes every one of them on its own.
 
    Names of the week follow the site (site/lib/names.ts weeklyIndex):
-   41 Al-Jalil (closing week), 42 Al-Karim, 43 Ar-Raqib, 44 Al-Mujib,
+   40 Al-Hasib, 41 Al-Jalil, 42 Al-Karim, 43 Ar-Raqib, 44 Al-Mujib,
    45 Al-Wasi', 46 Al-Hakim, 47 Al-Wadud, 48 Al-Majid, 49 Al-Ba'ith.
 
    THE STANDING RULES. Gentle, present tense, no urgency, no streaks,
@@ -113,22 +113,125 @@ window.NOOR_FACTS = { url: "99names.net", handle: "@official99names", tagline: "
   };
 
   window.QUIET = {
-    start: "2026-10-14", end: "2026-12-13",
+    start: "2026-10-05", end: "2026-12-13",
     weeks: [
-      { i: 0, n: 41, mon: "2026-10-12", from: "2026-10-14", to: "2026-10-18", theme: "Majesty, then generosity" },
-      { i: 1, n: 42, mon: "2026-10-19", from: "2026-10-19", to: "2026-10-25", theme: "Ask for more" },
-      { i: 2, n: 43, mon: "2026-10-26", from: "2026-10-26", to: "2026-11-01", theme: "Seen, and kept" },
-      { i: 3, n: 44, mon: "2026-11-02", from: "2026-11-02", to: "2026-11-08", theme: "Every du'a is answered" },
-      { i: 4, n: 45, mon: "2026-11-09", from: "2026-11-09", to: "2026-11-15", theme: "No edge to fall off" },
-      { i: 5, n: 46, mon: "2026-11-16", from: "2026-11-16", to: "2026-11-22", theme: "Reasons, later" },
-      { i: 6, n: 47, mon: "2026-11-23", from: "2026-11-23", to: "2026-11-29", theme: "Loved in the mess" },
-      { i: 7, n: 48, mon: "2026-11-30", from: "2026-11-30", to: "2026-12-06", theme: "You already say it" },
-      { i: 8, n: 49, mon: "2026-12-07", from: "2026-12-07", to: "2026-12-13", theme: "A heart revived, and Rajab" },
+      { i: 1, n: 40, mon: "2026-10-05", from: "2026-10-05", to: "2026-10-11", theme: "Enough" },
+      { i: 2, n: 41, mon: "2026-10-12", from: "2026-10-12", to: "2026-10-18", theme: "Majesty, then generosity" },
+      { i: 3, n: 42, mon: "2026-10-19", from: "2026-10-19", to: "2026-10-25", theme: "Ask for more" },
+      { i: 4, n: 43, mon: "2026-10-26", from: "2026-10-26", to: "2026-11-01", theme: "Seen, and kept" },
+      { i: 5, n: 44, mon: "2026-11-02", from: "2026-11-02", to: "2026-11-08", theme: "Every du'a is answered" },
+      { i: 6, n: 45, mon: "2026-11-09", from: "2026-11-09", to: "2026-11-15", theme: "No edge to fall off" },
+      { i: 7, n: 46, mon: "2026-11-16", from: "2026-11-16", to: "2026-11-22", theme: "Reasons, later" },
+      { i: 8, n: 47, mon: "2026-11-23", from: "2026-11-23", to: "2026-11-29", theme: "Loved in the mess" },
+      { i: 9, n: 48, mon: "2026-11-30", from: "2026-11-30", to: "2026-12-06", theme: "You already say it" },
+      { i: 10, n: 49, mon: "2026-12-07", from: "2026-12-07", to: "2026-12-13", theme: "A heart revived, and Rajab" },
     ],
     days: [
 
-    /* ================================================================ WEEK 0 · AL-JALIL · MAJESTY, THEN GENEROSITY */
-    { date: "2026-10-14", events: ["First day after the Thirty"],
+    /* ================================================================ WEEK 1 · AL-HASIB · ENOUGH */
+    { date: "2026-10-05", events: ["The season begins"],
+      post: theName({ n: 40, week: "Week of 5 October",
+        root: { letters: ["ح", "س", "ب"], rootTr: "ḥ · s · b", gloss: "Ḥ · S · B · to count, and to be enough",
+          fam: [["حِسَاب", "<em>hisab</em>", "A reckoning. An account kept."], ["حَسْب", "<em>hasb</em>", "Enough: hasbunallah, Allah is enough for us."], ["يَحْتَسِبُ", "<em>yahtasib</em>", "To reckon on: provision “from where you never reckoned.” 65:3"], ["حَسِيب", "<em>hasib</em>", "The One who counts every greeting. 4:86"]] },
+        verse: { ar: "وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ <b>حَسْبُهُۥٓ</b>", arS: 108, en: "Whoever relies on Allah, He is <b>enough</b> for him.", enS: 68, ref: "At-Talaq · 65:3" },
+        voc: "يَا حَسِيبُ", vocTr: "Ya Hasib",
+        when: ["When nothing else <em>is enough.</em>", "When you're keeping score <em>of what you're owed.</em>", "When the month <em>doesn't add up.</em>"],
+        send: "Send Al-Hasib to someone who feels like it's all on them.",
+        why: "The season opens on the name that holds both meanings people need: everything is counted, and He is enough.",
+        caption: `Al-Hasib meaning: The Reckoner, and the One who is enough. No. 40 of the 99 Names of Allah, and this week's name.
+
+One root, two comforts. Hisab is a reckoning: nothing you did, and nothing done to you, goes uncounted. Hasb is enough: hasbunallah, Allah is enough for us.
+
+And from the same root, the promise in At-Talaq 65:3: provision “from where you never reckoned.” Whoever relies on Allah, He is enough for him.
+
+From today we post four times a week: the name every Monday at dawn, a reel on Wednesday, Jumu'ah on Friday, and on Sunday a set of names to send to someone.
+
+${WEEK}
+
+Save this. Send it to someone who feels like it's all on them.
+
+${tags("AlHasib", "99NamesOfAllah", "AsmaUlHusna", "الأسماء_الحسنى", "99names")}` }),
+      stories: [S.monday(40), S.know()] },
+    { date: "2026-10-06", stories: [S.quiz(39)], why: "Tuesday is for remembering: a quiz on last week's name." },
+    { date: "2026-10-07",
+      post: reel({ title: "Counted, and covered",
+        cover: { kicker: "Reel · Al-Hasib", disp: "You are counted.<br><em>You are covered.</em>", d: 104, sub: "Hasbunallah, in twenty seconds.", obj: { kind: "dots" }, len: 20 },
+        reel: { id: "hasib", len: 20, script: [["0–4s", "On screen from frame one: Hasbunallah. Ninety-nine dots wait, unlit, on the maghrib sky."], ["4–10s", "The dots light one by one, quickly. He counts everything."], ["10–15s", "And He is enough. Arabic: حَسْبُنَا ٱللَّهُ وَنِعْمَ ٱلْوَكِيلُ. Al 'Imran 3:173."], ["15–20s", "You are counted. You are covered. 99names."]] },
+        why: "The two meanings of Al-Hasib, drawn: every dot counted, and the count itself is the comfort.",
+        alt: ["Reel cover: ninety-nine dots in a grid on a dusk sky, with: You are counted. You are covered."],
+        caption: `Hasbunallah wa ni'mal wakil. Allah is enough for us, and the best one to trust with it. Al 'Imran 3:173.
+
+Al-Hasib, No. 40 of the 99 Names of Allah, holds two meanings at once: the One who counts everything, and the One who is enough.
+
+So both are true tonight. You are counted: nothing you carried went unseen. And you are covered: He is enough for whatever is left.
+
+Send this to someone who has been carrying everything on their own.
+
+${tags("AlHasib", "Hasbunallah", "99NamesOfAllah", "AsmaUlHusna", "99names")}` }),
+      stories: [S.line("19:30", "maghrib", "Tonight", "Hasbunallah<br><em>wa ni'mal wakil.</em>", "Allah is enough for us. 3:173", { kind: "ring", size: 260 }), S.slider("How much are you<br><em>carrying alone?</em>")] },
+    { date: "2026-10-08", stories: [S.breath(40)] },
+    { date: "2026-10-09", events: ["Jumu'ah"],
+      post: jumuah({ n: 40, day: "9 October", title: "even a greeting is counted",
+        verse: { ar: "فَحَيُّوا۟ بِأَحْسَنَ مِنْهَآ أَوْ رُدُّوهَآ ۗ إِنَّ ٱللَّهَ كَانَ عَلَىٰ كُلِّ شَىْءٍ <b>حَسِيبًا</b>", arS: 84, en: "Greet back with better, or return it. Allah keeps <b>account</b> of all things.", enS: 60, ref: "An-Nisa · 4:86" },
+        thought: "Even a greeting<br>is <em>counted.</em>", td: 96, sub: "Say salam back with something a little better today. It is written down by Al-Hasib.",
+        voc: "يَا حَسِيبُ", vocTr: "Ya Hasib",
+        why: "The smallest act in the Qur'an that Allah says He keeps count of, on the day everyone greets everyone.",
+        caption: `Jumu'ah Mubarak. “When you are greeted, greet back with something better, or return it. Allah keeps account of all things.” An-Nisa 4:86.
+
+Even a greeting is counted. On the day you'll greet more people than any other, say salam back with something a little better. Al-Hasib, this week's name, writes it down.
+
+Swipe for the hour on Friday when asking is answered.
+
+Send this to the first person who says salam to you today.
+
+${tags("JumuahMubarak", "AlHasib", "Quran", "AsmaUlHusna", "99names")}` }),
+      stories: [S.jumuah("", "Ya Hasib. Greet back with better."), S.hour("Ya Hasib")] },
+    { date: "2026-10-11", events: ["World Mental Health Day was Sat"],
+      post: set({ title: "Names for a chest that's tight", tag: "For a tight chest",
+        disp: "Five names<br>for a chest<br><em>that's tight.</em>", sub: "Save it for the night it's needed. Send it to the one who needs it now.",
+        ns: [5, 6, 52, 38, 21], roles: ["When you can't <em>settle.</em>", "When you're <em>afraid of what's next.</em>", "When it's all <em>on you.</em>", "When you're <em>bracing for it.</em>", "When there's <em>no room to breathe.</em>"],
+        end: "Send it to<br>the one who<br><em>can't settle.</em>", endSub: "Or post them one of these as a real card. 99names.net/send, $6, anywhere.",
+        why: "Anxiety is the most common reason people send a name on the site. A list for it is the most sendable thing the account can make.",
+        caption: `5 Names of Allah for anxiety, for a chest that's tight.
+
+As-Salam, the Source of Peace. Peace isn't found. It's given.
+Al-Mu'min, the Giver of Security. He has never once broken a promise to you.
+Al-Wakil, the Trustee. Hand it over. He's better at this than you.
+Al-Hafiz, the Preserver. Everything that's kept safe is kept safe by Him.
+Al-Basit, the Expander. Room will be made. It always is.
+
+Yesterday was World Mental Health Day. You don't need all five. Say the one that fits, slowly, on the out-breath.
+
+Save this for the night it's needed. Send it to the one who can't settle.
+
+${tags("99NamesOfAllah", "AsmaUlHusna", "Anxiety", "Dua", "99names")}` }),
+      stories: [S.line("16:30", "asr", "For a tight chest", "Say it on<br><em>the out-breath.</em>", "As-Salam. Peace isn't found. It's given.", { kind: "breath" }), S.send(5, "Nayla"), S.reveal(41) ] },
+    /* ================================================================ WEEK 2 · AL-JALIL · MAJESTY, THEN GENEROSITY */
+    { date: "2026-10-12", events: ["1 Jumada al-Ula"],
+      post: theName({ n: 41, week: "Week of 12 October",
+        root: { letters: ["ج", "ل", "ل"], rootTr: "j · l · l", gloss: "J · L · L · to be great, to be exalted",
+          fam: [["جَلَال", "<em>jalal</em>", "Majesty. Greatness that needs no proof."], ["إِجْلَال", "<em>ijlal</em>", "Reverence: holding someone in awe."], ["جَلِيل", "<em>jalil</em>", "Momentous. Of great weight."], ["جَلَّ جَلَالُهُ", "<em>jalla jalaluhu</em>", "Exalted is His majesty."]] },
+        verse: { ar: "تَبَٰرَكَ ٱسْمُ رَبِّكَ <b>ذِى ٱلْجَلَٰلِ</b> وَٱلْإِكْرَامِ", arS: 100, en: "Blessed is the name of your Lord, <b>Owner of Majesty</b> and Honour.", enS: 64, ref: "Ar-Rahman · 55:78", note: "The last verse of Ar-Rahman" },
+        voc: "يَا جَلِيلُ", vocTr: "Ya Jalil",
+        when: ["When your problem feels <em>bigger than everything.</em>", "When you're in awe <em>and have no words.</em>", "When you've made Him <em>small in your head.</em>"],
+        send: "Send Al-Jalil to someone who needs reminding how big He is.",
+        why: "Jumada al-Ula begins today. The week's phrase, Dhul-Jalali wal-Ikram, closes Surah Ar-Rahman and carries this week's name and next week's.",
+        caption: `Al-Jalil meaning: The Majestic. No. 41 of the 99 Names of Allah, and this week's name.
+
+Majesty is His default setting. Not a mood, not an occasion: greatness that needs no proof and no audience.
+
+Surah Ar-Rahman ends on it: “Blessed is the name of your Lord, Owner of Majesty and Honour.” 55:78. Dhul-Jalali wal-Ikram. Jalal is this week. Ikram, from the root of Al-Karim, is next.
+
+Jumada al-Ula begins today, the first of two quiet months before Rajab.
+
+${WEEK}
+
+Save this. Send it to someone who needs reminding how big He is.
+
+${tags("AlJalil", "99NamesOfAllah", "AsmaUlHusna", "الأسماء_الحسنى", "99names")}` }),
+      stories: [S.monday(41), S.know()] },
+    { date: "2026-10-13", stories: [S.quiz(40)] },
+    { date: "2026-10-14",
       post: reel({ title: "Two names in one phrase",
         cover: { kicker: "Reel · Al-Jalil", disp: "Two names<br>in one <em>phrase.</em>", d: 120, sub: "Majesty, and generosity. Ar-Rahman 55:27.", obj: { kind: "ring", size: 340, w: 3 }, len: 20 },
         reel: { id: "jalal", len: 20, script: [["0–4s", "On screen from frame one: Two names in one phrase. Ninety-nine rays draw in around an empty centre on the maghrib sky."], ["4–10s", "The ring is whole. The phrase rises beneath it: ذُو ٱلْجَلَٰلِ وَٱلْإِكْرَامِ, Owner of Majesty and Honour."], ["10–16s", "Jalal: Al-Jalil, this week's name. Ikram: the root of Al-Karim, next week's. The sky turns to isha."], ["16–20s", "Ya Dhal-Jalali wal-Ikram. Say it often. 99names."]] },
@@ -162,27 +265,27 @@ Ya Dhal-Jalali wal-Ikram. Send this to someone you'll be making du'a for today.
 ${tags("JumuahMubarak", "AlJalil", "Quran", "AsmaUlHusna", "99names")}` }),
       stories: [S.jumuah("", "Ya Dhal-Jalali wal-Ikram. Ask before the prayer."), S.hour("Ya Dhal-Jalali wal-Ikram")] },
     { date: "2026-10-18",
-      post: set({ title: "Names for a chest that's tight", tag: "For a tight chest",
-        disp: "Five names<br>for a chest<br><em>that's tight.</em>", sub: "Save it for the night it's needed. Send it to the one who needs it now.",
-        ns: [5, 6, 52, 38, 21], roles: ["When you can't <em>settle.</em>", "When you're <em>afraid of what's next.</em>", "When it's all <em>on you.</em>", "When you're <em>bracing for it.</em>", "When there's <em>no room to breathe.</em>"],
-        end: "Send it to<br>the one who<br><em>can't settle.</em>", endSub: "Or post them one of these as a real card. 99names.net/send, $6, anywhere.",
-        why: "Anxiety is the most common reason people send a name on the site. A list for it is the most sendable thing the account can make.",
-        caption: `5 Names of Allah for anxiety, for a chest that's tight.
+      post: set({ title: "Names for someone grieving", tag: "For someone grieving",
+        disp: "Five names<br>for someone<br><em>who is grieving.</em>", sub: "For the one carrying a loss. Send it when you don't know what to say.",
+        ns: [99, 9, 96, 2, 30], fan: [9, 96, 2], roles: ["For the days <em>that won't end.</em>", "For what's <em>broken in you.</em>", "This will pass. <em>He will not.</em>", "Mercy that is <em>a habit, not a moment.</em>", "For the kindness <em>you'll only see later.</em>"],
+        end: "Send it to<br>the one who<br><em>lost someone.</em>", endSub: "Or post them one of these as a real card. 99names.net/send, $6, anywhere.",
+        why: "Grief is the first mood on Send-a-Name, and the hardest moment to find words. A set someone can send instead of words.",
+        caption: `5 Names of Allah for someone who is grieving.
 
-As-Salam, the Source of Peace. Peace isn't found. It's given.
-Al-Mu'min, the Giver of Security. He has never once broken a promise to you.
-Al-Wakil, the Trustee. Hand it over. He's better at this than you.
-Al-Hafiz, the Preserver. Everything that's kept safe is kept safe by Him.
-Al-Basit, the Expander. Room will be made. It always is.
+As-Sabur, the Infinitely Patient. For the days that won't end.
+Al-Jabbar, the Restorer. The same hand that can break anything is the one that mends you.
+Al-Baqi, the Everlasting. This will pass. He will not.
+Ar-Rahim, the Most Merciful. His mercy isn't a moment. It's a habit.
+Al-Latif, the Subtle and Kind. Some of His kindness you'll only recognise in hindsight.
 
-You don't need all five. Say the one that fits, slowly, on the out-breath.
+When you don't know what to say to someone who has lost someone, a name says it for you.
 
-Save this for the night it's needed. Send it to the one who can't settle.
+Save this. Send it to the one who is grieving, gently.
 
-${tags("99NamesOfAllah", "AsmaUlHusna", "Anxiety", "Dua", "99names")}` }),
-      stories: [S.line("16:30", "asr", "For a tight chest", "Say it on<br><em>the out-breath.</em>", "As-Salam. Peace isn't found. It's given.", { kind: "breath" }), S.send(5, "Nayla"), S.reveal(42) ] },
+${tags("99NamesOfAllah", "AsmaUlHusna", "Grief", "Dua", "99names")}` }),
+      stories: [S.line("16:30", "asr", "For someone grieving", "This will pass.<br><em>He will not.</em>", "Al-Baqi, The Everlasting.", { kind: "card", n: 96, w: 380 }), S.send(9, "Nayla"), S.reveal(42)] },
 
-    /* ================================================================ WEEK 1 · AL-KARIM · ASK FOR MORE */
+    /* ================================================================ WEEK 3 · AL-KARIM · ASK FOR MORE */
     { date: "2026-10-19",
       post: theName({ n: 42, week: "Week of 19 October",
         root: { letters: ["ك", "ر", "م"], rootTr: "k · r · m", gloss: "K · R · M · to be generous, to be noble",
@@ -264,7 +367,7 @@ Send this to the one who's far away. Or send them one of these as a real card, p
 ${tags("99NamesOfAllah", "AsmaUlHusna", "Dua", "MuslimAbroad", "99names")}` }),
       stories: [S.line("16:30", "asr", "Far away", "Someone<br><em>far away?</em>", "Al-Hafiz. Everything that's kept safe is kept safe by Him.", { kind: "card", n: 38, w: 380 }), S.send(38, "Nayla"), S.reveal(43) ] },
 
-    /* ================================================================ WEEK 2 · AR-RAQIB · SEEN, AND KEPT */
+    /* ================================================================ WEEK 4 · AR-RAQIB · SEEN, AND KEPT */
     { date: "2026-10-26",
       post: theName({ n: 43, week: "Week of 26 October",
         root: { letters: ["ر", "ق", "ب"], rootTr: "r · q · b", gloss: "R · Q · B · to watch over, to keep in view",
@@ -341,7 +444,7 @@ Save this. Send it to the one who feels invisible, even in a full room.
 ${tags("99NamesOfAllah", "AsmaUlHusna", "Loneliness", "Dua", "99names")}` }),
       stories: [S.line("16:30", "asr", "For the unseen", "You've never once<br><em>spoken to no one.</em>", "As-Sami', The All-Hearing.", { kind: "card", n: 26, w: 380 }), S.send(47, "Nayla"), S.reveal(44) ] },
 
-    /* ================================================================ WEEK 3 · AL-MUJIB · EVERY DU'A IS ANSWERED */
+    /* ================================================================ WEEK 5 · AL-MUJIB · EVERY DU'A IS ANSWERED */
     { date: "2026-11-02",
       post: theName({ n: 44, week: "Week of 2 November",
         root: { letters: ["ج", "و", "ب"], rootTr: "j · w · b", gloss: "J · W · B · to cut through, to answer",
@@ -418,7 +521,7 @@ Sound on. Then send this to the one who's unwell, or post them one of these as a
 ${tags("99NamesOfAllah", "AsmaUlHusna", "Dua", "Shifa", "99names")}` }),
       stories: [S.line("16:30", "asr", "For someone unwell", "For the slow days<br><em>of getting better.</em>", "Al-Latif, The Subtle, The Kind.", { kind: "card", n: 30, w: 380 }), S.send(30, "Nayla"), S.reveal(45) ] },
 
-    /* ================================================================ WEEK 4 · AL-WASI' · NO EDGE TO FALL OFF */
+    /* ================================================================ WEEK 6 · AL-WASI' · NO EDGE TO FALL OFF */
     { date: "2026-11-09",
       post: theName({ n: 45, week: "Week of 9 November",
         root: { letters: ["و", "س", "ع"], rootTr: "w · s · ʿ", gloss: "W · S · ʿ · to be wide, to have room",
@@ -505,7 +608,7 @@ Save this beside your mushaf. Send it to whoever you read with.
 ${tags("99NamesOfAllah", "Quran", "AsmaUlHusna", "QuranStudy", "99names")}` },
       stories: [S.line("16:30", "asr", "Read them together", "Gentle, because<br><em>He knows the details.</em>", "Al-Latif Al-Khabir. Al-Mulk 67:14.", { kind: "ring", size: 240 }), S.send(26, "Nayla"), S.reveal(46) ] },
 
-    /* ================================================================ WEEK 5 · AL-HAKIM · REASONS, LATER */
+    /* ================================================================ WEEK 7 · AL-HAKIM · REASONS, LATER */
     { date: "2026-11-16",
       post: theName({ n: 46, week: "Week of 16 November",
         root: { letters: ["ح", "ك", "م"], rootTr: "ḥ · k · m", gloss: "Ḥ · K · M · to hold back, to judge, to make firm",
@@ -581,7 +684,7 @@ ${tags("99NamesOfAllah", "ExamDua", "AsmaUlHusna", "MuslimStudent", "99names")}`
       stories: [S.line("16:30", "asr", "Exam season", "Before you<br><em>open the paper.</em>", "Al-Fattah, The Opener.", { kind: "card", n: 18, w: 380 }),
         S.line("20:00", "isha", "The white days", "Monday, Tuesday<br><em>and Wednesday.</em>", "The 13th to 15th of Jumada al-Akhirah: 23 to 25 November by the Umm al-Qura calendar. Tirmidhi 761. Your local calendar may differ by a day."), S.send(18, "Nayla"), S.reveal(47) ] },
 
-    /* ================================================================ WEEK 6 · AL-WADUD · LOVED IN THE MESS */
+    /* ================================================================ WEEK 8 · AL-WADUD · LOVED IN THE MESS */
     { date: "2026-11-23",
       post: theName({ n: 47, week: "Week of 23 November",
         root: { letters: ["و", "د", "د"], rootTr: "w · d · d", gloss: "W · D · D · to love, and to show it",
@@ -659,7 +762,7 @@ ${tags("JumuahMubarak", "AlWadud", "Quran", "Tawbah", "99names")}` }),
 
     { date: "2026-11-29", stories: [S.reveal(48)], why: "No feed post this Sunday: Thursday and Friday already went up. The reveal keeps the Sunday-night ritual." },
 
-    /* ================================================================ WEEK 7 · AL-MAJID · YOU ALREADY SAY IT */
+    /* ================================================================ WEEK 9 · AL-MAJID · YOU ALREADY SAY IT */
     { date: "2026-11-30",
       post: theName({ n: 48, week: "Week of 30 November",
         root: { letters: ["م", "ج", "د"], rootTr: "m · j · d", gloss: "M · J · D · glory, honour without limit",
@@ -736,7 +839,7 @@ Save this list. Then send it to one of the five.
 ${tags("SendAName", "99NamesOfAllah", "AsmaUlHusna", "IslamicGift", "99names")}` }),
       stories: [Object.assign(S.send(38, "Nayla"), { at: "16:30", kicker: "Before the year ends", disp: "Pick one.<br><em>Send it tonight.</em>" }), S.reveal(49)] },
 
-    /* ================================================================ WEEK 8 · AL-BA'ITH · A HEART REVIVED, AND RAJAB */
+    /* ================================================================ WEEK 10 · AL-BA'ITH · A HEART REVIVED, AND RAJAB */
     { date: "2026-12-07",
       post: theName({ n: 49, week: "Week of 7 December",
         root: { letters: ["ب", "ع", "ث"], rootTr: "b · ʿ · th", gloss: "B · ʿ · TH · to raise up, to send out",

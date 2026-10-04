@@ -3,6 +3,308 @@
  "base": "https://brand.99names.net/social/quiet/out/media",
  "items": [
   {
+   "date": "2026-10-05",
+   "time": "06:30",
+   "tz": "Africa/Lagos",
+   "type": "CAROUSEL",
+   "title": "Al-Hasib, this week",
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-01.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-02.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-03.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-04.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-05.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/slide-06.jpg"
+   ],
+   "caption": "Al-Hasib meaning: The Reckoner, and the One who is enough. No. 40 of the 99 Names of Allah, and this week's name.\n\nOne root, two comforts. Hisab is a reckoning: nothing you did, and nothing done to you, goes uncounted. Hasb is enough: hasbunallah, Allah is enough for us.\n\nAnd from the same root, the promise in At-Talaq 65:3: provision “from where you never reckoned.” Whoever relies on Allah, He is enough for him.\n\nFrom today we post four times a week: the name every Monday at dawn, a reel on Wednesday, Jumu'ah on Friday, and on Sunday a set of names to send to someone.\n\nRead it slowly. Say it once. Keep it near this week.\n\nSave this. Send it to someone who feels like it's all on them.\n\n#AlHasib #99NamesOfAllah #AsmaUlHusna #الأسماء_الحسنى #99names",
+   "alt": [
+    "The name of the week, number 40 of 99: Al-Hasib, The Reckoner, with its Arabic ٱلْحَسِيبُ.",
+    "What it means: The One who takes account of all things, and the One who is sufficient for you. Hasbunallah — He is enough. Say it when nothing else is.",
+    "The root ḥ · s · b: hisab, A reckoning. An account kept.; hasb, Enough: hasbunallah, Allah is enough for us.; yahtasib, To reckon on: provision “from where you never reckoned.” 65:3; hasib, The One who counts every greeting. 4:86.",
+    "At-Talaq · 65:3 in Arabic and English: Whoever relies on Allah, He is enough for him.",
+    "Say Ya Hasib when: When nothing else is enough.; When you're keeping score of what you're owed.; When the month doesn't add up..",
+    "The Al-Hasib card from the deck, with: Keep it near this week. Send Al-Hasib to someone who feels like it's all on them."
+   ]
+  },
+  {
+   "date": "2026-10-05",
+   "time": "07:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-05",
+   "time": "07:05",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "poll",
+    "opts": [
+     "I knew it",
+     "First time"
+    ]
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-05/story-2.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-06",
+   "time": "13:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "quiz",
+    "q": "Which name is this?",
+    "opts": [
+     "The Sustainer",
+     "The Originator",
+     "The Governor"
+    ],
+    "ok": 0
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-06/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-07",
+   "time": "19:00",
+   "tz": "Africa/Lagos",
+   "type": "REEL",
+   "title": "Counted, and covered",
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-07/reel.mp4"
+   ],
+   "cover": "https://brand.99names.net/social/quiet/out/media/2026-10-07/cover.jpg",
+   "caption": "Hasbunallah wa ni'mal wakil. Allah is enough for us, and the best one to trust with it. Al 'Imran 3:173.\n\nAl-Hasib, No. 40 of the 99 Names of Allah, holds two meanings at once: the One who counts everything, and the One who is enough.\n\nSo both are true tonight. You are counted: nothing you carried went unseen. And you are covered: He is enough for whatever is left.\n\nSend this to someone who has been carrying everything on their own.\n\n#AlHasib #Hasbunallah #99NamesOfAllah #AsmaUlHusna #99names",
+   "alt": [
+    "Reel cover: ninety-nine dots in a grid on a dusk sky, with: You are counted. You are covered."
+   ]
+  },
+  {
+   "date": "2026-10-07",
+   "time": "19:30",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-07/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-07",
+   "time": "19:35",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "slider",
+    "q": "How much are you carrying alone?",
+    "emoji": "🤲"
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-07/story-2.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-08",
+   "time": "21:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-08/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-09",
+   "time": "11:00",
+   "tz": "Africa/Lagos",
+   "type": "CAROUSEL",
+   "title": "Jumu'ah · even a greeting is counted",
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-09/slide-01.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-09/slide-02.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-09/slide-03.jpg"
+   ],
+   "caption": "Jumu'ah Mubarak. “When you are greeted, greet back with something better, or return it. Allah keeps account of all things.” An-Nisa 4:86.\n\nEven a greeting is counted. On the day you'll greet more people than any other, say salam back with something a little better. Al-Hasib, this week's name, writes it down.\n\nSwipe for the hour on Friday when asking is answered.\n\nSend this to the first person who says salam to you today.\n\n#JumuahMubarak #AlHasib #Quran #AsmaUlHusna #99names",
+   "alt": [
+    "An-Nisa · 4:86 in Arabic and English: Greet back with better, or return it. Allah keeps account of all things.",
+    "Even a greeting is counted. Say salam back with something a little better today. It is written down by Al-Hasib.",
+    "Ask in the last hour: the six hours of the day with the last hour before Maghrib marked. Seek it in the last hour after Asr, Abu Dawud 1048. Ask by this week's name: Ya Hasib."
+   ]
+  },
+  {
+   "date": "2026-10-09",
+   "time": "11:15",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-09/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-09",
+   "time": "15:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-09/story-2.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-11",
+   "time": "16:00",
+   "tz": "Africa/Lagos",
+   "type": "CAROUSEL",
+   "title": "Names for a chest that's tight",
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-01.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-02.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-03.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-04.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-05.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-06.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/slide-07.jpg"
+   ],
+   "caption": "5 Names of Allah for anxiety, for a chest that's tight.\n\nAs-Salam, the Source of Peace. Peace isn't found. It's given.\nAl-Mu'min, the Giver of Security. He has never once broken a promise to you.\nAl-Wakil, the Trustee. Hand it over. He's better at this than you.\nAl-Hafiz, the Preserver. Everything that's kept safe is kept safe by Him.\nAl-Basit, the Expander. Room will be made. It always is.\n\nYesterday was World Mental Health Day. You don't need all five. Say the one that fits, slowly, on the out-breath.\n\nSave this for the night it's needed. Send it to the one who can't settle.\n\n#99NamesOfAllah #AsmaUlHusna #Anxiety #Dua #99names",
+   "alt": [
+    "Three cards from the deck, fanned, with: Five names for a chest that's tight.",
+    "As-Salam, The Source of Peace, ٱلسَّلَامُ. When you can't settle.",
+    "Al-Mu'min, The Giver of Security, ٱلْمُؤْمِنُ. When you're afraid of what's next.",
+    "Al-Wakil, The Trustee, ٱلْوَكِيلُ. When it's all on you.",
+    "Al-Hafiz, The Preserver, ٱلْحَفِيظُ. When you're bracing for it.",
+    "Al-Basit, The Expander, ٱلْبَاسِطُ. When there's no room to breathe.",
+    "Send it to the one who can't settle. Or post them one of these as a real card. 99names.net/send, $6, anywhere."
+   ]
+  },
+  {
+   "date": "2026-10-11",
+   "time": "16:30",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-11",
+   "time": "16:35",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "link",
+    "url": "https://99names.net/send",
+    "label": "Send a name"
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/story-2.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-11",
+   "time": "20:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "reveal",
+    "q": "DM us to see tomorrow's name"
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-11/story-3.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-12",
+   "time": "06:30",
+   "tz": "Africa/Lagos",
+   "type": "CAROUSEL",
+   "title": "Al-Jalil, this week",
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-01.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-02.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-03.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-04.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-05.jpg",
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/slide-06.jpg"
+   ],
+   "caption": "Al-Jalil meaning: The Majestic. No. 41 of the 99 Names of Allah, and this week's name.\n\nMajesty is His default setting. Not a mood, not an occasion: greatness that needs no proof and no audience.\n\nSurah Ar-Rahman ends on it: “Blessed is the name of your Lord, Owner of Majesty and Honour.” 55:78. Dhul-Jalali wal-Ikram. Jalal is this week. Ikram, from the root of Al-Karim, is next.\n\nJumada al-Ula begins today, the first of two quiet months before Rajab.\n\nRead it slowly. Say it once. Keep it near this week.\n\nSave this. Send it to someone who needs reminding how big He is.\n\n#AlJalil #99NamesOfAllah #AsmaUlHusna #الأسماء_الحسنى #99names",
+   "alt": [
+    "The name of the week, number 41 of 99: Al-Jalil, The Majestic, with its Arabic ٱلْجَلِيلُ.",
+    "What it means: Sublime majesty and grandeur in every attribute, beyond every description. Majesty is His default setting.",
+    "The root j · l · l: jalal, Majesty. Greatness that needs no proof.; ijlal, Reverence: holding someone in awe.; jalil, Momentous. Of great weight.; jalla jalaluhu, Exalted is His majesty..",
+    "Ar-Rahman · 55:78 in Arabic and English: Blessed is the name of your Lord, Owner of Majesty and Honour.",
+    "Say Ya Jalil when: When your problem feels bigger than everything.; When you're in awe and have no words.; When you've made Him small in your head..",
+    "The Al-Jalil card from the deck, with: Keep it near this week. Send Al-Jalil to someone who needs reminding how big He is."
+   ]
+  },
+  {
+   "date": "2026-10-12",
+   "time": "07:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "auto",
+   "sticker": null,
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/story-1.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-12",
+   "time": "07:05",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "poll",
+    "opts": [
+     "I knew it",
+     "First time"
+    ]
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-12/story-2.jpg"
+   ]
+  },
+  {
+   "date": "2026-10-13",
+   "time": "13:00",
+   "tz": "Africa/Lagos",
+   "type": "STORY",
+   "by": "hand",
+   "sticker": {
+    "type": "quiz",
+    "q": "Which name is this?",
+    "opts": [
+     "The Restorer to Life",
+     "The Reckoner",
+     "The Self-Exalted"
+    ],
+    "ok": 1
+   },
+   "media": [
+    "https://brand.99names.net/social/quiet/out/media/2026-10-13/story-1.jpg"
+   ]
+  },
+  {
    "date": "2026-10-14",
    "time": "19:00",
    "tz": "Africa/Lagos",
@@ -99,7 +401,7 @@
    "time": "16:00",
    "tz": "Africa/Lagos",
    "type": "CAROUSEL",
-   "title": "Names for a chest that's tight",
+   "title": "Names for someone grieving",
    "media": [
     "https://brand.99names.net/social/quiet/out/media/2026-10-18/slide-01.jpg",
     "https://brand.99names.net/social/quiet/out/media/2026-10-18/slide-02.jpg",
@@ -109,15 +411,15 @@
     "https://brand.99names.net/social/quiet/out/media/2026-10-18/slide-06.jpg",
     "https://brand.99names.net/social/quiet/out/media/2026-10-18/slide-07.jpg"
    ],
-   "caption": "5 Names of Allah for anxiety, for a chest that's tight.\n\nAs-Salam, the Source of Peace. Peace isn't found. It's given.\nAl-Mu'min, the Giver of Security. He has never once broken a promise to you.\nAl-Wakil, the Trustee. Hand it over. He's better at this than you.\nAl-Hafiz, the Preserver. Everything that's kept safe is kept safe by Him.\nAl-Basit, the Expander. Room will be made. It always is.\n\nYou don't need all five. Say the one that fits, slowly, on the out-breath.\n\nSave this for the night it's needed. Send it to the one who can't settle.\n\n#99NamesOfAllah #AsmaUlHusna #Anxiety #Dua #99names",
+   "caption": "5 Names of Allah for someone who is grieving.\n\nAs-Sabur, the Infinitely Patient. For the days that won't end.\nAl-Jabbar, the Restorer. The same hand that can break anything is the one that mends you.\nAl-Baqi, the Everlasting. This will pass. He will not.\nAr-Rahim, the Most Merciful. His mercy isn't a moment. It's a habit.\nAl-Latif, the Subtle and Kind. Some of His kindness you'll only recognise in hindsight.\n\nWhen you don't know what to say to someone who has lost someone, a name says it for you.\n\nSave this. Send it to the one who is grieving, gently.\n\n#99NamesOfAllah #AsmaUlHusna #Grief #Dua #99names",
    "alt": [
-    "Three cards from the deck, fanned, with: Five names for a chest that's tight.",
-    "As-Salam, The Source of Peace, ٱلسَّلَامُ. When you can't settle.",
-    "Al-Mu'min, The Giver of Security, ٱلْمُؤْمِنُ. When you're afraid of what's next.",
-    "Al-Wakil, The Trustee, ٱلْوَكِيلُ. When it's all on you.",
-    "Al-Hafiz, The Preserver, ٱلْحَفِيظُ. When you're bracing for it.",
-    "Al-Basit, The Expander, ٱلْبَاسِطُ. When there's no room to breathe.",
-    "Send it to the one who can't settle. Or post them one of these as a real card. 99names.net/send, $6, anywhere."
+    "Three cards from the deck, fanned, with: Five names for someone who is grieving.",
+    "As-Sabur, The Infinitely Patient, ٱلصَّبُورُ. For the days that won't end.",
+    "Al-Jabbar, The Restorer, ٱلْجَبَّارُ. For what's broken in you.",
+    "Al-Baqi, The Everlasting, ٱلْبَاقِي. This will pass. He will not.",
+    "Ar-Rahim, The Most Merciful, ٱلرَّحِيمُ. Mercy that is a habit, not a moment.",
+    "Al-Latif, The Subtle, The Kind, ٱللَّطِيفُ. For the kindness you'll only see later.",
+    "Send it to the one who lost someone. Or post them one of these as a real card. 99names.net/send, $6, anywhere."
    ]
   },
   {
