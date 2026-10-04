@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>99names · reel frame</title>
+<link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="thirty.css">
+<style>
+  html,body{margin:0;background:#000;overflow:hidden}
+  .stage{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:var(--sans);font-weight:300;color:var(--fg)}
+  .sky{position:absolute;inset:0}
+  .layer{position:absolute;left:84px;right:84px;text-align:center;z-index:3}
+  .top{top:300px}.bot{bottom:420px}
+  .mid{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;z-index:2}
+  .brand{position:absolute;left:84px;top:150px;z-index:3;display:flex;align-items:center;gap:16px;font-family:var(--disp);font-size:40px;font-variation-settings:"opsz" 24,"SOFT" 80}
+  .handle{position:absolute;right:84px;top:158px;z-index:3;font-size:21px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  .disp{font-size:104px}
+  .sub{font-size:34px;line-height:1.45;color:var(--fg2);max-width:800px;margin:26px auto 0}
+  .counter{font-family:var(--disp);font-size:150px;font-weight:300;line-height:1;font-variation-settings:"opsz" 144,"SOFT" 60}
+  .big-ar{font-size:230px;line-height:1.25}
+  .en{font-family:var(--disp);font-style:italic;font-weight:400;font-size:84px;line-height:1.1}
+  .tr{font-size:22px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin-top:18px;color:var(--fg2)}
+  .rings{position:absolute;width:960px;height:960px;left:60px;top:480px;z-index:1;color:var(--fg)}
+  .rings svg{width:100%;height:100%}
+</style></head>
+<body>
+<div class="stage canvas" id="stage" data-hour="fajr"><div class="sky" id="sky"></div>
+  <div class="brand" id="brand"></div><div class="handle" id="handle">@official99names</div>
+  <div class="rings" id="rings"></div><div class="mid" id="mid"></div>
+  <div class="layer top" id="top"></div><div class="layer bot" id="bot"></div>
+</div>
+<script src="../kit/names.js"></script>
+<script>
+/* One frame at a time. reels.mjs sets window.render(t) per frame and screenshots. Everything is a
+   pure function of t so the frames are identical run to run. Palettes are the thirty's; the sky
+   between two hours is a straight interpolation of the four stops. */
+const $ = (s) => document.querySelector(s);
+const G = { fajr: ["#F6DCCF", "#EFD9B8", "#CFD9C4", "#C9DBE6"], morning: ["#F4EEE4", "#F3E3C2", "#F1D9A6", "#EFD9B8"], dhuhr: ["#F4EEE4", "#EFD9B8", "#F6DCCF", "#F2CFC0"], asr: ["#EFD9B8", "#DCDCBE", "#CFD9C4", "#A9BFA6"], maghrib: ["#8A4F3F", "#6E5468", "#3E3A58", "#2A2F44"], isha: ["#2A2F44", "#1F2334", "#171A26", "#171A26"] };
+const DARK = { maghrib: 1, isha: 1 };
+const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, t) => "rgb(" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t)).join(",") + ")";
+const ease = (t) => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t);
+const io = (t, a, b, fa, fb) => ease((t - a) / (fa || .5)) * (1 - ease((t - b) / (fb || .5)));   // fade in at a, out at b
+function sky(from, to, t) { const g = G[from].map((c, i) => mix(c, G[to][i], ease(t))); $("#sky").style.background = `linear-gradient(165deg,${g[0]},${g[1]} 35%,${g[2]} 70%,${g[3]})`; }
+function fg(dark) { $("#stage").dataset.hour = dark ? "isha" : "fajr"; }
+function rays(count, r1, r2, w, grow) {
+  let l = "";
+  for (let i = 0; i < 99; i++) {
+    const a = (i / 99) * Math.PI * 2 - Math.PI / 2, k = i < Math.floor(count) ? 1 : i === Math.floor(count) ? count - Math.floor(count) : 0;
+    if (!k) continue;
+    const rr = r1 + (r2 - r1) * (grow ? ease(k) : 1);
+    l += `<line x1="${(200 + Math.cos(a) * r1).toFixed(1)}" y1="${(200 + Math.sin(a) * r1).toFixed(1)}" x2="${(200 + Math.cos(a) * rr).toFixed(1)}" y2="${(200 + Math.sin(a) * rr).toFixed(1)}" opacity="${grow ? Math.min(1, k * 2).toFixed(2) : 1}"/>`;
+  }
+  return `<svg viewBox="0 0 400 400"><g stroke="currentColor" stroke-width="${w}" stroke-linecap="round" fill="none">${l}</g></svg>`;
+}
+const brand = (dark) => { $("#brand").innerHTML = `<span class="ring" style="width:52px;height:52px">${rays(99, 104, 192, 7)}</span>99names`; };
+const N = (n) => window.NAMES99[n - 1];
+const HOURS = ["fajr", "morning", "dhuhr", "asr", "maghrib", "isha"], OPENER = { fajr: 1, morning: 18, dhuhr: 35, asr: 51, maghrib: 67, isha: 83 }, HN = { fajr: "Fajr", morning: "Morning", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha" };
+const CARD = (n, w) => { const x = N(n), h = window.hourForName(n); return `<div class="card card--${h}" style="width:${w}px"><span class="halo" style="opacity:.26;color:currentColor;inset:-30%;width:160%;height:160%">${rays(99, 112, 198, 1.4)}</span><div class="ct"><span>99names</span><span>No. ${String(n).padStart(2, "0")}</span></div><div class="cm"><div class="ar" style="font-size:${Math.round(w * .21)}px">${x.ar}</div><div class="en" style="font-size:${Math.round(w * .078)}px">${x.en}</div><div class="tr">${x.tr}</div></div><div class="ct"><span>${HN[h]}</span><span>${window.arNum(n)}</span></div></div>`; };
+
+const REELS = {
+  1: { len: 12, frame(t) {   // Count them: the ring draws itself, fajr into morning
+    sky("fajr", "morning", t / 12); fg(false); brand();
+    const count = t < 1 ? 1 : t < 9 ? 1 + 98 * ease((t - 1) / 8) : 99, br = t > 9 && t < 11 ? 1 + .035 * Math.sin((t - 9) / 2 * Math.PI) : 1;
+    $("#rings").innerHTML = rays(count, 128, 196, 2.2, true); $("#rings").style.transform = `scale(${br})`;
+    $("#mid").innerHTML = `<div class="counter" style="opacity:${io(t, .6, 9.4).toFixed(2)}">${Math.round(count)}</div>`;
+    $("#top").innerHTML = `<div class="disp" style="opacity:${io(t, .2, 8.8).toFixed(2)}">Count <em>them.</em></div><div class="disp" style="position:absolute;left:0;right:0;top:0;opacity:${io(t, 9.2, 11.2).toFixed(2)}">Ninety-nine <em>rays.</em></div>`;
+    $("#bot").innerHTML = `<div class="sub" style="opacity:${io(t, 9.4, 11.2).toFixed(2)}">One for every name. Nothing in the middle, on purpose.</div><div class="disp" style="position:absolute;left:0;right:0;bottom:0;opacity:${io(t, 11.1, 99).toFixed(2)}">Light, <em>by name.</em></div>`;
+  } },
+  2: { len: 12, frame(t) {   // Breathe with a name: in for four, out for four, then a shorter one
+    sky("morning", "dhuhr", t / 12); fg(false); brand();
+    let sc; if (t < 1) sc = 1; else if (t < 5) sc = 1 + .9 * ease((t - 1) / 4); else if (t < 9) sc = 1.9 - .9 * ease((t - 5) / 4); else if (t < 10.5) sc = 1 + .5 * ease((t - 9) / 1.5); else sc = 1.5 - .5 * ease((t - 10.5) / 1.5);
+    $("#rings").innerHTML = `<div style="position:absolute;left:50%;top:50%;width:220px;height:220px;margin:-110px;border-radius:50%;background:#E8A64B;transform:scale(${sc.toFixed(3)});box-shadow:0 0 0 ${Math.round(40 * sc)}px rgba(232,166,75,.16),0 0 0 ${Math.round(90 * sc)}px rgba(232,166,75,.07)"></div>`;
+    const x = N(38);
+    $("#top").innerHTML = `<div class="disp" style="opacity:${(io(t, .2, 4.6) + io(t, 9, 10.3)).toFixed(2)}">Breathe <em>in.</em></div><div class="disp" style="position:absolute;left:0;right:0;top:0;opacity:${(io(t, 5, 8.6) + io(t, 10.6, 99)).toFixed(2)}">Breathe <em>out.</em></div>`;
+    $("#bot").innerHTML = `<div style="opacity:${io(t, 1, 11.4).toFixed(2)}"><div class="ar" style="font-size:120px;line-height:1.2">${x.ar}</div><div class="tr">${x.tr} · ${x.en}</div></div><div class="sub" style="opacity:${io(t, 5.2, 9).toFixed(2)}">${x.line}</div><div class="disp" style="position:absolute;left:0;right:0;bottom:0;font-size:72px;opacity:${io(t, 11.2, 99).toFixed(2)}">99names</div>`;
+    $("#mid").innerHTML = "";
+  } },
+  3: { len: 13, frame(t) {   // Dawn to night: six hours, two seconds each
+    const seg = Math.min(5, Math.floor(t / 2)), k = Math.min(1, (t - seg * 2) / 2), from = HOURS[seg], to = HOURS[Math.min(5, seg + 1)];
+    sky(from, to, seg >= 5 ? 0 : k * k); fg(seg >= 4 && (seg === 5 || k > .4)); brand();
+    const x = N(OPENER[from]), a = io(t, seg * 2 + .1, seg * 2 + 1.7, .35, .3);
+    $("#mid").innerHTML = t < 11.5 ? `<div style="text-align:center;opacity:${a.toFixed(2)};transform:translateY(${((1 - a) * 18).toFixed(1)}px)"><div class="tr" style="margin-bottom:14px">${HN[from]}</div><div class="big-ar">${x.ar}</div><div class="en">${x.en}</div><div class="tr">${x.tr} · No. ${String(x.n).padStart(2, "0")}</div></div>` : "";
+    $("#rings").innerHTML = t > 11 ? rays(1 + 98 * ease((t - 11) / 1.6), 128, 196, 2, true) : ""; $("#rings").style.opacity = t > 11 ? 1 : 0;
+    $("#top").innerHTML = `<div class="disp" style="font-size:88px;opacity:${io(t, .2, 1.8).toFixed(2)}">Your day already<br><em>has a shape.</em></div>`;
+    $("#bot").innerHTML = `<div class="disp" style="font-size:88px;opacity:${io(t, 11.4, 99).toFixed(2)}">Light, <em>by name.</em></div>`;
+  } },
+  4: { len: 12, frame(t) {   // The envelope: flap lifts, the card rises, the line, the ask
+    sky("maghrib", "maghrib", 0); fg(true); brand();
+    const flap = ease((t - 1) / 1.6), rise = ease((t - 2.4) / 2.4);
+    $("#mid").innerHTML = `<div class="env" style="width:800px;transform:translateY(150px)"><div class="env-body"></div><div class="env-card" style="width:47%;transform:translate(-50%,${(-36 * rise).toFixed(1)}%)">${CARD(9, 376)}</div><div class="env-pocket"><div class="env-to"><span>For</span><em>Nayla</em></div><div class="env-stamp"><span class="ring" style="width:100%;height:100%">${rays(99, 104, 192, 9)}</span></div></div><div class="env-flap" style="transform-origin:top;transform:scaleY(${(1 - 2 * flap).toFixed(3)});z-index:${flap > .5 ? 0 : 3}"></div></div>`;
+    $("#rings").innerHTML = "";
+    $("#top").innerHTML = `<div class="disp" style="opacity:${io(t, .2, 2.0).toFixed(2)}">For <em>Nayla.</em></div><div class="disp" style="position:absolute;left:0;right:0;top:-40px;font-size:70px;line-height:1.06;opacity:${io(t, 5, 9.8).toFixed(2)}">The same hand that can<br>break anything is the one<br><em>that mends you.</em></div><div class="disp" style="position:absolute;left:0;right:0;top:0;opacity:${io(t, 10.2, 99).toFixed(2)}">Send <em>a name.</em></div>`;
+    $("#bot").innerHTML = `<div class="sub" style="opacity:${io(t, 2.6, 9.8).toFixed(2)}">Al-Jabbar · The Restorer</div><div class="sub" style="position:absolute;left:0;right:0;bottom:0;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:24px;opacity:${io(t, 10.4, 99).toFixed(2)}">99names.net · $6 · worldwide</div>`;
+  } },
+};
+const R = +new URLSearchParams(location.search).get("r") || 1;
+window.LEN = REELS[R].len;
+window.render = (t) => { REELS[R].frame(t); return document.fonts.ready.then(() => true); };
+render(+new URLSearchParams(location.search).get("t") || 0);
+</script>
+</body></html>

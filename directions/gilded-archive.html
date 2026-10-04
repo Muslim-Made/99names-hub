@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names — Direction 01 · The Gilded Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111111; --ink2:#1a1a1a; --ink3:#242424; --line:#2c2c2c;
+  --ivory:#F4EFE3; --ivory2:#E6DFCE; --mute:#9a958a;
+  --gold:#C9A961; --gold2:#E2C98C; --gold3:#8F7436;
+  --emerald:#2F6B4F; --lapis:#2F4F8F; --carmine:#8F2F3A;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --ar:'Amiri','Scheherazade New',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+section{padding:112px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(40px,5vw,64px);margin:16px 0 24px}
+h3{font-size:28px;margin-bottom:12px}
+p.lede{font-size:19px;max-width:60ch;color:var(--ivory2)}
+p{max-width:62ch}
+.grid{display:grid;gap:32px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.ar{font-family:var(--ar);direction:rtl}
+.card{background:var(--ink2);border:1px solid var(--line);padding:32px}
+.label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.note{font-size:13px;color:var(--mute);line-height:1.6}
+hr.gold{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:40px 0}
+/* nav */
+nav{position:sticky;top:0;z-index:9;background:rgba(17,17,17,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .links{display:flex;gap:28px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+nav .links a:hover{color:var(--gold)}
+.seal{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:20px}
+.seal svg{width:36px;height:36px}
+/* hero */
+.hero{min-height:92vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:64px;padding:80px 48px;border:0;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(64px,9vw,136px);line-height:.92}
+.hero h1 em{font-style:italic;color:var(--gold2);font-weight:300}
+.hero .ar-big{font-size:clamp(36px,4vw,56px);color:var(--gold);margin-top:28px;line-height:1.5}
+.hero .meta{display:flex;gap:40px;margin-top:48px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.bigcard{justify-self:center;width:min(380px,100%);aspect-ratio:5/7;border:2px solid var(--gold);border-radius:22px;background:radial-gradient(140% 100% at 50% 0%,#262626 0%,#151515 60%);position:relative;padding:26px;box-shadow:0 60px 120px -40px rgba(0,0,0,.9),inset 0 0 0 1px rgba(201,169,97,.25)}
+.bigcard:before{content:"";position:absolute;inset:10px;border:1px solid rgba(201,169,97,.55);border-radius:14px}
+.corner{position:absolute;width:28px;height:28px;border:1px solid var(--gold)}
+.corner.tl{top:20px;left:20px;border-right:0;border-bottom:0;border-top-left-radius:10px}
+.corner.tr{top:20px;right:20px;border-left:0;border-bottom:0;border-top-right-radius:10px}
+.corner.bl{bottom:20px;left:20px;border-right:0;border-top:0;border-bottom-left-radius:10px}
+.corner.br{bottom:20px;right:20px;border-left:0;border-top:0;border-bottom-right-radius:10px}
+.bigcard .inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:26px 10px}
+.bigcard .arname{font-family:var(--ar);font-size:52px;color:var(--gold2);line-height:1.2}
+.bigcard .glyph{flex:1;display:flex;align-items:center;justify-content:center}
+.bigcard .glyph svg{width:180px;height:180px}
+.bigcard .mean{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold2)}
+.bigcard .rule{width:140px;height:1px;background:var(--gold3);margin:10px auto}
+.bigcard .latin{font-family:var(--serif);font-size:26px;letter-spacing:.18em;text-transform:uppercase}
+.bigcard .num{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+/* strategy */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillars div{background:var(--ink);padding:36px}
+.pillars .n{font-family:var(--serif);font-size:44px;color:var(--gold);line-height:1}
+.pillars h4{font-family:var(--serif);font-size:24px;font-weight:400;margin:18px 0 8px}
+/* logo */
+.logo-stage{background:var(--ink2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:320px;padding:40px}
+.logo-stage.light{background:var(--ivory);color:var(--ink)}
+.logo-stage.gold{background:var(--gold);color:var(--ink)}
+.logo-stage.emerald{background:var(--emerald)}
+.logo-stage.lapis{background:var(--lapis)}
+.logo-stage.carmine{background:var(--carmine)}
+.lockup{display:flex;align-items:center;gap:22px}
+.lockup .wm{font-family:var(--serif);font-size:44px;letter-spacing:.02em;line-height:1}
+.lockup .wm small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.36em;text-transform:uppercase;margin-top:6px;opacity:.7}
+/* swatches */
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.sw div{aspect-ratio:1/1.25;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);font-size:12px}
+.sw b{display:block;font-weight:500;font-size:13px}
+.sw span{opacity:.7;font-size:11px;letter-spacing:.08em}
+/* type */
+.typespec{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--line)}
+.typespec .s{font-size:12px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase}
+/* app */
+.phone{width:300px;height:620px;border-radius:44px;background:#0c0c0c;border:1px solid #333;padding:14px;box-shadow:0 40px 80px -30px #000;margin:0 auto}
+.phone .screen{background:var(--ink);border-radius:32px;height:100%;overflow:hidden;padding:26px 22px;display:flex;flex-direction:column;gap:14px;border:1px solid #222}
+.phone .top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.phone .today{font-family:var(--serif);font-size:30px;line-height:1.1}
+.phone .mini{border:1px solid var(--gold);border-radius:14px;padding:18px;text-align:center;background:radial-gradient(120% 80% at 50% 0,#262626,#141414);flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.phone .mini .a{font-family:var(--ar);font-size:38px;color:var(--gold2)}
+.phone .mini .m{font-family:var(--serif);font-style:italic;color:var(--gold2);font-size:14px}
+.phone .mini .l{font-family:var(--serif);letter-spacing:.18em;font-size:14px;text-transform:uppercase}
+.phone .row{display:flex;gap:8px}
+.phone .btn{flex:1;border:1px solid #333;border-radius:999px;padding:10px;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.phone .btn.p{background:var(--ivory);color:var(--ink);border-color:var(--ivory);font-weight:500}
+.phone .streak{display:flex;justify-content:space-between;font-size:10px;color:var(--mute);letter-spacing:.12em;text-transform:uppercase}
+.dots{display:flex;gap:4px}.dots i{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold3)}.dots i.on{background:var(--gold)}
+/* social */
+.tile{aspect-ratio:4/5;padding:28px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);position:relative;overflow:hidden}
+.tile .big{font-family:var(--serif);font-size:40px;line-height:1.02}
+.tile .big em{color:var(--gold2);font-style:italic}
+.tile .ghost{position:absolute;right:-20px;bottom:-60px;font-family:var(--serif);font-size:260px;line-height:1;color:rgba(255,255,255,.05);pointer-events:none}
+.tile .foot{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+/* web */
+.browser{border:1px solid var(--line);background:var(--ink2);border-radius:12px;overflow:hidden}
+.browser .bar{height:36px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 14px}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#333;display:block}
+.browser .page{padding:56px 64px;min-height:520px;background:var(--ink)}
+.browser .page h1{font-size:72px;line-height:.95;max-width:12ch}
+.browser .page h1 em{color:var(--gold2);font-style:italic}
+.pk{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.box{width:260px;height:360px;margin:0 auto;background:linear-gradient(160deg,#1c1c1c,#0f0f0f);border:1px solid #333;position:relative;box-shadow:40px 40px 80px -30px #000}
+.box:before{content:"";position:absolute;inset:14px;border:1px solid var(--gold3)}
+.box .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
+.box .c .a{font-family:var(--ar);font-size:54px;color:var(--gold2)}
+.box .c .t{font-family:var(--serif);font-size:12px;letter-spacing:.4em;text-transform:uppercase}
+.box .c .s{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dd .card{border-left:2px solid var(--emerald)}.dd .card.no{border-left-color:var(--carmine)}
+footer{padding:64px 0;border-top:1px solid var(--line);font-size:12px;color:var(--mute);display:flex;justify-content:space-between}
+@media(max-width:900px){.wrap{padding:0 22px}.g2,.g3,.g4,.dd,.pk,.hero,.typespec{grid-template-columns:1fr}.sw{grid-template-columns:repeat(3,1fr)}.pillars{grid-template-columns:1fr}.hero h1{font-size:64px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="seal" href="#top">
+    <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#C9A961"/><circle cx="20" cy="20" r="15" stroke="#C9A961" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#C9A961">99</text></svg>
+    <span>99names</span>
+  </a>
+  <div class="links"><a href="#strategy">Strategy</a><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#product">Cards</a><a href="#app">App</a><a href="#social">Social</a><a href="#web">Web</a></div>
+</div></nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <div class="eyebrow">Direction 01 of 03 — Evolution of the current card</div>
+    <h1>The Gilded <em>Archive</em></h1>
+    <div class="ar-big ar">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا</div>
+    <p class="lede" style="margin-top:24px">Ninety-nine names, treated like a museum's rarest manuscript. Ink-black paper, a single line of gold, a serif that breathes. Luxury in the Aesop sense: restraint, not ornament. The card is the hero object; everything else — site, app, social, packaging — is built as if it were printed, foiled and boxed.</p>
+    <div class="meta"><span>Codename · Maqām</span><span>Mood · Reverent, precise, collectable</span><span>Reference · Aesop, Hermès, Tarot</span></div>
+  </div>
+  <div class="bigcard">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="inner">
+      <div class="arname">ٱلرَّحْمَـٰنُ</div>
+      <div class="glyph"><svg viewBox="0 0 200 200" fill="none" stroke="#C9A961" stroke-width="1.6">
+        <circle cx="100" cy="100" r="28" fill="#C9A961" fill-opacity=".9" stroke="none"/>
+        <circle cx="100" cy="100" r="44" stroke-opacity=".5"/>
+        <g stroke-linecap="round"><line x1="100" y1="20" x2="100" y2="46"/><line x1="100" y1="154" x2="100" y2="180"/><line x1="20" y1="100" x2="46" y2="100"/><line x1="154" y1="100" x2="180" y2="100"/><line x1="43" y1="43" x2="62" y2="62"/><line x1="138" y1="138" x2="157" y2="157"/><line x1="157" y1="43" x2="138" y2="62"/><line x1="62" y1="138" x2="43" y2="157"/></g>
+        <g stroke-opacity=".45"><line x1="100" y1="8" x2="100" y2="16"/><line x1="100" y1="184" x2="100" y2="192"/><line x1="8" y1="100" x2="16" y2="100"/><line x1="184" y1="100" x2="192" y2="100"/></g>
+      </svg></div>
+      <div><div class="mean">The Most Gracious</div><div class="rule"></div><div class="latin">Ar-Rahman</div><div class="num">Names of Allah · No. 01</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="strategy"><div class="wrap">
+  <div class="eyebrow">01 — Strategy</div>
+  <h2>Position: the reference edition.</h2>
+  <p class="lede">Every Muslim household has a poster of the 99 names. Almost none of them are beautiful. This direction claims the top of the market: the edition you gift, frame, and pass on. If the Qur'an app category has Quran.com as its utility, 99names becomes its <em>Penguin Classics</em> — the definitive, designed, collected version.</p>
+  <hr class="gold">
+  <div class="pillars">
+    <div><div class="n">I</div><h4>Reverence over decoration</h4><p class="note">No crescents, no lanterns, no mosque silhouettes. The names carry the meaning; the design gets out of the way. Gold is a line, never a fill.</p></div>
+    <div><div class="n">II</div><h4>Objects, not content</h4><p class="note">Every output — a reel, a push notification, a web page — is designed as a physical object first: a card, a plate, a bookmark. This keeps the brand coherent across print and screen.</p></div>
+    <div><div class="n">III</div><h4>Global, bilingual by default</h4><p class="note">Arabic and Latin always appear together, at equal dignity. Arabic is set in a true Naskh (Amiri), never a "Arabic-style" Latin font.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:48px">
+    <div class="card"><div class="label">Brand voice</div><h3>Quiet. Certain. Warm.</h3><p class="note">Short sentences. Second person. Never preachy, never salesy. We state the name and let the reader sit with it. Example: <em>"As-Sabur. The Patient. He has never once rushed you."</em></p></div>
+    <div class="card"><div class="label">Tagline system</div><h3>"Know Him by name."</h3><p class="note">Primary. Supporting lines per channel: <em>"One name a week."</em> (app) · <em>"Ninety-nine, beautifully."</em> (print) · <em>"The names, kept."</em> (brand film).</p></div>
+  </div>
+</div></section>
+
+<section id="logo"><div class="wrap">
+  <div class="eyebrow">02 — Logo system</div>
+  <h2>A seal, a numeral, a name.</h2>
+  <p class="lede">Three components that lock together or stand alone: the <strong>Seal</strong> (double ring with "99"), the <strong>Wordmark</strong> (Cormorant, lowercase, one word), and the <strong>Arabic signature</strong> (الأسماء الحسنى in Amiri). The double ring is the card's own frame, reduced to a monogram.</p>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="logo-stage"><svg viewBox="0 0 200 200" width="200" fill="none"><circle cx="100" cy="100" r="92" stroke="#C9A961" stroke-width="1.5"/><circle cx="100" cy="100" r="76" stroke="#C9A961" stroke-opacity=".55"/><text x="100" y="126" text-anchor="middle" font-family="Cormorant Garamond" font-size="82" fill="#F4EFE3">99</text><text x="100" y="52" text-anchor="middle" font-family="Amiri" font-size="16" fill="#C9A961">الأسماء الحسنى</text><text x="100" y="166" text-anchor="middle" font-family="Inter" font-size="8" letter-spacing="3" fill="#C9A961">NAMES OF ALLAH</text></svg></div>
+    <div class="logo-stage"><div class="lockup"><svg viewBox="0 0 40 40" width="64" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#C9A961"/><circle cx="20" cy="20" r="15" stroke="#C9A961" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#F4EFE3">99</text></svg><div class="wm">99names<small>Asma ul Husna</small></div></div></div>
+    <div class="logo-stage"><div style="text-align:center"><div class="ar" style="font-size:54px;color:var(--gold2);line-height:1.3">الأسماء الحسنى</div><div style="font-family:var(--serif);font-size:14px;letter-spacing:.4em;text-transform:uppercase;margin-top:6px">Ninety-Nine Names</div></div></div>
+  </div>
+  <div class="grid g4" style="margin-top:16px">
+    <div class="logo-stage light" style="min-height:180px"><div class="lockup"><svg viewBox="0 0 40 40" width="44" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#111"/><circle cx="20" cy="20" r="15" stroke="#111" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#111">99</text></svg><div class="wm" style="font-size:30px">99names</div></div></div>
+    <div class="logo-stage gold" style="min-height:180px"><div class="lockup"><svg viewBox="0 0 40 40" width="44" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#111"/><circle cx="20" cy="20" r="15" stroke="#111" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#111">99</text></svg><div class="wm" style="font-size:30px">99names</div></div></div>
+    <div class="logo-stage emerald" style="min-height:180px"><div class="lockup"><svg viewBox="0 0 40 40" width="44" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#F4EFE3"/><circle cx="20" cy="20" r="15" stroke="#F4EFE3" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#F4EFE3">99</text></svg><div class="wm" style="font-size:30px">99names</div></div></div>
+    <div class="logo-stage lapis" style="min-height:180px"><div class="lockup"><svg viewBox="0 0 40 40" width="44" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#F4EFE3"/><circle cx="20" cy="20" r="15" stroke="#F4EFE3" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#F4EFE3">99</text></svg><div class="wm" style="font-size:30px">99names</div></div></div>
+  </div>
+  <p class="note" style="margin-top:24px">Clear space = the height of the inner ring. Minimum size: 24px seal, 16px wordmark. The seal is also the app icon (ink ground, gold rings, ivory numeral) and the foil stamp on packaging.</p>
+</div></section>
+
+<section id="colour"><div class="wrap">
+  <div class="eyebrow">03 — Colour</div>
+  <h2>Ink, ivory, one line of gold.</h2>
+  <p class="lede">Three core colours carry 90% of the brand. The three "mood" colours come directly from the existing card-colour toggle — they are used as full-bleed grounds for a single name, never mixed.</p>
+  <div class="sw" style="margin-top:48px">
+    <div style="background:#111"><b>Ink</b><span>#111111</span></div>
+    <div style="background:#F4EFE3;color:#111"><b>Ivory</b><span>#F4EFE3</span></div>
+    <div style="background:#C9A961;color:#111"><b>Gold</b><span>#C9A961</span></div>
+    <div style="background:#2F6B4F"><b>Emerald</b><span>#2F6B4F · Mercy</span></div>
+    <div style="background:#2F4F8F"><b>Lapis</b><span>#2F4F8F · Knowledge</span></div>
+    <div style="background:#8F2F3A"><b>Carmine</b><span>#8F2F3A · Majesty</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:32px">
+    <div class="card"><div class="label">Ratio</div><p class="note">Ink 70 · Ivory 20 · Gold 7 · Mood 3. Gold is reserved for rules, rings, Arabic, and italic emphasis. If a screen is more than ~10% gold, it is wrong.</p></div>
+    <div class="card"><div class="label">Print</div><p class="note">Gold = Pantone 871 C metallic or hot-foil. Ink = Pantone Black 6 C on 350gsm uncoated black board (Colorplan Ebony). Ivory = Colorplan Natural.</p></div>
+    <div class="card"><div class="label">Accessibility</div><p class="note">Ivory on Ink: 15.9:1. Gold on Ink: 8.1:1. Gold on Ivory fails — never set gold text on ivory; use Ink text with a gold rule instead.</p></div>
+  </div>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="eyebrow">04 — Typography</div>
+  <h2>Cormorant · Inter · Amiri</h2>
+  <div style="margin-top:40px">
+    <div class="typespec"><div class="s">Display · Cormorant Garamond 400/300i</div><div style="font-family:var(--serif);font-size:64px;line-height:1">The Infinitely <em style="color:var(--gold2)">Patient</em></div></div>
+    <div class="typespec"><div class="s">Name · Cormorant caps, tracked +18%</div><div style="font-family:var(--serif);font-size:30px;letter-spacing:.18em;text-transform:uppercase">As-Sabur · Al-Wadud · An-Nur</div></div>
+    <div class="typespec"><div class="s">Arabic · Amiri 400 / Bold for the name</div><div class="ar" style="font-size:56px;line-height:1.4;color:var(--gold2)">ٱلصَّبُورُ · ٱلْوَدُودُ · ٱلنُّورُ</div></div>
+    <div class="typespec"><div class="s">Body · Inter 300, 17/1.6</div><div style="font-size:17px;max-width:60ch">In Islamic tradition, the ninety-nine names describe the divine attributes revealed throughout the Qur'an. Each name is a window. This edition is built to be read slowly.</div></div>
+    <div class="typespec"><div class="s">Label · Inter 500, 11px, +28% tracking</div><div class="eyebrow">Names of Allah · No. 99 · As-Sabur</div></div>
+  </div>
+  <p class="note" style="margin-top:28px">Licensing: all three are open (SIL OFL) — usable in print, app and web with no fees. For the premium print edition consider upgrading Cormorant → <em>Canela</em> or <em>GT Sectra</em>, and Amiri → <em>29LT Ada</em> or <em>Lyon Arabic</em>.</p>
+</div></section>
+
+<section id="product"><div class="wrap">
+  <div class="eyebrow">05 — The physical cards</div>
+  <h2>The deck is the brand.</h2>
+  <div class="pk" style="margin-top:48px">
+    <div class="box"><div class="c"><div class="a ar">الأسماء الحسنى</div><div class="t">99names</div><div class="s">The Complete Edition · 99 Cards</div></div></div>
+    <div>
+      <div class="grid" style="gap:20px">
+        <div class="card"><div class="label">Format</div><p class="note">99 cards + 1 index card, 70 × 120mm (tarot proportion, same as the current design). Rounded 6mm corners. Black edge-painting, gold gilt on the premium edition.</p></div>
+        <div class="card"><div class="label">Front / Back</div><p class="note">Front = the card you already have (Arabic, glyph, meaning, transliteration, number). Back = a consistent pattern: the double-ring seal repeated as a subtle tone-on-tone emboss, so a spread of face-down cards reads as one object.</p></div>
+        <div class="card"><div class="label">Range</div><p class="note"><strong>Standard</strong> (ink, matte, $29) · <strong>Gilded</strong> (foil, gilt edges, rigid box, $79) · <strong>Mood editions</strong> (Emerald / Lapis / Carmine, 33 cards each, $19). The colour toggle on the site is literally the product line.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="app"><div class="wrap">
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <div class="eyebrow">06 — App</div>
+      <h2>One name. Seven days.</h2>
+      <p class="lede">The app is a daily object, not a feed. It opens on today's card, full-bleed. Quiz, reminders and dhikr counter live underneath — never above — the name.</p>
+      <div class="grid" style="gap:14px;margin-top:28px">
+        <div class="card" style="padding:20px"><div class="label">Ritual</div><p class="note">Fajr push: the card, no copy. Isha push: one line of reflection. Friday: the quiz.</p></div>
+        <div class="card" style="padding:20px"><div class="label">Progress</div><p class="note">99 gold dots in a 9 × 11 grid, filling as names are memorised. No streaks-anxiety, no confetti.</p></div>
+        <div class="card" style="padding:20px"><div class="label">Icon</div><p class="note">The seal on ink. Gold rings, ivory "99". Reads at 29px.</p></div>
+      </div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="top"><span>Week 12</span><span>Thu · 4 Rabīʿ I</span></div>
+      <div class="today">Today's<br><em style="color:var(--gold2)">name</em></div>
+      <div class="mini"><div class="a">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div>
+      <div class="row"><div class="btn p">Listen</div><div class="btn">Reflect</div><div class="btn">Quiz</div></div>
+      <div class="streak"><span>Memorised</span><div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><span>41 / 99</span></div>
+    </div></div>
+  </div>
+</div></section>
+
+<section id="social"><div class="wrap">
+  <div class="eyebrow">07 — Social system</div>
+  <h2>Three tile types. Nothing else.</h2>
+  <p class="lede">Your current Instagram posts already do this instinctively. Formalised: <strong>Card</strong> (the product), <strong>Line</strong> (one sentence, ghost numeral), <strong>Mood</strong> (full-bleed colour edition). Always 4:5, always the wordmark top-centre.</p>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="tile" style="background:var(--ink2)">
+      <div class="foot"><span>99names</span><span>No. 99</span></div>
+      <div style="margin:auto;width:58%;aspect-ratio:5/7;border:1.5px solid var(--gold);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#151515"><div class="ar" style="font-size:30px;color:var(--gold2)">ٱلصَّبُورُ</div><div style="font-family:var(--serif);font-style:italic;font-size:12px;color:var(--gold2)">The Infinitely Patient</div><div style="font-family:var(--serif);letter-spacing:.2em;font-size:12px">AS-SABUR</div></div>
+      <div class="foot"><span>Card</span><span>99names.net</span></div>
+    </div>
+    <div class="tile" style="background:var(--ink)">
+      <div class="ghost">99</div>
+      <div class="foot"><span>99names</span><span>As-Sabur</span></div>
+      <div class="big">His <em>patience</em> is why you're still here.</div>
+      <div class="foot"><span>Line</span><span>99names.net</span></div>
+    </div>
+    <div class="tile" style="background:var(--emerald)">
+      <div class="ghost" style="color:rgba(0,0,0,.12)">91</div>
+      <div class="foot" style="color:rgba(255,255,255,.7)"><span>99names</span><span>Emerald edition</span></div>
+      <div class="big">He allows <em style="color:#fff">hardship</em> for reasons you'll understand later.</div>
+      <div class="foot" style="color:rgba(255,255,255,.7)"><span>Mood · Ad-Darr</span><span>99names.net</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="web"><div class="wrap">
+  <div class="eyebrow">08 — Website</div>
+  <h2>Less page, more object.</h2>
+  <p class="lede">The current site explains itself in two columns of text before showing a single name. Flip it: the first screen is today's card, huge, with one line. The explanation lives further down, set like a book's introduction.</p>
+  <div class="browser" style="margin-top:48px">
+    <div class="bar"><i></i><i></i><i></i><span style="margin-left:12px;font-size:11px;color:var(--mute)">99names.net</span></div>
+    <div class="page">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:72px"><div class="lockup"><svg viewBox="0 0 40 40" width="32" fill="none"><circle cx="20" cy="20" r="18.5" stroke="#C9A961"/><circle cx="20" cy="20" r="15" stroke="#C9A961" stroke-opacity=".5"/><text x="20" y="25.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="17" fill="#F4EFE3">99</text></svg><span style="font-family:var(--serif);font-size:22px">99names</span></div><div style="display:flex;gap:24px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)"><span>Names</span><span>Quiz</span><span>Cards</span><span>App</span><span style="color:var(--gold)">Shop</span></div></div>
+      <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center">
+        <div><div class="eyebrow">Today · No. 99</div><h1 style="margin-top:16px">The Infinitely <em>Patient</em></h1><div class="ar" style="font-size:40px;color:var(--gold2);margin:20px 0">ٱلصَّبُورُ</div><p class="note" style="font-size:15px;max-width:44ch;color:var(--ivory2)">As-Sabur. He has never once rushed you. Sit with this name for a week; it will change how you wait.</p><div style="display:flex;gap:12px;margin-top:28px"><span style="border:1px solid var(--ivory);background:var(--ivory);color:var(--ink);padding:12px 24px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500">Listen</span><span style="border:1px solid #444;padding:12px 24px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase">All 99 names</span></div></div>
+        <div style="width:240px;aspect-ratio:5/7;border:1.5px solid var(--gold);border-radius:14px;justify-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:radial-gradient(120% 80% at 50% 0,#262626,#141414)"><div class="ar" style="font-size:40px;color:var(--gold2)">ٱلصَّبُورُ</div><div style="font-family:var(--serif);font-style:italic;color:var(--gold2)">The Infinitely Patient</div><div style="font-family:var(--serif);letter-spacing:.2em">AS-SABUR</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">09 — Rules</div>
+  <h2>Do / Don't</h2>
+  <div class="dd" style="margin-top:40px">
+    <div class="card"><div class="label" style="color:#7fbf9b">Do</div><p class="note">Set Arabic in Amiri, vowelled (with tashkīl) on cards and hero moments.<br>Use one glyph per name — geometric, line-drawn, gold.<br>Let black space do the work. Pause before adding.<br>Photograph the physical cards on black stone, linen, brass.</p></div>
+    <div class="card no"><div class="label" style="color:#d98a93">Don't</div><p class="note">No crescents, lanterns, domes or "Islamic pattern" backgrounds.<br>No gold gradients or bevels — gold is flat, always.<br>No yellow circle logo with a number in it (the current IG avatar).<br>Never drop the Arabic to "save space."</p></div>
+  </div>
+</div></section>
+
+<footer class="wrap"><span>99names · Brand Direction 01 · The Gilded Archive</span><span>Next → Direction 02 · Ninety-Nine Dots</span></footer>
+<script src="/hub/back.js" defer></script>
+</body></html>

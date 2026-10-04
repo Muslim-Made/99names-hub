@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>99names &middot; The First Thirty</title>
+<link rel="icon" href="../../hub/favicon.svg">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="thirty.css">
+<style>.archived-note{margin-top:22px;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:inline-block}.archived-note a{border-bottom:1px solid currentColor}</style>
+</head>
+<body>
+<div class="wrap">
+<div class="archived-note">Archived 4 October 2026 · not in use. The plan is <a href="../quiet/index.html">the Quiet Months</a>.</div>
+<header class="top">
+  <div>
+    <div class="eyebrow">Noor &middot; the first thirty &middot; Monday 14 September to Tuesday 13 October 2026</div>
+    <h1>Thirty days,<br><em>one sky.</em></h1>
+    <p class="lede">Pick the date. The post for that day is drawn below at exact size with its caption, its stories and its posting time. <b>Download, copy the caption, post.</b> Nothing needs editing. The month runs like a day: five posts at each hour, fajr to isha, so the profile grid reads as one gradient from night back to dawn. Every sheet is built to be <b>sent to one person</b>, because that is the signal Instagram now ranks on and because sending a name is the product. Templates for the weeks after live in <a href="../index.html">the kit</a>.</p>
+  </div>
+  <div><div class="sky-note" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="sky-cap">Fajr &middot; Morning &middot; Dhuhr &middot; Asr &middot; Maghrib &middot; Isha</div></div>
+</header>
+
+<div class="picker"><div class="row">
+  <label for="pick">Day</label>
+  <button type="button" id="prev" aria-label="Previous day">&larr;</button>
+  <select id="pick" aria-label="Pick a day"></select>
+  <button type="button" id="next" aria-label="Next day">&rarr;</button>
+  <button type="button" id="todayBtn">Today</button>
+  <span class="hourpip" aria-hidden="true"><i class="fajr" data-h="fajr"></i><i class="morning" data-h="morning"></i><i class="dhuhr" data-h="dhuhr"></i><i class="asr" data-h="asr"></i><i class="maghrib" data-h="maghrib"></i><i class="isha" data-h="isha"></i></span>
+  <span class="spacer"></span>
+  <a class="btn" href="../index.html">The kit</a>
+  <a class="btn" href="../../index.html">The World</a>
+</div></div>
+
+<main id="day"></main>
+
+<section class="month">
+  <h2>The month, <em>at a glance.</em></h2>
+  <p>A new account has one job in its first month: make a stranger understand what 99names is in one tile, then give them a reason to send it to someone. So the thirty days post daily, and the days are used in the order of a day. Fajr introduces the light and the mark. Morning shows how it works and what you hold. Dhuhr gives names for the heavy week and the quiet one. Asr teaches the hours and asks you to remember. Maghrib gives a name away. Isha closes with the patient ones and hands the account to the weekly rhythm: one name, every Monday, from the kit. Four reels, one a Wednesday, built from the mark, the breath, the sky and the envelope. Nothing is photographed; everything is drawn, the way the brand is.</p>
+  <div class="gridpre" id="gridpre" aria-hidden="true"></div>
+  <div class="gridcap">The profile grid after day thirty, newest first: night at the top, dawn at the bottom</div>
+  <div class="weeks" id="weeks"></div>
+</section>
+
+<footer>
+  <span>99names &middot; Noor</span>
+  <span class="ar">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ</span>
+  <span>The First Thirty &middot; Light, by name.</span>
+  <span>Brandium Lab &middot; 2026</span>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="../kit/vendor/html-to-image.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
+<script src="../kit/names.js"></script>
+<script src="data.js"></script>
+<script src="thirty.js"></script>
+<script src="/hub/back.js" defer></script>
+</body></html>

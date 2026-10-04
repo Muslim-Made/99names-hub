@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names — Direction 02 · Ninety-Nine Dots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Reem+Kufi:wght@400..700&family=Noto+Kufi+Arabic:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#EFEAE0; --bone2:#E2DCCF; --ink:#0B0B0B; --ink2:#1c1c1c; --cobalt:#2433FF; --signal:#FF4D1C; --lime:#D8FF3A;
+  --disp:'Archivo',Impact,sans-serif; --mono:'Space Mono',monospace; --kufi:'Reem Kufi','Noto Kufi Arabic',sans-serif; --kufi2:'Noto Kufi Arabic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font-family:var(--disp);font-weight:400;line-height:1.4;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+section{padding:96px 0;border-top:3px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.eyebrow:before{content:"■ ";color:var(--cobalt)}
+h1,h2,h3{font-family:var(--disp);font-weight:900;line-height:.9;letter-spacing:-.03em;text-transform:uppercase}
+h2{font-size:clamp(48px,7vw,104px);margin:18px 0 28px;font-variation-settings:"wdth" 110}
+h3{font-size:26px;letter-spacing:-.02em}
+p.lede{font-size:20px;max-width:58ch;font-weight:500;line-height:1.35}
+.note{font-size:14px;line-height:1.5;max-width:60ch}
+.grid{display:grid;gap:24px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.ar{font-family:var(--kufi);direction:rtl}
+.box{border:3px solid var(--ink);padding:28px;background:var(--bone)}
+.box.inv{background:var(--ink);color:var(--bone)}
+.box.cob{background:var(--cobalt);color:var(--bone)}
+.box.sig{background:var(--signal);color:var(--ink)}
+.label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.8}
+nav{position:sticky;top:0;z-index:9;background:var(--bone);border-bottom:3px solid var(--ink)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .links{display:flex;gap:22px;font-family:var(--mono);font-size:11px;text-transform:uppercase}
+nav .links a:hover{color:var(--cobalt)}
+.mark{display:flex;align-items:center;gap:12px;font-weight:900;font-size:22px;letter-spacing:-.04em;text-transform:uppercase}
+.mark svg{width:32px;height:40px}
+/* dot grid */
+.dg{display:grid;grid-template-columns:repeat(9,1fr);gap:var(--g,6px);width:var(--w,180px)}
+.dg i{aspect-ratio:1;border-radius:50%;background:var(--c,var(--ink));display:block}
+.dg i.off{background:transparent;border:1.5px solid var(--c,var(--ink));opacity:.35}
+.dg.sq i{border-radius:0}
+/* hero */
+.hero{border:0;padding:64px 40px 80px;position:relative}
+.hero h1{font-size:clamp(80px,15vw,230px);line-height:.82;font-variation-settings:"wdth" 125;letter-spacing:-.05em}
+.hero h1 .o{color:var(--cobalt)}
+.hero .sub{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;border-top:3px solid var(--ink);padding-top:24px}
+.hero .sub .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;margin-bottom:8px}
+.hero .ar-big{font-family:var(--kufi);font-size:clamp(40px,6vw,96px);line-height:1.1;color:var(--cobalt);direction:rtl;margin-top:12px}
+.marquee{overflow:hidden;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);background:var(--ink);color:var(--bone);padding:14px 0;white-space:nowrap}
+.marquee span{display:inline-block;font-family:var(--mono);font-size:14px;text-transform:uppercase;padding-right:40px;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* swatches */
+.sw{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:3px solid var(--ink)}
+.sw div{aspect-ratio:1/1.2;padding:18px;display:flex;flex-direction:column;justify-content:space-between;border-right:3px solid var(--ink);font-family:var(--mono);font-size:12px}
+.sw div:last-child{border-right:0}
+.sw b{font-family:var(--disp);font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.02em}
+/* type */
+.ts{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:baseline;padding:24px 0;border-bottom:1.5px solid var(--ink)}
+.ts .s{font-family:var(--mono);font-size:11px;text-transform:uppercase}
+/* card */
+.kcard{width:270px;aspect-ratio:5/7;background:var(--ink);color:var(--bone);padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;border:3px solid var(--ink)}
+.kcard.b{background:var(--bone);color:var(--ink)}
+.kcard.c{background:var(--cobalt);color:var(--bone)}
+.kcard.s{background:var(--signal);color:var(--ink)}
+.kcard .n{font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;text-transform:uppercase}
+.kcard .a{font-family:var(--kufi);font-size:64px;line-height:1;direction:rtl;text-align:right;margin-top:10px}
+.kcard .big{font-weight:900;font-size:52px;line-height:.85;letter-spacing:-.04em;text-transform:uppercase;font-variation-settings:"wdth" 110}
+.kcard .m{font-family:var(--mono);font-size:12px;text-transform:uppercase;margin-top:10px}
+.kcard .dgwrap{position:absolute;right:22px;bottom:22px}
+/* phone */
+.phone{width:300px;height:620px;border:3px solid var(--ink);background:var(--bone);padding:0;margin:0 auto;display:flex;flex-direction:column;overflow:hidden}
+.phone .bar{border-bottom:3px solid var(--ink);padding:14px 18px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;text-transform:uppercase}
+.phone .body{padding:22px 18px;display:flex;flex-direction:column;gap:18px;flex:1}
+.phone .h{font-weight:900;font-size:44px;line-height:.85;letter-spacing:-.04em;text-transform:uppercase}
+.phone .ar{font-family:var(--kufi);font-size:46px;color:var(--cobalt);text-align:right;line-height:1}
+.phone .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.phone .btn{border:3px solid var(--ink);padding:12px;text-align:center;font-family:var(--mono);font-size:11px;text-transform:uppercase}
+.phone .btn.p{background:var(--ink);color:var(--bone)}
+/* tiles */
+.tile{aspect-ratio:4/5;padding:22px;display:flex;flex-direction:column;justify-content:space-between;border:3px solid var(--ink);position:relative;overflow:hidden}
+.tile .t{font-weight:900;font-size:40px;line-height:.88;letter-spacing:-.04em;text-transform:uppercase}
+.tile .f{font-family:var(--mono);font-size:11px;text-transform:uppercase;display:flex;justify-content:space-between}
+.browser{border:3px solid var(--ink);overflow:hidden}
+.browser .bar{border-bottom:3px solid var(--ink);padding:10px 16px;font-family:var(--mono);font-size:11px}
+.browser .page{padding:40px 48px;min-height:500px;background:var(--bone);position:relative;overflow:hidden}
+.browser .page h1{font-size:132px;line-height:.8;font-variation-settings:"wdth" 120;letter-spacing:-.05em}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+footer{padding:48px 0;border-top:3px solid var(--ink);font-family:var(--mono);font-size:12px;text-transform:uppercase;display:flex;justify-content:space-between}
+@media(max-width:900px){.wrap{padding:0 20px}.g2,.g3,.g4,.dd,.ts,.hero .sub{grid-template-columns:1fr}.sw{grid-template-columns:repeat(2,1fr)}.sw div{border-bottom:3px solid var(--ink)}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="mark" href="#top"><svg viewBox="0 0 36 44" id="navmark"></svg>99NAMES</a>
+  <div class="links"><a href="#strategy">Strategy</a><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#product">Cards</a><a href="#app">App</a><a href="#social">Social</a><a href="#web">Web</a></div>
+</div></nav>
+
+<header class="hero wrap" id="top">
+  <div class="eyebrow">Direction 02 of 03 — Bold · Geometric · Global</div>
+  <h1 style="margin-top:24px">Ninety<br>Nine <span class="o">Dots</span></h1>
+  <div class="ar-big">الأسماء الحسنى</div>
+  <div class="sub">
+    <div><div class="k">Idea</div><p class="note">One dot per name. Nine columns, eleven rows: 9 × 11 = 99. The grid is the logo, the progress bar, the card back, the packaging, the poster. Memorise a name, a dot fills.</p></div>
+    <div><div class="k">Mood</div><p class="note">Confident, young, unapologetically contemporary. Square Kufic — the oldest geometric Arabic — meets a Swiss grid and a wide grotesk. Nike Run Club energy, for dhikr.</p></div>
+    <div><div class="k">Reference</div><p class="note">Square Kufic manuscripts · Bauhaus · Nike ACG · Khatt Foundation · Ibrahim Saad · the Mecca Mosque tile grid.</p></div>
+  </div>
+</header>
+
+<div class="marquee"><span>Ar-Rahman · Ar-Rahim · Al-Malik · Al-Quddus · As-Salam · Al-Mu'min · Al-Muhaymin · Al-Aziz · Al-Jabbar · Al-Mutakabbir · Al-Khaliq · Al-Bari · Al-Musawwir · Al-Ghaffar · Al-Qahhar · Al-Wahhab · Ar-Razzaq · Al-Fattah · Al-Alim · Al-Qabid · Al-Basit · &nbsp; Ar-Rahman · Ar-Rahim · Al-Malik · Al-Quddus · As-Salam · Al-Mu'min · Al-Muhaymin · Al-Aziz · Al-Jabbar · Al-Mutakabbir · Al-Khaliq · Al-Bari · Al-Musawwir · Al-Ghaffar · Al-Qahhar · Al-Wahhab · Ar-Razzaq · Al-Fattah · Al-Alim · Al-Qabid · Al-Basit ·</span></div>
+
+<section id="strategy"><div class="wrap">
+  <div class="eyebrow">01 — Strategy</div>
+  <h2>Position:<br>the movement.</h2>
+  <p class="lede">Direction 01 sells a beautiful object. This direction sells a <em>practice</em>. 99names becomes the brand a 19-year-old in Jakarta, Lagos or Toronto wears on a hoodie, checks at Fajr, and competes on with friends. It owns a number the way Nike owns a swoosh.</p>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="box inv"><div class="label">Principle I</div><h3>The number is the brand</h3><p class="note" style="margin-top:10px">"99" is already globally legible in every language and script. We never need to translate the logo. Dot grid + 99 = instantly ownable.</p></div>
+    <div class="box cob"><div class="label">Principle II</div><h3>Progress is visible</h3><p class="note" style="margin-top:10px">The grid tells you where you are. 41 filled dots on a profile, a card back, a poster on a wall. It makes memorisation social without gamifying the sacred.</p></div>
+    <div class="box sig"><div class="label">Principle III</div><h3>Kufic, not calligraphy</h3><p class="note" style="margin-top:10px">Square Kufic is architectural, built on a grid, and reads as modern even though it is 1,000 years old. It is the one Arabic style that looks native next to a grotesk.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:24px">
+    <div class="box"><div class="label">Voice</div><h3>Direct. Punchy. Kind.</h3><p class="note" style="margin-top:10px">Headlines are three words. Copy talks like a friend who prays. <em>"Name 41. You know this one."</em> · <em>"He's Al-Wadud. Act like it."</em> · <em>"99 names. 0 excuses."</em></p></div>
+    <div class="box"><div class="label">Tagline</div><h3>"Know all 99."</h3><p class="note" style="margin-top:10px">A challenge, not a promise. Channel lines: <em>"One dot at a time."</em> (app) · <em>"Fill the grid."</em> (quiz) · <em>"Ninety-nine, in your hand."</em> (cards).</p></div>
+  </div>
+</div></section>
+
+<section id="logo"><div class="wrap">
+  <div class="eyebrow">02 — Logo system</div>
+  <h2>The grid.</h2>
+  <p class="lede">9 columns × 11 rows. Dots are round on screen, square in print (closer to Kufic). The grid can be fully filled (brand), partially filled (a user's progress), or a single dot lit (one name — a social post, a card).</p>
+  <div class="grid g4" style="margin-top:48px">
+    <div class="box inv" style="display:flex;align-items:center;justify-content:center;min-height:300px"><div class="dg" style="--c:#EFEAE0;--w:150px" data-fill="99"></div></div>
+    <div class="box" style="display:flex;align-items:center;justify-content:center;min-height:300px"><div class="dg sq" style="--w:150px" data-fill="99"></div></div>
+    <div class="box cob" style="display:flex;align-items:center;justify-content:center;min-height:300px"><div class="dg" style="--c:#EFEAE0;--w:150px" data-fill="41"></div></div>
+    <div class="box sig" style="display:flex;align-items:center;justify-content:center;min-height:300px"><div class="dg" style="--w:150px" data-fill="1" data-pos="98"></div></div>
+  </div>
+  <div class="grid g2" style="margin-top:24px">
+    <div class="box inv" style="min-height:260px;display:flex;align-items:center;gap:28px;justify-content:center"><div class="dg" style="--c:#EFEAE0;--w:72px;--g:3px" data-fill="99"></div><div><div style="font-weight:900;font-size:72px;line-height:.8;letter-spacing:-.05em;font-variation-settings:'wdth' 115">99<br>NAMES</div></div></div>
+    <div class="box" style="min-height:260px;display:flex;align-items:center;gap:28px;justify-content:center"><div class="ar" style="font-size:96px;line-height:1;color:var(--cobalt)">٩٩</div><div style="font-family:var(--kufi2);font-weight:900;font-size:44px;direction:rtl;line-height:1.1">الأسماء<br>الحسنى</div></div>
+  </div>
+  <p class="note" style="margin-top:24px">Arabic-Indic "٩٩" in Reem Kufi is the secondary mark — it reads as two drops / two commas and sits beautifully as an app icon and favicon. Clear space = two dot-pitches. Minimum: grid at 27px (3px dots), "99" wordmark at 14px.</p>
+</div></section>
+
+<section id="colour"><div class="wrap">
+  <div class="eyebrow">03 — Colour</div>
+  <h2>Bone. Ink.<br>Cobalt. Signal.</h2>
+  <p class="lede">Warm bone paper instead of white, true black ink, and two loud accents that never appear together on the same surface. Lime is for the quiz only — a "correct" state.</p>
+  <div class="sw" style="margin-top:48px">
+    <div style="background:#EFEAE0"><b>Bone</b><span>#EFEAE0<br>Ground · 60%</span></div>
+    <div style="background:#0B0B0B;color:#EFEAE0"><b>Ink</b><span>#0B0B0B<br>Type · grid · 25%</span></div>
+    <div style="background:#2433FF;color:#EFEAE0"><b>Cobalt</b><span>#2433FF<br>Arabic · links · 10%</span></div>
+    <div style="background:#FF4D1C"><b>Signal</b><span>#FF4D1C<br>Today · CTA · 4%</span></div>
+    <div style="background:#D8FF3A"><b>Lime</b><span>#D8FF3A<br>Quiz correct · 1%</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:24px">
+    <div class="box"><div class="label">Rule</div><p class="note">Cobalt and Signal never touch. Cobalt = knowledge, the Arabic, the link. Signal = now, the current name, the button.</p></div>
+    <div class="box"><div class="label">Print</div><p class="note">Bone = Munken Pure / GF Smith Naturals. Cobalt = Pantone 2728 C. Signal = Pantone Orange 021 C. Ink = rich black, or a spot black for the grid.</p></div>
+    <div class="box"><div class="label">Contrast</div><p class="note">Ink/Bone 17.8:1 · Bone/Cobalt 7.4:1 · Ink/Signal 7.1:1 · Ink/Lime 17:1. Everything passes AAA for body text.</p></div>
+  </div>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="eyebrow">04 — Typography</div>
+  <h2>Archivo · Reem Kufi · Space Mono</h2>
+  <div style="margin-top:40px">
+    <div class="ts"><div class="s">Display · Archivo Black, wdth 110–125, -4% tracking</div><div style="font-weight:900;font-size:84px;line-height:.85;letter-spacing:-.05em;text-transform:uppercase;font-variation-settings:'wdth' 120">The Patient<br><span style="color:var(--cobalt)">As-Sabur</span></div></div>
+    <div class="ts"><div class="s">Arabic display · Reem Kufi 600</div><div class="ar" style="font-size:84px;line-height:1.1;color:var(--cobalt)">الصبور · الودود · النور</div></div>
+    <div class="ts"><div class="s">Arabic heavy · Noto Kufi Arabic 900</div><div style="font-family:var(--kufi2);font-weight:900;font-size:56px;direction:rtl;line-height:1.2">الرحمن الرحيم</div></div>
+    <div class="ts"><div class="s">Body · Archivo 500, 17/1.4</div><div style="font-size:17px;max-width:58ch;font-weight:500">Ninety-nine names. One a week means you know them all in under two years. One a day means you know them by Ramadan. Your call.</div></div>
+    <div class="ts"><div class="s">Data · Space Mono 400, 12px, uppercase</div><div class="eyebrow">No. 99 / 99 · As-Sabur · Week 12 · 41 memorised</div></div>
+  </div>
+  <p class="note" style="margin-top:28px">All open (OFL). Premium upgrades for the print edition: Archivo → <em>Druk Wide</em> or <em>PP Right Grotesk</em>; Reem Kufi → <em>29LT Kaff</em> or a commissioned square-Kufic "99" by a calligrapher (recommended — this becomes a trademarkable asset).</p>
+</div></section>
+
+<section id="product"><div class="wrap">
+  <div class="eyebrow">05 — The physical cards</div>
+  <h2>Four inks.<br>One grid.</h2>
+  <p class="lede">Each name is printed on a single flat colour. The back of every card is the grid with that name's dot lit — lay the deck out and the backs become a 99-dot mural. The box is a solid bone cube with the filled grid debossed.</p>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:48px;justify-content:center">
+    <div class="kcard"><div class="n"><span>99names</span><span>No. 01</span></div><div><div class="a">الرحمن</div><div class="big">Ar-<br>Rahman</div><div class="m">The Most Gracious</div></div><div class="dgwrap"><div class="dg" style="--c:#EFEAE0;--w:54px;--g:2px" data-fill="1" data-pos="0"></div></div></div>
+    <div class="kcard b"><div class="n"><span>99names</span><span>No. 47</span></div><div><div class="a" style="color:var(--cobalt)">الودود</div><div class="big">Al-<br>Wadud</div><div class="m">The Most Loving</div></div><div class="dgwrap"><div class="dg" style="--w:54px;--g:2px" data-fill="1" data-pos="46"></div></div></div>
+    <div class="kcard c"><div class="n"><span>99names</span><span>No. 93</span></div><div><div class="a">النور</div><div class="big">An-<br>Nur</div><div class="m">The Light</div></div><div class="dgwrap"><div class="dg" style="--c:#EFEAE0;--w:54px;--g:2px" data-fill="1" data-pos="92"></div></div></div>
+    <div class="kcard s"><div class="n"><span>99names</span><span>No. 99</span></div><div><div class="a">الصبور</div><div class="big">As-<br>Sabur</div><div class="m">The Patient</div></div><div class="dgwrap"><div class="dg" style="--w:54px;--g:2px" data-fill="1" data-pos="98"></div></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:40px">
+    <div class="box"><div class="label">Format</div><p class="note">99 cards, 63 × 88mm (poker size — fits every sleeve, every pocket, cheaper to ship globally). Square corners. 400gsm.</p></div>
+    <div class="box"><div class="label">Range</div><p class="note"><strong>Deck</strong> $24 · <strong>Poster</strong> (the 99 grid, A1) $39 · <strong>Hoodie / tee</strong> with the grid and a single lit dot of your choice $45 — the merch <em>is</em> personal progress.</p></div>
+    <div class="box"><div class="label">Flash-quiz mode</div><p class="note">Front = Arabic only. Back = everything. The deck doubles as a physical quiz. Comes with a bone "progress card" you stamp.</p></div>
+  </div>
+</div></section>
+
+<section id="app"><div class="wrap">
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <div class="eyebrow">06 — App</div>
+      <h2>Fill the grid.</h2>
+      <p class="lede">Home = the grid, your dots, today's name in Signal. Quiz is a 30-second flash round. Reminders are one word: the name. Friends' grids are visible, not ranked.</p>
+      <div class="grid" style="gap:12px;margin-top:28px">
+        <div class="box" style="padding:18px"><div class="label">Icon</div><p class="note">Cobalt square, bone "٩٩" in Reem Kufi. Or the 9 × 11 grid in bone on ink.</p></div>
+        <div class="box" style="padding:18px"><div class="label">Widget</div><p class="note">Lock-screen widget is just the grid. Watching it fill is the retention mechanic.</p></div>
+        <div class="box" style="padding:18px"><div class="label">Motion</div><p class="note">Dots pop in with a hard, 120ms ease-out. No fades. Transitions snap — think a mechanical counter.</p></div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="bar"><span>99names</span><span>41 / 99</span></div>
+      <div class="body">
+        <div class="dg" style="--w:100%;--g:8px" data-fill="41" data-today="41"></div>
+        <div class="ar">الصبور</div>
+        <div class="h">As-<br>Sabur</div>
+        <div class="eyebrow" style="font-size:11px">No. 99 · The Patient · Today</div>
+        <div class="btns"><div class="btn p">Listen</div><div class="btn">Quiz</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="social"><div class="wrap">
+  <div class="eyebrow">07 — Social system</div>
+  <h2>Loud, flat, legible at 2cm.</h2>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="tile" style="background:var(--ink);color:var(--bone)"><div class="f"><span>99names</span><span>No. 99</span></div><div class="t">His <span style="color:var(--signal)">patience</span> is why you're still here.</div><div class="f"><span>As-Sabur</span><span>99names.net</span></div></div>
+    <div class="tile" style="background:var(--cobalt);color:var(--bone)"><div class="f"><span>99names</span><span>Week 12</span></div><div style="display:flex;justify-content:center"><div class="dg" style="--c:#EFEAE0;--w:62%" data-fill="41" data-today="41"></div></div><div class="f"><span>41 / 99 memorised</span><span>Fill the grid</span></div></div>
+    <div class="tile" style="background:var(--bone)"><div class="f"><span>99names</span><span>Quiz</span></div><div><div class="ar" style="font-size:72px;color:var(--cobalt);text-align:center;line-height:1">الودود</div><div class="t" style="font-size:28px;text-align:center;margin-top:10px">Which name<br>is this?</div></div><div class="f"><span>Answer in comments</span><span>99names.net</span></div></div>
+  </div>
+  <p class="note" style="margin-top:24px">Reels: the name slams in (Archivo, full-bleed), the Arabic cuts in over it in Cobalt, a single dot fills in Signal. Three seconds. Loop. No music needed — the recitation is the audio.</p>
+</div></section>
+
+<section id="web"><div class="wrap">
+  <div class="eyebrow">08 — Website</div>
+  <h2>One name, 100vh.</h2>
+  <div class="browser" style="margin-top:48px">
+    <div class="bar">99names.net</div>
+    <div class="page">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--ink);padding-bottom:14px;margin-bottom:40px"><div class="mark"><svg viewBox="0 0 36 44" class="svgmark"></svg>99NAMES</div><div style="display:flex;gap:22px;font-family:var(--mono);font-size:11px;text-transform:uppercase"><span>All 99</span><span>Quiz</span><span>Cards</span><span>App</span><span style="background:var(--signal);padding:4px 10px">Shop</span></div></div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end">
+        <div><div class="eyebrow">Today · No. 99 of 99</div><h1 style="margin-top:14px">As-<br><span style="color:var(--cobalt)">Sabur</span></h1><p class="note" style="font-weight:500;font-size:18px;margin-top:20px;max-width:40ch">The Patient. He has never once rushed you.</p><div style="display:flex;gap:10px;margin-top:24px"><span style="background:var(--ink);color:var(--bone);padding:14px 22px;font-family:var(--mono);font-size:11px;text-transform:uppercase">Listen</span><span style="border:3px solid var(--ink);padding:11px 22px;font-family:var(--mono);font-size:11px;text-transform:uppercase">Fill the grid →</span></div></div>
+        <div style="text-align:right"><div class="ar" style="font-size:140px;line-height:.9;color:var(--cobalt)">الصبور</div><div class="dg" style="--w:120px;margin-left:auto;margin-top:20px" data-fill="99" data-today="98"></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">09 — Rules</div>
+  <h2>Do / Don't</h2>
+  <div class="dd" style="margin-top:40px">
+    <div class="box" style="border-color:var(--cobalt)"><div class="label" style="color:var(--cobalt)">Do</div><p class="note">Keep it flat. One colour per surface.<br>Set every headline in caps, wide, tight.<br>Use the grid as a texture, a progress bar and a logo — it's the same thing.<br>Let Arabic be big. Bigger than the Latin when in doubt.</p></div>
+    <div class="box" style="border-color:var(--signal)"><div class="label" style="color:var(--signal)">Don't</div><p class="note">No gradients, shadows, glows, or gold.<br>No rounded corners bigger than 0 (print) / 4px (UI).<br>No ornamental calligraphy — Kufic only.<br>Never put Cobalt and Signal on the same surface.</p></div>
+  </div>
+</div></section>
+
+<footer class="wrap"><span>99names · Brand Direction 02 · Ninety-Nine Dots</span><span>Next → Direction 03 · Noor</span></footer>
+
+<script>
+// dot grids
+document.querySelectorAll('.dg').forEach(g=>{
+  const fill=+g.dataset.fill||0, pos=g.dataset.pos!==undefined?+g.dataset.pos:null, today=g.dataset.today!==undefined?+g.dataset.today:null;
+  let h='';
+  for(let i=0;i<99;i++){
+    let on = pos!==null ? i===pos : i<fill;
+    let st = (today!==null && i===today) ? ' style="background:#FF4D1C;border:0;opacity:1"' : '';
+    h+=`<i class="${on?'':'off'}"${st}></i>`;
+  }
+  g.innerHTML=h;
+});
+// mini grid marks
+function mark(svg,c){let h='';for(let r=0;r<11;r++)for(let col=0;col<9;col++)h+=`<rect x="${col*4}" y="${r*4}" width="3" height="3" fill="${c}"/>`;svg.setAttribute('viewBox','0 0 35 43');svg.innerHTML=h;}
+document.querySelectorAll('#navmark,.svgmark').forEach(s=>mark(s,'#0B0B0B'));
+</script>
+<script src="/hub/back.js" defer></script>
+</body></html>

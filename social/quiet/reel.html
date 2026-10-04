@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>99names · quiet reel frame</title>
+<link rel="stylesheet" href="../thirty/fonts.css"><link rel="stylesheet" href="../thirty/thirty.css"><link rel="stylesheet" href="quiet.css">
+<style>
+  /* Instagram's reel UI: the top 250px, the caption and audio below 1500, the action rail right of 936
+     from about 1000 down. Every word lives in x 84–936, y 250–1500. Drawn things live in the art zone. */
+  html,body{margin:0;background:#000;overflow:hidden}
+  .stage{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:var(--sans);font-weight:300;color:var(--fg)}
+  .sky{position:absolute;inset:0}
+  .brand{position:absolute;left:84px;top:262px;z-index:4;display:flex;align-items:center;gap:16px;font-family:var(--disp);font-size:40px;font-variation-settings:"opsz" 24,"SOFT" 80;color:var(--fg)}
+  .tx{position:absolute;left:84px;width:852px;text-align:center;z-index:3}
+  .tx>div{position:absolute;left:0;right:0}
+  #top{top:370px;height:330px}#top>div{top:0}
+  #bot{top:1300px;height:200px}#bot>div{top:0}
+  #mid{position:absolute;left:84px;width:852px;top:560px;height:800px;z-index:3;text-align:center}#mid>div{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
+  #art{position:absolute;inset:0;z-index:2}
+  .h1{font-family:var(--disp);font-weight:300;font-size:96px;line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 144,"SOFT" 60}
+  .h1 em{font-style:italic;font-weight:400}
+  .sub{font-size:34px;line-height:1.45;color:var(--fg2)}
+  .rtag{font-size:24px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--fg2);line-height:1.6}
+  .arl{font-family:var(--ar);font-weight:600;direction:rtl;line-height:1.5}
+  .face{position:absolute;border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#2A2622;background:linear-gradient(160deg,#F4EEE4,#EFD9B8);box-shadow:0 30px 50px -30px rgba(0,0,0,.6);backface-visibility:hidden}
+  .face .k{font-family:var(--disp);font-size:84px;line-height:.9;font-weight:300;color:#8A4F3F}
+  .face .w{font-family:var(--disp);font-style:italic;font-size:38px;line-height:1.1}
+  .back{position:absolute;border-radius:30px;background:linear-gradient(160deg,#2A2F44,#171A26);color:#F4EEE4;box-shadow:0 30px 50px -30px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;backface-visibility:hidden}
+  .dotm{position:absolute;display:grid;grid-template-columns:repeat(15,1fr);gap:16px}
+  .dotm i{display:block;width:34px;height:34px;border-radius:50%;border:2px solid var(--rule)}
+  .dotm i.on{background:#E8A64B;border-color:#E8A64B}
+</style></head>
+<body>
+<div class="stage canvas" id="stage" data-hour="maghrib"><div class="sky" id="sky"></div>
+  <div class="brand" id="brand"></div><div id="art"></div>
+  <div class="tx" id="top"></div><div id="mid"></div><div class="tx" id="bot"></div>
+</div>
+<script src="../kit/names.js"></script>
+<script src="data.js"></script>
+<script>
+/* One frame at a time: reels.mjs calls window.render(t) and screenshots. Every frame is a pure
+   function of t. window.ART lists the drawn shapes of the current frame (rects and the ring's
+   annulus) so reels.mjs can prove no visible word touches one. */
+const $ = (s) => document.querySelector(s);
+const G = { fajr: ["#F6DCCF", "#EFD9B8", "#CFD9C4", "#C9DBE6"], morning: ["#F4EEE4", "#F3E3C2", "#F1D9A6", "#EFD9B8"], dhuhr: ["#F4EEE4", "#EFD9B8", "#F6DCCF", "#F2CFC0"], asr: ["#EFD9B8", "#DCDCBE", "#CFD9C4", "#A9BFA6"], maghrib: ["#8A4F3F", "#6E5468", "#3E3A58", "#2A2F44"], isha: ["#2A2F44", "#1F2334", "#171A26", "#171A26"] };
+const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, t) => "rgb(" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t)).join(",") + ")";
+const clamp = (t) => t < 0 ? 0 : t > 1 ? 1 : t;
+const ease = (t) => { t = clamp(t); return t * t * (3 - 2 * t); };
+// visible from a to b: fades in over fa after a (unless a < 0: already there at frame one), out over fb before b
+const io = (t, a, b, fa, fb) => (a < 0 ? 1 : ease((t - a) / (fa || .45))) * (1 - ease((t - (b - (fb || .45))) / (fb || .45)));
+let ART = [];
+function sky(from, to, k) { const g = G[from].map((c, i) => mix(c, G[to][i], ease(k))); $("#sky").style.background = `linear-gradient(170deg,${g[0]},${g[1]} 32%,${g[2]} 66%,${g[3]})`; }
+function hour(h) { $("#stage").dataset.hour = h; }
+function rays(count, r1, r2, w, lit) {
+  let l = "";
+  for (let i = 0; i < 99; i++) {
+    const a = (i / 99) * Math.PI * 2 - Math.PI / 2, k = i < Math.floor(count) ? 1 : i === Math.floor(count) ? count - Math.floor(count) : 0;
+    if (!k && lit == null) continue;
+    const rr = r1 + (r2 - r1) * (lit == null ? ease(k) : 1), op = lit == null ? Math.min(1, k * 2) : (i < count ? 1 : lit);
+    l += `<line x1="${(200 + Math.cos(a) * r1).toFixed(1)}" y1="${(200 + Math.sin(a) * r1).toFixed(1)}" x2="${(200 + Math.cos(a) * rr).toFixed(1)}" y2="${(200 + Math.sin(a) * rr).toFixed(1)}" opacity="${op.toFixed(2)}"/>`;
+  }
+  return `<svg viewBox="0 0 400 400" style="width:100%;height:100%;display:block"><g stroke="currentColor" stroke-width="${w}" stroke-linecap="round" fill="none">${l}</g></svg>`;
+}
+// the ring as art: centre, box size; records its annulus
+function ring(cx, cy, S, count, w, lit, extra) {
+  ART.push({ type: "ring", cx, cy, r1: S * 104 / 400 - 4, r2: S * 196 / 400 + 4 });
+  return `<div style="position:absolute;left:${cx - S / 2}px;top:${cy - S / 2}px;width:${S}px;height:${S}px;color:var(--fg);${extra || ""}">${rays(count, 104, 192, w, lit)}</div>`;
+}
+function box(x, y, w, h, html, style) { ART.push({ type: "rect", x, y, w, h }); return `<div style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px;${style || ""}">${html || ""}</div>`; }
+const brand = (o) => { $("#brand").innerHTML = `<span class="ring" style="width:52px;height:52px;display:inline-block">${rays(99, 104, 192, 7)}</span>99names`; $("#brand").style.opacity = o == null ? 1 : o; };
+const N = (n) => window.NAMES99[n - 1];
+const HN = { fajr: "Fajr", morning: "Morning", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha" };
+const hourOf = window.hourForName;
+function CARD(n, w) { const x = N(n), h = hourOf(n); return `<div class="card card--${h}" style="width:${w}px;padding:${Math.round(w * .1)}px"><span class="halo" style="opacity:.26;color:currentColor;inset:-30%;width:160%;height:160%">${rays(99, 112, 198, 1.4)}</span><div class="ct" style="font-size:${Math.max(18, Math.round(w * .045))}px"><span>99names</span><span>No. ${String(n).padStart(2, "0")}</span></div><div class="cm"><div class="ar" style="font-size:${Math.round(w * .21)}px">${x.ar}</div><div class="en" style="font-size:${Math.round(w * .078)}px">${x.en}</div><div class="tr" style="font-size:${Math.max(18, Math.round(w * .045))}px">${x.tr}</div></div><div class="ct" style="font-size:${Math.max(18, Math.round(w * .045))}px"><span>${HN[h]}</span><span>${window.arNum(n)}</span></div></div>`; }
+const cardAt = (n, cx, cy, w, style) => { const h = w * 1.4; return box(cx - w / 2, cy - h / 2, w, h, CARD(n, w), style); };
+const T = (sel, parts) => { $(sel).innerHTML = parts.filter(Boolean).map(([op, html, extra]) => op > 0.001 ? `<div style="opacity:${op.toFixed(3)};${extra || ""}">${html}</div>` : "").join(""); };
+
+/* ================================================================ the reels */
+const REELS = {
+  jalal: { len: 20, frame(t) {   // two names in one phrase: the ring draws, the phrase rises, the sky turns
+    sky("maghrib", "isha", t / 20); hour("maghrib"); brand();
+    const c = t < 4 ? 24 + 75 * ease(t / 4) : 99, br = t > 4 ? 1 + .03 * Math.sin((t - 4) / 4 * Math.PI) : 1;
+    $("#art").innerHTML = ring(540, 1000, 560 * br, c, 2.2);
+    T("#top", [[io(t, -1, 4), `<div class="h1">Two names<br>in one <em>phrase.</em></div>`],
+      [io(t, 4, 10), `<div class="arl" style="font-size:108px">ذُو ٱلْجَلَٰلِ وَٱلْإِكْرَامِ</div>`],
+      [io(t, 10, 13.2), `<div class="h1" style="font-size:84px">Jalal: <em>Al-Jalil,</em><br>this week.</div>`],
+      [io(t, 13, 16.2), `<div class="h1" style="font-size:84px">Ikram: <em>Al-Karim's</em><br>root, next week.</div>`],
+      [io(t, 16, 99), `<div class="h1">Ya Dhal-Jalali<br><em>wal-Ikram.</em></div>`]]);
+    T("#bot", [[io(t, 4.3, 10), `<div class="sub">Owner of Majesty and Honour.</div><div class="rtag" style="margin-top:14px">Ar-Rahman · 55:27</div>`],
+      [io(t, 16.3, 99), `<div class="sub">Cling to it in your du'a.</div><div class="rtag" style="margin-top:14px">Tirmidhi 3525 · 99names</div>`]]);
+  } },
+  karim: { len: 18, frame(t) {   // hands raised: the sun rises and is not sent back empty
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
+    const y = 1260 - 260 * ease(t / 5), sc = t > 5 ? 1 + .08 * Math.sin((t - 5) / 2.2 * Math.PI) : 1, S = 200 * sc;
+    $("#art").innerHTML = box(540 - S / 2, y - S / 2, S, S, "", `border-radius:50%;background:#E8A64B;box-shadow:0 0 0 ${Math.round(36 * sc)}px rgba(232,166,75,.16),0 0 0 ${Math.round(80 * sc)}px rgba(232,166,75,.07)`);
+    ART[ART.length - 1] = { type: "rect", x: 540 - S / 2 - 80 * sc, y: y - S / 2 - 80 * sc, w: S + 160 * sc, h: S + 160 * sc };
+    T("#top", [[io(t, -1, 4), `<div class="h1">When you raise<br>your hands<br><em>to Him,</em></div>`],
+      [io(t, 4, 9), `<div class="h1">He is too generous<br>to send them<br><em>back empty.</em></div>`],
+      [io(t, 9, 14), `<div class="h1">“Your Lord is<br><em>shy and generous.”</em></div>`],
+      [io(t, 14, 99), `<div class="h1">Ask for<br><em>more.</em></div>`]]);
+    T("#bot", [[io(t, 9.3, 14), `<div class="rtag">Abu Dawud 1488</div><div class="sub" style="margin-top:10px">Al-Karim, The Most Generous</div>`],
+      [io(t, 14.3, 99), `<div class="sub">More than you think you deserve.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  raqib: { len: 22, frame(t) {   // he never looks away: a sweep goes round the night and lights every ray
+    sky("isha", "isha", 0); hour("isha"); brand();
+    const sweep = 99 * ease((t - .5) / 15), S = 560;
+    let hand = "";
+    if (t > .5 && t < 15.8) { const a = (sweep / 99) * Math.PI * 2 - Math.PI / 2; hand = `<svg viewBox="0 0 400 400" style="position:absolute;left:${540 - S / 2}px;top:${1000 - S / 2}px;width:${S}px;height:${S}px"><line x1="${200 + Math.cos(a) * 104}" y1="${200 + Math.sin(a) * 104}" x2="${200 + Math.cos(a) * 198}" y2="${200 + Math.sin(a) * 198}" stroke="#E8A64B" stroke-width="5" stroke-linecap="round"/></svg>`; }
+    $("#art").innerHTML = ring(540, 1000, S, sweep, 2.2, .16) + hand;
+    T("#top", [[io(t, -1, 4), `<div class="h1">He never<br><em>looks away.</em></div>`],
+      [io(t, 4, 11), `<div class="arl" style="font-size:100px">لَا تَأْخُذُهُۥ سِنَةٌۭ وَلَا نَوْمٌۭ</div>`],
+      [io(t, 11, 17), `<div class="h1">Neither drowsiness<br>overtakes Him<br><em>nor sleep.</em></div>`],
+      [io(t, 17, 99), `<div class="h1">You can sleep.<br><em>He doesn't.</em></div>`]]);
+    T("#bot", [[io(t, 4.3, 17), `<div class="rtag">Ayat al-Kursi · Al-Baqarah 2:255</div>`],
+      [io(t, 17.3, 99), `<div class="sub">Ar-Raqib, The Watchful.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  mujib: { len: 24, frame(t) {   // three ways: three cards turn one at a time
+    sky("maghrib", "isha", t / 30); hour("maghrib"); brand();
+    const W = 236, H = 330, xs = [150, 422, 694], y = 830, F = [["01", "Now"], ["02", "Later"], ["03", "Turned<br>away"]];
+    let h = "";
+    F.forEach(([k, w], i) => {
+      const flip = ease((t - (4.2 + i * 5)) / .9), rot = flip * 180;
+      ART.push({ type: "rect", x: xs[i], y, w: W, h: H });
+      h += `<div style="position:absolute;left:${xs[i]}px;top:${y}px;width:${W}px;height:${H}px;perspective:1400px"><div style="position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(${rot}deg)">
+        <div class="back" style="inset:0;color:#F4EEE4"><div style="width:150px;height:150px">${rays(99, 104, 192, 4)}</div></div>
+        <div class="face" style="inset:0;transform:rotateY(180deg)"><div class="k">${k}</div><div class="w" style="text-align:center">${w}</div></div></div></div>`;
+    });
+    $("#art").innerHTML = h;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Every du'a<br>is answered.<br><em>Three ways.</em></div>`],
+      [io(t, 4, 9), `<div class="h1">Given<br><em>now.</em></div>`],
+      [io(t, 9, 14), `<div class="h1">Kept for you,<br><em>for later.</em></div>`],
+      [io(t, 14, 19), `<div class="h1">A harm turned away<br><em>you never saw.</em></div>`],
+      [io(t, 19, 99), `<div class="h1">Not every answer<br>was yes, <em>yet.</em></div>`]]);
+    T("#bot", [[io(t, 4.3, 19), `<div class="rtag">al-Adab al-Mufrad 710</div><div class="sub" style="margin-top:10px">One of three, every time.</div>`],
+      [io(t, 19.3, 99), `<div class="sub">Al-Mujib, The Responsive.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  wasi: { len: 18, frame(t) {   // no edge: the ring outgrows the frame until every word sits inside its empty centre
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand(io(t, 8.6, 99) + (1 - ease((t - 3.0) / .35)));
+    const g = ease((t - 3.4) / 5.6), S = 440 + (3400 - 440) * g;
+    $("#art").innerHTML = ring(540, t < 3.4 ? 1010 : 1010 - 80 * g, S, 99, 2.4 / (1 + g * 1.4));
+    T("#top", [[io(t, -1, 3.4, .4, .35), `<div class="h1">There's no edge<br><em>to Him.</em></div>`]]);
+    T("#mid", [[io(t, 9.2, 12.6), `<div class="h1">for you<br><em>to fall off.</em></div>`],
+      [io(t, 12.4, 15.4), `<div class="h1" style="font-size:88px">Al-Wasi',<br><em>The All-Encompassing.</em></div>`],
+      [io(t, 15.2, 99), `<div class="sub" style="font-size:38px">No soul is burdened beyond its capacity: <em>wus'aha</em>, the same root.</div><div class="rtag" style="margin-top:22px">Al-Baqarah 2:286 · 99names</div>`]]);
+    $("#bot").innerHTML = "";
+  } },
+  hakim: { len: 22, frame(t) {   // the other side: a card lies face down, then turns
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
+    const W = 380, H = W * 1.4, x = 540 - W / 2, y = 1010 - H / 2, flip = ease((t - 9) / 1.6);
+    ART.push({ type: "rect", x, y, w: W, h: H });
+    $("#art").innerHTML = `<div style="position:absolute;left:${x}px;top:${y}px;width:${W}px;height:${H}px;perspective:1800px"><div style="position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(${(flip * 180).toFixed(2)}deg)">
+      <div class="back" style="inset:0;border-radius:40px"><div style="width:220px;height:220px">${rays(99, 104, 192, 4)}</div></div>
+      <div style="position:absolute;inset:0;transform:rotateY(180deg);backface-visibility:hidden">${CARD(46, W)}</div></div></div>`;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Some things you<br>only see from<br><em>the other side.</em></div>`],
+      [io(t, 4, 10), `<div class="h1">Perhaps you dislike<br>a thing and it is<br><em>good for you.</em></div>`],
+      [io(t, 10, 16), `<div class="h1">Allah knows,<br><em>and you do not.</em></div>`],
+      [io(t, 16, 99), `<div class="h1">Reasons,<br><em>later.</em></div>`]]);
+    T("#bot", [[io(t, 4.3, 16), `<div class="rtag">Al-Baqarah 2:216</div>`],
+      [io(t, 16.3, 99), `<div class="sub">Al-Hakim, The All-Wise.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  wadud: { len: 20, frame(t) {   // notice the order: the Forgiving is laid down first, then the Loving
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
+    const W = 330, a = ease((t - 4) / 1.4), b = ease((t - 9) / 1.4);
+    let h = "";
+    if (t > 3.6) h += cardAt(34, 360 - (1 - a) * 500, 1010, W, `opacity:${a.toFixed(3)}`);
+    if (t > 8.6) h += cardAt(47, 720 + (1 - b) * 500, 1010, W, `opacity:${b.toFixed(3)}`);
+    if (t <= 3.6) h += box(360 - W / 2, 1010 - W * .7, W, W * 1.4, "", "border:3px dashed var(--rule);border-radius:44px") + box(720 - W / 2, 1010 - W * .7, W, W * 1.4, "", "border:3px dashed var(--rule);border-radius:44px");
+    $("#art").innerHTML = h;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Notice<br>the <em>order.</em></div>`],
+      [io(t, 4, 9), `<div class="h1">The Forgiving<br><em>first.</em></div>`],
+      [io(t, 9, 14), `<div class="h1">Then<br><em>the Loving.</em></div>`],
+      [io(t, 14, 99), `<div class="h1">He doesn't wait<br>for you to be<br><em>fixed.</em></div>`]]);
+    T("#bot", [[io(t, 9.3, 14), `<div class="arl" style="font-size:64px;line-height:1.3">وَهُوَ ٱلْغَفُورُ ٱلْوَدُودُ</div><div class="rtag">Al-Buruj · 85:14</div>`],
+      [io(t, 14.3, 99), `<div class="sub">Al-Wadud, The Most Loving.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  give: { len: 20, frame(t) {   // give a name: the envelope opens, the card rises
+    sky("maghrib", "maghrib", 0); hour("maghrib"); brand();
+    const flap = ease((t - 4) / 1.4), rise = ease((t - 5.4) / 2.2), W = 640, x = 540 - W / 2, y = 1040 - (W / 1.36) / 2;
+    ART.push({ type: "rect", x, y: y - W * .47 * 1.4 * .36 * rise - 40, w: W, h: W / 1.36 + W * .47 * 1.4 * .36 * rise + 40 });
+    $("#art").innerHTML = `<div class="env" style="position:absolute;left:${x}px;top:${y}px;width:${W}px"><div class="env-body"></div><div class="env-card" style="width:47%;transform:translate(-50%,${(-36 * rise).toFixed(1)}%)">${CARD(47, Math.round(W * .47))}</div><div class="env-pocket"><div class="env-to"><span>For</span><em>Mum</em></div><div class="env-stamp"><span class="ring" style="width:100%;height:100%;display:block">${rays(99, 104, 192, 9)}</span></div></div><div class="env-flap" style="transform-origin:top;transform:scaleY(${(1 - 2 * flap).toFixed(3)});z-index:${flap > .5 ? 0 : 3}"></div></div>`;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Give<br><em>a name.</em></div>`],
+      [io(t, 4, 10), `<div class="h1">For <em>Mum.</em></div>`],
+      [io(t, 10, 15), `<div class="h1">He loves you<br><em>in the mess.</em></div>`],
+      [io(t, 15, 99), `<div class="h1">A real card,<br><em>anywhere.</em></div>`]]);
+    T("#bot", [[io(t, 10.3, 15), `<div class="rtag">Al-Wadud · The Most Loving</div>`],
+      [io(t, 15.3, 99), `<div class="sub">$6, posted in three days. Or free tonight, as a link.</div><div class="rtag" style="margin-top:14px">99names.net/send</div>`]]);
+  } },
+  rajab: { len: 20, frame(t) {   // sixty days: Rajab's dots light, then Sha'ban's; Ramadan waits
+    sky("isha", "isha", 0); hour("isha"); brand();
+    const rows = [["Rajab", 4, 9], ["Sha'ban", 9, 14], ["Ramadan", 99, 99]];
+    let h = "";
+    rows.forEach(([lbl, a, b], r) => {
+      const lit = Math.floor(30 * ease((t - a) / (b - a - .4))), y0 = 760 + r * 180;
+      h += box(150, y0, 780, 40, `<div class="rtag" style="text-align:left;color:var(--fg)">${lbl}</div>`);
+      ART.pop();
+      h += `<div class="dotm" style="left:150px;top:${y0 + 46}px;width:780px">${Array.from({ length: 30 }, (_, i) => `<i class="${i < lit ? "on" : ""}"></i>`).join("")}</div>`;
+      ART.push({ type: "rect", x: 150, y: y0 + 46, w: 780, h: 100 });
+    });
+    $("#art").innerHTML = h;
+    T("#top", [[io(t, -1, 4), `<div class="h1">Rajab begins<br><em>this week.</em></div>`],
+      [io(t, 4, 9), `<div class="h1">Of the twelve months,<br><em>four are sacred.</em></div>`],
+      [io(t, 9, 14), `<div class="h1">Then<br><em>Sha'ban.</em></div>`],
+      [io(t, 14, 99), `<div class="h1">Then Ramadan.<br><em>Start slowly.</em></div>`]]);
+    T("#bot", [[io(t, 4.3, 9), `<div class="rtag">At-Tawbah · 9:36</div>`],
+      [io(t, 14.3, 99), `<div class="sub">About sixty days. One name a week.</div><div class="rtag" style="margin-top:14px">99names · Light, by name.</div>`]]);
+  } },
+  deal: { len: 26, frame(t, R) {   // a set of five, dealt: each card arrives in the middle as the last one moves aside
+    sky("asr", "asr", 0); hour("asr"); brand();
+    const W = 360, cy = 1010;
+    let h = "";
+    // the deck waits low in the frame until it is dealt from
+    const deck = 1 - ease((t - 2.5) / .6);
+    if (deck > .01) for (let k = 2; k >= 0; k--) h += box(540 - W / 2 + k * 10, cy - W * .7 - k * 10, W, W * 1.4, `<div style="width:46%;aspect-ratio:1;color:#F4EEE4">${rays(99, 104, 192, 4)}</div>`, `opacity:${deck.toFixed(3)};border-radius:40px;background:linear-gradient(160deg,#2A2F44,#171A26);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 40px -24px rgba(0,0,0,.5)`);
+    R.ns.forEach((n, i) => {
+      const a = 3 + i * 4, inn = ease((t - a) / .9), out = i === R.ns.length - 1 ? 0 : ease((t - (a + 4)) / .9);   // the last card stays for the ask
+      if (t < a || (t > a + 4.9 && i < 4) || inn <= 0) return;
+      const x = 540 - out * 520, y = cy + (1 - inn) * 320, o = Math.min(inn, 1 - out);
+      if (o <= .01) return;
+      h += cardAt(n, x, y, W, `opacity:${o.toFixed(3)}`);
+    });
+    $("#art").innerHTML = h;
+    const parts = [[io(t, -1, 3), `<div class="h1">${R.hook}</div>`]];
+    R.ns.forEach((n, i) => parts.push([io(t, 3 + i * 4, 7 + i * 4), `<div class="h1" style="font-size:80px">${R.roles[i]}</div>`]));
+    parts.push([io(t, 23, 99), `<div class="h1">${R.end}</div>`]);
+    T("#top", parts);
+    T("#bot", [[io(t, -1, 3), `<div class="rtag">A set of five · sound on</div>`], [io(t, 23.2, 99), `<div class="sub">A real card, anywhere, $6. Or free as a link.</div><div class="rtag" style="margin-top:14px">99names.net/send</div>`]]);
+  } },
+};
+
+const P = new URLSearchParams(location.search), DATE = P.get("d");
+const DAY = window.QUIET.days.find((d) => d.date === DATE), REEL = DAY.post.reel, DEF = REELS[REEL.id];
+window.LEN = REEL.len;
+window.HOURS = { jalal: "maghrib,isha", karim: "maghrib", raqib: "isha", mujib: "maghrib,isha", wasi: "maghrib", hakim: "maghrib", wadud: "maghrib", give: "maghrib", rajab: "isha", deal: "asr" }[REEL.id];
+// every visible word, with the box it takes on the frame
+window.WORDS = () => {
+  const out = [];
+  for (const el of document.querySelectorAll("#top>div,#mid>div,#bot>div,#brand")) {
+    let o = 1, e = el; while (e && e !== document.body) { o *= +getComputedStyle(e).opacity; e = e.parentElement; }
+    if (o <= .04) continue;
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n = tw.nextNode(); n; n = tw.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const r of rg.getClientRects()) if (r.width > 2) out.push({ o, x: r.left, y: r.top, w: r.width, h: r.height, t: n.textContent.trim().slice(0, 30) }); }
+    if (el.id === "brand") { const r = el.getBoundingClientRect(); out.push({ o, x: r.left, y: r.top, w: r.width, h: r.height, t: "brand" }); }
+  }
+  return out;
+};
+window.render = (t) => { ART = []; DEF.frame(t, REEL); window.ART = ART; return document.fonts.ready.then(() => true); };
+render(+P.get("t") || 0);
+</script>
+</body></html>

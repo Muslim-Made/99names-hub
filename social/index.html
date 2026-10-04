@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names — social kit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=DM+Sans:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#171A26;color:#F4EEE4;font-family:'DM Sans',system-ui,sans-serif;font-weight:300;padding:64px min(6vw,80px) 120px}
+  h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(40px,6vw,84px);line-height:1}
+  h1 em{font-style:italic}
+  .sub{color:rgba(244,238,228,.65);max-width:62ch;margin:18px 0 12px;line-height:1.6}
+  .sub b{font-weight:500;color:#F4EEE4}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:26px 0 54px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,238,228,.55)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
+  a.tile{color:inherit;text-decoration:none;display:block}
+  .thumb{position:relative;border-radius:14px;overflow:hidden;background:#20243a;box-shadow:0 24px 60px -30px rgba(0,0,0,.8);transition:transform .25s}
+  a.tile:hover .thumb{transform:translateY(-4px)}
+  .thumb iframe{border:0;width:1080px;transform-origin:top left;position:absolute;top:0;left:0;pointer-events:none}
+  .t-feed{aspect-ratio:1080/1350}.t-square{aspect-ratio:1}.t-story{aspect-ratio:1080/1920}
+  .cap{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-size:13px;color:rgba(244,238,228,.7)}
+  .cap b{font-weight:500;color:#F4EEE4}
+  .badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,238,228,.25);border-radius:99px;padding:3px 9px;white-space:nowrap;align-self:center}
+</style>
+</head>
+<body>
+<h1>The social kit, <em>all thirty.</em></h1>
+<p class="sub" style="margin-bottom:6px"><b>Posting the launch month?</b> It is finished, day by day, in <a href="thirty/index.html" style="color:#F4EEE4;border-bottom:1px solid rgba(244,238,228,.4)">The First Thirty</a>. The templates below are for every week after.</p>
+<p class="sub">Open any post, then: <b>click text to edit it</b>, pick an <b>hour palette</b> from the dots, pick a <b>name</b> from the dropdown (on name templates — or load with <b>?n=33</b>), and hit <b>png</b> to download at full size. Posts marked <b>name</b> refill themselves with the current week's name automatically.</p>
+<div class="legend"><span>feed · 1080×1350</span><span>square · 1080×1080</span><span>story · 1080×1920</span><span>needs internet for fonts</span></div>
+<div class="grid" id="grid"></div>
+<script>
+const POSTS = [
+  ["01-launch","Launch — Light, by name","feed"],
+  ["02-the-mark","The mark — 99 rays","feed"],
+  ["03-name-of-the-week","Name of the week","feed","name"],
+  ["04-name-card","The card","feed","name"],
+  ["05-name-reflection","Reflection line","feed","name"],
+  ["06-name-meaning","What it means","feed","name"],
+  ["07-dawn-to-night","Dawn to night","feed"],
+  ["08-one-a-week","One a week","feed"],
+  ["09-quran-ayah","Ayah — 7:180","feed"],
+  ["10-hadith","The hadith","feed"],
+  ["11-how-it-works","How it works","feed"],
+  ["12-the-deck","The Deck","feed"],
+  ["13-deck-detail","Deck detail","square"],
+  ["14-send-a-name","Send a name","feed"],
+  ["15-remember","Remember quiz","feed"],
+  ["16-the-app","The app","feed"],
+  ["17-no-streaks","No streaks","feed"],
+  ["18-testimonial","Testimonial","feed"],
+  ["19-carousel-cover","Carousel · cover","feed","name"],
+  ["20-carousel-meaning","Carousel · meaning","feed","name"],
+  ["21-carousel-cta","Carousel · CTA","feed"],
+  ["22-jumuah","Jumu'ah","feed"],
+  ["23-ramadan","Ramadan edition","feed"],
+  ["24-names-wall","All 99, one wall","feed"],
+  ["25-quote-peace","As-Salam quote","feed"],
+  ["26-question","Question post","square"],
+  ["27-story-name","Story · name","story"],
+  ["28-story-breath","Story · breath","story"],
+  ["29-story-quiz","Story · quiz","story"],
+  ["30-highlight-cover","Highlight cover / avatar","square"],
+];
+const grid = document.getElementById("grid");
+for (const [file, title, kind, tag] of POSTS) {
+  const a = document.createElement("a");
+  a.className = "tile"; a.href = file + ".html"; a.target = "_blank";
+  a.innerHTML = `<div class="thumb t-${kind}"><iframe loading="lazy" src="${file}.html?export" tabindex="-1"></iframe></div>
+    <div class="cap"><span><b>${file.slice(0,2)}</b> · ${title}</span>${tag ? `<span class="badge">${tag}</span>` : ""}</div>`;
+  grid.appendChild(a);
+}
+function fitFrames(){
+  document.querySelectorAll(".thumb").forEach(t => {
+    const f = t.querySelector("iframe");
+    const s = t.clientWidth / 1080;
+    f.style.transform = `scale(${s})`;
+    f.style.height = t.clientHeight / s + "px";
+  });
+}
+addEventListener("resize", fitFrames);
+requestAnimationFrame(fitFrames);
+</script>
+<script src="/hub/back.js" defer></script>
+</body></html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names — Direction 03 · Noor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Aref+Ruqaa:wght@400;700&family=Gulzar&family=DM+Sans:opsz,wght@9..40,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dawn1:#F6DCCF; --dawn2:#EFD9B8; --dawn3:#CFD9C4; --dawn4:#C9DBE6;
+  --sand:#F4EEE4; --sand2:#E8DFD0; --ink:#2A2622; --ink2:#5A534B; --mute:#8C847A;
+  --sun:#E8A64B; --rose:#D98C7C; --sage:#8FA88F; --sky:#8FB0C8; --night:#171A26;
+  --disp:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --ar:'Aref Ruqaa',serif; --nasta:'Gulzar','Aref Ruqaa',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+section{padding:120px 0}
+section+section{border-top:1px solid rgba(42,38,34,.12)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+h1,h2,h3{font-family:var(--disp);font-weight:300;line-height:1;letter-spacing:-.02em;font-variation-settings:"opsz" 144,"SOFT" 60}
+h2{font-size:clamp(44px,5.5vw,72px);margin:18px 0 24px}
+h2 em,h1 em{font-style:italic;font-weight:400}
+h3{font-size:28px;margin-bottom:10px;font-variation-settings:"opsz" 48,"SOFT" 40}
+p.lede{font-size:20px;max-width:58ch;color:var(--ink2);line-height:1.55}
+.note{font-size:14px;color:var(--ink2);line-height:1.6;max-width:60ch}
+.grid{display:grid;gap:28px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.ar{font-family:var(--ar);direction:rtl}
+.card{background:#fff;border-radius:24px;padding:32px;box-shadow:0 1px 0 rgba(42,38,34,.06),0 20px 50px -30px rgba(42,38,34,.25)}
+.label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:10px;font-weight:500}
+.dawn{background:linear-gradient(160deg,var(--dawn1) 0%,var(--dawn2) 35%,var(--dawn3) 70%,var(--dawn4) 100%)}
+.dusk{background:linear-gradient(160deg,#2A2F44 0%,#1B1E2C 60%,#171A26 100%);color:var(--sand)}
+nav{position:sticky;top:0;z-index:9;background:rgba(244,238,228,.8);backdrop-filter:blur(14px);border-bottom:1px solid rgba(42,38,34,.08)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+nav .links{display:flex;gap:26px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+nav .links a:hover{color:var(--sun)}
+.mark{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-size:22px;font-weight:400;font-variation-settings:"opsz" 24,"SOFT" 80}
+.mark svg{width:34px;height:34px}
+/* hero */
+.hero{min-height:94vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;padding:72px 48px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(64px,9vw,140px);line-height:.92}
+.hero .ar-big{font-family:var(--nasta);font-size:clamp(34px,4vw,60px);line-height:1.8;color:var(--ink);margin-top:20px;direction:rtl;text-align:left}
+.hero .meta{display:flex;gap:36px;margin-top:44px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.halo{justify-self:center;width:min(480px,100%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center}
+.halo svg{width:100%;height:100%}
+.halo .c{position:absolute;text-align:center}
+.halo .c .a{font-family:var(--ar);font-size:64px;line-height:1;direction:rtl}
+.halo .c .t{font-family:var(--disp);font-style:italic;font-size:20px;margin-top:8px;color:var(--ink2)}
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pillars div{border-radius:24px;padding:36px;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end}
+.pillars .n{font-family:var(--disp);font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:auto}
+.pillars h4{font-family:var(--disp);font-size:26px;font-weight:400;margin:18px 0 8px;line-height:1.1}
+/* logo */
+.stage{border-radius:24px;display:flex;align-items:center;justify-content:center;min-height:300px;padding:40px;background:#fff}
+.stage.dawn{background:linear-gradient(160deg,var(--dawn1) 0%,var(--dawn2) 35%,var(--dawn3) 70%,var(--dawn4) 100%)}.stage.dusk{background:linear-gradient(160deg,#2A2F44 0%,#1B1E2C 60%,#171A26 100%);color:var(--sand)}
+.lock{display:flex;align-items:center;gap:18px;font-family:var(--disp);font-size:48px;font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 80;letter-spacing:-.02em}
+.lock svg{width:64px;height:64px}
+/* swatches */
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sw div{aspect-ratio:1/1.2;border-radius:20px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;font-size:12px}
+.sw b{display:block;font-family:var(--disp);font-weight:400;font-size:20px}
+.sw span{opacity:.75;font-size:11px;letter-spacing:.08em}
+.ts{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(42,38,34,.12)}
+.ts .s{font-size:11px;color:var(--mute);letter-spacing:.12em;text-transform:uppercase}
+/* card */
+.ncard{width:270px;aspect-ratio:5/7;border-radius:28px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(42,38,34,.4)}
+.ncard .top{font-size:10px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;opacity:.7}
+.ncard .a{font-family:var(--ar);font-size:64px;line-height:1;direction:rtl;text-align:center}
+.ncard .m{font-family:var(--disp);font-style:italic;font-size:22px;text-align:center;line-height:1.1;font-variation-settings:"opsz" 48,"SOFT" 80}
+.ncard .l{font-size:11px;letter-spacing:.24em;text-transform:uppercase;text-align:center;margin-top:10px;font-weight:500}
+.ncard .rays{position:absolute;inset:-30%;opacity:.35;pointer-events:none}
+/* phone */
+.phone{width:300px;height:620px;border-radius:46px;background:#fff;padding:10px;margin:0 auto;box-shadow:0 40px 80px -30px rgba(42,38,34,.45),0 0 0 1px rgba(42,38,34,.08)}
+.phone .screen{border-radius:38px;height:100%;overflow:hidden;padding:28px 22px;display:flex;flex-direction:column;gap:16px}
+.phone .top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+.phone .sal{font-family:var(--disp);font-size:30px;line-height:1.05;font-variation-settings:"opsz" 72,"SOFT" 80}
+.phone .sal em{font-style:italic}
+.phone .mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}
+.phone .mid .a{font-family:var(--ar);font-size:54px;line-height:1;direction:rtl}
+.phone .mid .m{font-family:var(--disp);font-style:italic;font-size:16px;color:var(--ink2)}
+.phone .mid .l{font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.phone .row{display:flex;gap:8px}
+.phone .btn{flex:1;border-radius:999px;padding:12px;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.55);font-weight:500}
+.phone .btn.p{background:var(--ink);color:var(--sand)}
+.phone .dh{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.breath{width:16px;height:16px;border-radius:50%;background:var(--sun);animation:br 4s ease-in-out infinite}
+@keyframes br{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.8);opacity:1}}
+/* tiles */
+.tile{aspect-ratio:4/5;border-radius:24px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.tile .t{font-family:var(--disp);font-size:36px;line-height:1.02;font-weight:300;font-variation-settings:"opsz" 96,"SOFT" 80;letter-spacing:-.02em}
+.tile .t em{font-style:italic;font-weight:400}
+.tile .f{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.browser{border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(42,38,34,.4);background:#fff}
+.browser .bar{height:36px;border-bottom:1px solid rgba(42,38,34,.08);display:flex;align-items:center;gap:6px;padding:0 14px;font-size:11px;color:var(--mute)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:var(--sand2);display:block}
+.browser .page{padding:40px 56px 64px;min-height:520px;position:relative;overflow:hidden}
+.browser .page h1{font-size:88px;line-height:.95;max-width:12ch}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+footer{padding:56px 0;border-top:1px solid rgba(42,38,34,.12);font-size:12px;color:var(--ink2);display:flex;justify-content:space-between}
+@media(max-width:900px){.wrap{padding:0 22px}.g2,.g3,.g4,.dd,.hero,.ts,.pillars{grid-template-columns:1fr}.sw{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:64px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="mark" href="#top"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg>99names</a>
+  <div class="links"><a href="#strategy">Strategy</a><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#product">Cards</a><a href="#app">App</a><a href="#social">Social</a><a href="#web">Web</a></div>
+</div></nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <div class="eyebrow">Direction 03 of 03 — Light · Calm · Contemplative</div>
+    <h1 style="margin-top:20px">Noor<br><em>Light, by name.</em></h1>
+    <div class="ar-big">ٱللَّهُ نُورُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ</div>
+    <p class="lede" style="margin-top:20px">"Allah is the Light of the heavens and the earth." This direction treats the 99 names the way the world now treats wellbeing: as daily light. Dawn gradients, a soft serif, Arabic that flows. It is the direction most likely to be loved by someone who has never opened a dhikr app — and the one most likely to be kept open at Fajr.</p>
+    <div class="meta"><span>Codename · Noor</span><span>Mood · Warm, gentle, luminous</span><span>Reference · Calm, Aesop, Kinfolk, Rothko</span></div>
+  </div>
+  <div class="halo">
+    <svg viewBox="0 0 400 400" class="rays" data-c="#2A2622" data-r1="150" data-r2="196" data-w="1"></svg>
+    <div class="c"><div class="a">ٱلنُّورُ</div><div class="t">The Light</div></div>
+  </div>
+</header>
+
+<section id="strategy"><div class="wrap">
+  <div class="eyebrow">01 — Strategy</div>
+  <h2>Position: the <em>daily</em> light.</h2>
+  <p class="lede">Calm built a $2B company on "ten minutes of quiet." Muslims already have that practice — five times a day — and no brand that feels like it belongs to them. Noor positions 99names not as a reference, not as a challenge, but as a <em>companion</em>: the softest, most beautiful thing on your phone, and the card you keep on your bedside table.</p>
+  <div class="pillars" style="margin-top:56px">
+    <div class="dawn"><div class="n">I</div><h4>Light is the system</h4><p class="note">Every name is a ray of the same light. The logo is 99 rays. Gradients move from dawn to dusk through the day. The brand literally changes colour with the prayer times.</p></div>
+    <div style="background:var(--sand2)"><div class="n">II</div><h4>Slow by design</h4><p class="note">Nothing is urgent. No streaks, no red badges, no "you missed a day." The app breathes — quite literally, a 4-second breathing dot on every screen.</p></div>
+    <div class="dusk"><div class="n">III</div><h4>Arabic that moves</h4><p class="note" style="color:rgba(244,238,228,.8)">Ruq'ah and Nastaʿlīq — the handwritten, flowing scripts — rather than formal Naskh or rigid Kufic. The Arabic feels like a note left for you, not a plaque.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card"><div class="label">Voice</div><h3>Gentle. Present tense. Personal.</h3><p class="note">We speak like a good friend at dawn. <em>"As-Sabur. The Patient. Take your time today — He does."</em> · <em>"Al-Wadud loves you in the mess, not after it."</em> Always lowercase tone, even when the type isn't.</p></div>
+    <div class="card"><div class="label">Tagline</div><h3>"Light, by name."</h3><p class="note">Supporting: <em>"One name, one dawn."</em> (app) · <em>"Keep a name close."</em> (cards) · <em>"Ninety-nine ways He's near."</em> (campaign).</p></div>
+  </div>
+</div></section>
+
+<section id="logo"><div class="wrap">
+  <div class="eyebrow">02 — Logo system</div>
+  <h2>Ninety-nine rays.</h2>
+  <p class="lede">A circle of 99 fine rays — count them — with a clear centre. The centre holds a name, a number, a photograph, or nothing. At small sizes the rays merge into a soft sun; at large sizes you can see each one. The wordmark is Fraunces, lowercase, with the "9"s set a touch wider so the numeral reads as a pair.</p>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="stage"><svg viewBox="0 0 400 400" class="rays" style="width:240px" data-c="#2A2622" data-r1="120" data-r2="190" data-w="1.2"></svg></div>
+    <div class="stage dawn"><div class="lock"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg>99names</div></div>
+    <div class="stage dusk"><div class="lock"><svg viewBox="0 0 100 100" class="raymark" data-c="#F4EEE4"></svg>99names</div></div>
+  </div>
+  <div class="grid g4" style="margin-top:16px">
+    <div class="stage" style="min-height:180px;background:var(--sun)"><svg viewBox="0 0 100 100" class="raymark" style="width:64px" data-c="#2A2622"></svg></div>
+    <div class="stage" style="min-height:180px;background:var(--rose)"><svg viewBox="0 0 100 100" class="raymark" style="width:64px" data-c="#F4EEE4"></svg></div>
+    <div class="stage" style="min-height:180px;background:var(--sage)"><svg viewBox="0 0 100 100" class="raymark" style="width:64px" data-c="#F4EEE4"></svg></div>
+    <div class="stage" style="min-height:180px;background:var(--sky)"><svg viewBox="0 0 100 100" class="raymark" style="width:64px" data-c="#2A2622"></svg></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="stage" style="gap:24px"><div class="ar" style="font-family:var(--nasta);font-size:64px;line-height:1.6">الأسماء الحسنى</div></div>
+    <div class="stage"><div style="text-align:center"><div class="ar" style="font-size:96px;line-height:1">٩٩</div><div class="eyebrow" style="margin-top:4px">Arabic-Indic numeral · secondary mark</div></div></div>
+  </div>
+  <p class="note" style="margin-top:24px">Clear space = the ray length. Minimum: 20px (rays collapse to a soft disc — that's intended). App icon: dawn gradient, rays in ink. Favicon: the "٩٩".</p>
+</div></section>
+
+<section id="colour"><div class="wrap">
+  <div class="eyebrow">03 — Colour</div>
+  <h2>The colour of <em>the hour.</em></h2>
+  <p class="lede">The palette is a day. Four dawn tints form the signature gradient; four saturated "hour" colours mark Fajr, Dhuhr, Asr/Maghrib and Isha. Ink is warm, never pure black. Night mode is navy, never grey.</p>
+  <div class="sw" style="margin-top:48px">
+    <div style="background:var(--dawn1)"><b>Blush</b><span>#F6DCCF</span></div>
+    <div style="background:var(--dawn2)"><b>Sand</b><span>#EFD9B8</span></div>
+    <div style="background:var(--dawn3)"><b>Sage</b><span>#CFD9C4</span></div>
+    <div style="background:var(--dawn4)"><b>Sky</b><span>#C9DBE6</span></div>
+    <div style="background:var(--sun)"><b>Fajr</b><span>#E8A64B · sun</span></div>
+    <div style="background:var(--rose);color:#fff"><b>Dhuhr</b><span>#D98C7C · rose</span></div>
+    <div style="background:var(--sage);color:#fff"><b>Asr</b><span>#8FA88F · sage</span></div>
+    <div style="background:var(--night);color:var(--sand)"><b>Isha</b><span>#171A26 · night</span></div>
+  </div>
+  <div class="dawn" style="height:120px;border-radius:20px;margin-top:16px;display:flex;align-items:flex-end;padding:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase">The signature gradient · 160° · Blush → Sand → Sage → Sky</div>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card"><div class="label">Rule</div><p class="note">Gradients are always the four dawn tints in order. Hour colours are used flat, one at a time, for a full-bleed moment. Ink #2A2622 for all text on light; Sand #F4EEE4 on night.</p></div>
+    <div class="card"><div class="label">Print</div><p class="note">Cards print on Fedrigoni Arena Natural with a 4-colour gradient + one spot (Pantone 7407 C for Fajr gold). No foil — the warmth is in the paper and the tint.</p></div>
+    <div class="card"><div class="label">Contrast</div><p class="note">Ink on Blush 11.2:1 · Ink on Sky 10.1:1 · Sand on Night 13.4:1. Never set body text on the Fajr or Rose tints smaller than 16px.</p></div>
+  </div>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="eyebrow">04 — Typography</div>
+  <h2>Fraunces · Aref Ruqaa · DM Sans</h2>
+  <div style="margin-top:40px">
+    <div class="ts"><div class="s">Display · Fraunces 300, opsz 144, SOFT 60–100</div><div style="font-family:var(--disp);font-size:76px;line-height:.95;font-weight:300;font-variation-settings:'opsz' 144,'SOFT' 80;letter-spacing:-.02em">The Infinitely <em style="font-weight:400">Patient</em></div></div>
+    <div class="ts"><div class="s">Arabic · Aref Ruqaa 400</div><div class="ar" style="font-size:72px;line-height:1.3">ٱلصَّبُورُ · ٱلْوَدُودُ · ٱلنُّورُ</div></div>
+    <div class="ts"><div class="s">Arabic verse · Gulzar (Nastaʿlīq)</div><div class="ar" style="font-family:var(--nasta);font-size:40px;line-height:2">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا</div></div>
+    <div class="ts"><div class="s">Body · DM Sans 300, 17/1.6</div><div style="font-size:17px;max-width:58ch;color:var(--ink2)">Sit with one name this week. Say it at dawn, once, slowly. By Friday it will have found its way into how you treat people.</div></div>
+    <div class="ts"><div class="s">Label · DM Sans 500, 11px, +24% tracking</div><div class="eyebrow">No. 99 · As-Sabur · Fajr 05:14</div></div>
+  </div>
+  <p class="note" style="margin-top:28px">All open (OFL). Premium print upgrades: Fraunces → <em>Signifier</em> or <em>Reckless</em>; Aref Ruqaa → a commissioned Ruq'ah hand for the 99 names (this is the single biggest quality lever in this direction).</p>
+</div></section>
+
+<section id="product"><div class="wrap">
+  <div class="eyebrow">05 — The physical cards</div>
+  <h2>Cards you <em>keep close.</em></h2>
+  <p class="lede">Rounded, soft-touch, each one a gradient at a different hour. Sold as a deck, but designed to be separated: one on the nightstand, one in a wallet, one tucked into a mushaf, one sent in the post to a friend who needs Al-Jabbar this week.</p>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:48px">
+    <div class="ncard dawn"><svg class="rays" viewBox="0 0 400 400" style="position:absolute;inset:-30%;width:160%;height:160%;opacity:.25" data-c="#2A2622" data-r1="110" data-r2="200" data-w=".8"></svg><div class="top"><span>99names</span><span>No. 93</span></div><div><div class="a">ٱلنُّورُ</div><div class="m">The Light</div><div class="l">An-Nur</div></div><div class="top"><span>Fajr</span><span>99names.net</span></div></div>
+    <div class="ncard" style="background:var(--sun)"><div class="top"><span>99names</span><span>No. 47</span></div><div><div class="a">ٱلْوَدُودُ</div><div class="m">The Most Loving</div><div class="l">Al-Wadud</div></div><div class="top"><span>Dhuhr</span><span>99names.net</span></div></div>
+    <div class="ncard dusk"><div class="top"><span>99names</span><span>No. 99</span></div><div><div class="a">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div><div class="top"><span>Isha</span><span>99names.net</span></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:40px">
+    <div class="card"><div class="label">Format</div><p class="note">99 cards, 70 × 110mm, 10mm radius corners, soft-touch laminate. Back: the 99-ray mark in blind emboss.</p></div>
+    <div class="card"><div class="label">Range</div><p class="note"><strong>Deck</strong> $34 · <strong>Nightstand edition</strong> (deck + oak stand that holds one card upright) $69 · <strong>Send-a-name</strong> single card + envelope $6 — the gifting product that drives the brand.</p></div>
+    <div class="card"><div class="label">Ramadan</div><p class="note">30-card edition, one per night, gradient moves from dawn to night across the set. Annual, limited, the brand's "advent calendar."</p></div>
+  </div>
+</div></section>
+
+<section id="app"><div class="wrap">
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <div class="eyebrow">06 — App</div>
+      <h2>It <em>breathes.</em></h2>
+      <p class="lede">The background is the time of day. Open at Fajr: blush. At Isha: night. One name sits in the middle of the screen with a slowly breathing dot beneath it. Quiz is there, but framed as "remember", not "test". Reminders are gradients, not alerts.</p>
+      <div class="grid" style="gap:12px;margin-top:28px">
+        <div class="card" style="padding:20px"><div class="label">Icon</div><p class="note">Dawn gradient with the 99-ray mark in ink. Reads as a sun on the home screen.</p></div>
+        <div class="card" style="padding:20px"><div class="label">Motion</div><p class="note">Everything eases over 600–900ms. Gradients drift. The breathing dot is 4s in, 4s out — the pace of slow dhikr.</p></div>
+        <div class="card" style="padding:20px"><div class="label">Sound</div><p class="note">Recitation by a single warm voice, recorded close. Optional soft room-tone bed. No chimes.</p></div>
+      </div>
+    </div>
+    <div class="phone"><div class="screen dawn">
+      <div class="top"><span>Fajr · 05:14</span><span>Week 12</span></div>
+      <div class="sal">Good morning,<br><em>Amaar.</em></div>
+      <div class="mid"><div class="a">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur · No. 99</div><div class="breath" style="margin-top:18px"></div></div>
+      <div class="row"><div class="btn p">Listen</div><div class="btn">Reflect</div><div class="btn">Remember</div></div>
+      <div class="dh"><span>41 names close</span><span>58 to meet</span></div>
+    </div></div>
+  </div>
+</div></section>
+
+<section id="social"><div class="wrap">
+  <div class="eyebrow">07 — Social system</div>
+  <h2>Soft, slow, <em>saved.</em></h2>
+  <p class="lede">This is the direction people screenshot and set as a wallpaper. Three formats: <strong>Hour</strong> (gradient + name), <strong>Line</strong> (a sentence on sand), <strong>Verse</strong> (Nastaʿlīq on night).</p>
+  <div class="grid g3" style="margin-top:48px">
+    <div class="tile dawn"><div class="f"><span>99names</span><span>Fajr</span></div><div style="text-align:center"><div class="ar" style="font-size:64px;line-height:1">ٱلنُّورُ</div><div class="t" style="font-size:24px;margin-top:8px"><em>The Light</em></div></div><div class="f"><span>An-Nur · No. 93</span><span>99names.net</span></div></div>
+    <div class="tile" style="background:var(--sand2)"><div class="f"><span>99names</span><span>As-Sabur</span></div><div class="t">His <em>patience</em> is why you're still here.</div><div class="f"><span>Line</span><span>99names.net</span></div></div>
+    <div class="tile dusk"><div class="f" style="opacity:.6"><span>99names</span><span>Isha</span></div><div class="ar" style="font-family:var(--nasta);font-size:30px;line-height:2;text-align:center">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا</div><div class="f" style="opacity:.6"><span>Al-A'raf 7:180</span><span>99names.net</span></div></div>
+  </div>
+  <p class="note" style="margin-top:24px">Reels: a gradient slowly brightening from night to dawn over 6 seconds while one name is recited once. That's it. The calmest thing in the feed wins the feed.</p>
+</div></section>
+
+<section id="web"><div class="wrap">
+  <div class="eyebrow">08 — Website</div>
+  <h2>A page that knows <em>what time it is.</em></h2>
+  <p class="lede">The site reads the visitor's local prayer times and tints itself accordingly. First screen: today's name, the breathing dot, one line. Scrolling reveals the other 98 as a slow gradient strip — dawn at Ar-Rahman, night at As-Sabur.</p>
+  <div class="browser" style="margin-top:48px">
+    <div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net · Lagos · Asr in 1h 12m</span></div>
+    <div class="page dawn">
+      <svg class="rays" viewBox="0 0 400 400" style="position:absolute;right:-120px;top:-120px;width:620px;height:620px;opacity:.18" data-c="#2A2622" data-r1="150" data-r2="200" data-w="1"></svg>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:64px;position:relative"><div class="mark"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg>99names</div><div style="display:flex;gap:22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase"><span>Names</span><span>Remember</span><span>Cards</span><span>App</span><span style="background:var(--ink);color:var(--sand);padding:8px 16px;border-radius:999px">Shop</span></div></div>
+      <div style="position:relative;max-width:640px"><div class="eyebrow">Today · No. 99</div><h1 style="margin-top:14px">The Infinitely <em>Patient</em></h1><div class="ar" style="font-size:56px;margin:20px 0 10px;text-align:left">ٱلصَّبُورُ</div><p class="note" style="font-size:17px;max-width:40ch">As-Sabur. Take your time today — He does.</p><div style="display:flex;gap:12px;margin-top:28px;align-items:center"><span style="background:var(--ink);color:var(--sand);padding:13px 26px;border-radius:999px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500">Listen</span><span style="border:1px solid var(--ink);padding:12px 26px;border-radius:999px;font-size:11px;letter-spacing:.12em;text-transform:uppercase">All 99 names</span><div class="breath" style="margin-left:12px"></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">09 — Rules</div>
+  <h2>Do / Don't</h2>
+  <div class="dd" style="margin-top:40px">
+    <div class="card" style="border-top:4px solid var(--sage)"><div class="label" style="color:var(--sage)">Do</div><p class="note">Use the four-tint gradient, always in order.<br>Let things be quiet — a single name on a full screen is a complete post.<br>Use warm ink, never black.<br>Photograph real light: window, dawn, fabric, a card on a sill.</p></div>
+    <div class="card" style="border-top:4px solid var(--rose)"><div class="label" style="color:var(--rose)">Don't</div><p class="note">No black, no pure white, no gold foil.<br>No hard edges — everything has a radius.<br>No urgency language: never "don't miss", "streak", "last chance".<br>No stock mosque photography or bokeh lanterns.</p></div>
+  </div>
+</div></section>
+
+<footer class="wrap"><span>99names · Brand Direction 03 · Noor</span><span>← Back to overview</span></footer>
+
+<script>
+// 99-ray marks
+document.querySelectorAll('svg.rays').forEach(s=>{
+  const c=s.dataset.c||'#2A2622', r1=+s.dataset.r1||120, r2=+s.dataset.r2||190, w=+s.dataset.w||1;
+  let h='';
+  for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2;const x1=200+Math.cos(a)*r1,y1=200+Math.sin(a)*r1,x2=200+Math.cos(a)*r2,y2=200+Math.sin(a)*r2;h+=`<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;}
+  s.innerHTML=h;
+});
+document.querySelectorAll('svg.raymark').forEach(s=>{
+  const c=s.dataset.c||'#2A2622';let h='';
+  for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2;const x1=50+Math.cos(a)*26,y1=50+Math.sin(a)*26,x2=50+Math.cos(a)*48,y2=50+Math.sin(a)*48;h+=`<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${c}" stroke-width="1.4" stroke-linecap="round"/>`;}
+  s.innerHTML=h;
+});
+</script>
+<script src="/hub/back.js" defer></script>
+</body></html>

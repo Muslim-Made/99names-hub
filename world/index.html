@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names — Noor · The Full World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Aref+Ruqaa:wght@400;700&family=Gulzar&family=Amiri&family=DM+Sans:opsz,wght@9..40,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dawn1:#F6DCCF; --dawn2:#EFD9B8; --dawn3:#CFD9C4; --dawn4:#C9DBE6;
+  --sand:#F4EEE4; --sand2:#E8DFD0; --ink:#2A2622; --ink2:#5A534B; --mute:#8C847A;
+  --sun:#E8A64B; --rose:#D98C7C; --sage:#8FA88F; --sky:#8FB0C8; --night:#171A26; --night2:#242A3D;
+  --disp:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --ar:'Aref Ruqaa',serif; --nasta:'Gulzar','Aref Ruqaa',serif; --naskh:'Amiri',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+section{padding:110px 0}
+section+section{border-top:1px solid rgba(42,38,34,.12)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+h1,h2,h3{font-family:var(--disp);font-weight:300;line-height:1;letter-spacing:-.02em;font-variation-settings:"opsz" 144,"SOFT" 60}
+h2{font-size:clamp(44px,5.5vw,76px);margin:18px 0 22px}
+h2 em,h1 em,.t em{font-style:italic;font-weight:400}
+h3{font-size:24px;margin-bottom:8px;font-variation-settings:"opsz" 48,"SOFT" 40}
+p.lede{font-size:20px;max-width:60ch;color:var(--ink2);line-height:1.55}
+.note{font-size:13.5px;color:var(--ink2);line-height:1.6;max-width:60ch}
+.grid{display:grid;gap:28px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+.ar{font-family:var(--ar);direction:rtl}
+.cap{margin-top:14px}.cap b{display:block;font-family:var(--disp);font-weight:400;font-size:17px;font-variation-settings:"opsz" 24,"SOFT" 60}
+.cap span{font-size:12.5px;color:var(--mute);line-height:1.5;display:block}
+.dawn{background:linear-gradient(160deg,var(--dawn1) 0%,var(--dawn2) 35%,var(--dawn3) 70%,var(--dawn4) 100%)}
+.dawn-live{background:linear-gradient(160deg,var(--dawn1),var(--dawn2),var(--dawn3),var(--dawn4),var(--dawn2));background-size:300% 300%;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{background-position:100% 100%}}
+.dusk{background:linear-gradient(160deg,#2A2F44 0%,#1B1E2C 60%,#171A26 100%);color:var(--sand)}
+.maghrib{background:linear-gradient(170deg,#E8A64B 0%,#D98C7C 45%,#6B5A7A 80%,#2A2F44 100%);color:var(--sand)}
+.asr{background:linear-gradient(160deg,#EFD9B8,#CFD9C4 60%,#8FA88F);color:var(--ink)}
+nav{position:sticky;top:0;z-index:9;background:rgba(244,238,228,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(42,38,34,.08)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+nav .links{display:flex;gap:24px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+nav .links a:hover{color:var(--sun)}
+.mark{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-size:22px;font-weight:400;font-variation-settings:"opsz" 24,"SOFT" 80}
+.mark svg{width:32px;height:32px}
+.breath{width:14px;height:14px;border-radius:50%;background:var(--sun);animation:br 4s ease-in-out infinite}
+@keyframes br{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.7);opacity:1}}
+/* hero */
+.hero{padding:80px 48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;min-height:88vh}
+.hero h1{font-size:clamp(64px,8.5vw,128px);line-height:.92}
+.hero .wall{position:relative;aspect-ratio:1;border-radius:32px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero .wall svg{position:absolute;width:120%;height:120%;opacity:.3}
+.hero .wall .c{position:relative;text-align:center}
+.hero .wall .a{font-family:var(--ar);font-size:84px;line-height:1;direction:rtl}
+.hero .wall .t{font-family:var(--disp);font-style:italic;font-size:24px;margin-top:10px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px}
+.nc{aspect-ratio:5/7;border-radius:26px;padding:26px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 60px -30px rgba(42,38,34,.45)}
+.nc .top,.nc .bot{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;opacity:.7;position:relative}
+.nc .a{font-family:var(--ar);font-size:60px;line-height:1;direction:rtl;text-align:center;position:relative}
+.nc .m{font-family:var(--disp);font-style:italic;font-size:22px;text-align:center;line-height:1.1;font-variation-settings:"opsz" 48,"SOFT" 80;position:relative}
+.nc .l{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;text-align:center;margin-top:10px;font-weight:500;position:relative}
+.nc svg.rays{position:absolute;pointer-events:none}
+/* phone */
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.ph{width:100%;max-width:270px;aspect-ratio:9/19.2;border-radius:40px;background:#fff;padding:8px;margin:0 auto;box-shadow:0 40px 80px -30px rgba(42,38,34,.45),0 0 0 1px rgba(42,38,34,.08)}
+.ph .sc{border-radius:33px;height:100%;overflow:hidden;padding:26px 20px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.ph .st{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.ph .h{font-family:var(--disp);font-size:26px;line-height:1.05;font-variation-settings:"opsz" 72,"SOFT" 80}
+.ph .a{font-family:var(--ar);direction:rtl;text-align:center;line-height:1}
+.ph .m{font-family:var(--disp);font-style:italic;text-align:center;color:inherit;opacity:.85}
+.ph .l{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;text-align:center;font-weight:500}
+.ph .btn{border-radius:999px;padding:11px;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;background:rgba(255,255,255,.55)}
+.ph .btn.p{background:var(--ink);color:var(--sand)}
+.ph .row{display:flex;gap:6px}.ph .row .btn{flex:1}
+.ph .opt{border-radius:16px;padding:13px 14px;background:rgba(255,255,255,.55);font-family:var(--disp);font-size:16px;display:flex;justify-content:space-between;align-items:center}
+.ph .opt.ok{background:var(--ink);color:var(--sand)}
+.ph .grid99{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
+.ph .grid99 i{aspect-ratio:1;border-radius:50%;background:var(--ink);opacity:.18}.ph .grid99 i.on{opacity:1}
+.ph .tab{margin-top:auto;display:flex;justify-content:space-around;font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;padding-top:10px;border-top:1px solid rgba(42,38,34,.12)}
+.notif{border-radius:18px;background:rgba(255,255,255,.7);padding:12px 14px;display:flex;gap:12px;align-items:center;font-size:12px;backdrop-filter:blur(10px)}
+.notif .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.notif .ic svg{width:26px;height:26px}
+.notif b{display:block;font-weight:500;font-size:12px}
+/* ig */
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post{aspect-ratio:4/5;border-radius:8px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.post .f{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;position:relative}
+.post .t{font-family:var(--disp);font-size:34px;line-height:1.02;font-weight:300;font-variation-settings:"opsz" 96,"SOFT" 80;letter-spacing:-.02em;position:relative}
+.post .a{font-family:var(--ar);direction:rtl;position:relative}
+.post svg.rays{position:absolute;pointer-events:none}
+.stories{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.story{aspect-ratio:9/16;border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.story .bar{display:flex;gap:4px}.story .bar i{flex:1;height:2px;background:rgba(255,255,255,.5);border-radius:2px}.story .bar i.on{background:#fff}
+.story .t{font-family:var(--disp);font-size:28px;line-height:1.05;font-variation-settings:"opsz" 96,"SOFT" 80}
+.igprofile{display:grid;grid-template-columns:150px 1fr;gap:32px;align-items:center;background:#fff;border-radius:24px;padding:32px}
+.avatar{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.avatar svg{width:70%;height:70%}
+/* web */
+.browser{border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(42,38,34,.4);background:#fff}
+.browser .bar{height:36px;border-bottom:1px solid rgba(42,38,34,.08);display:flex;align-items:center;gap:6px;padding:0 14px;font-size:11px;color:var(--mute)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:var(--sand2);display:block}
+.browser .page{padding:36px 52px 56px;min-height:480px;position:relative;overflow:hidden}
+.browser .page h1{font-size:clamp(48px,6vw,84px);line-height:.95}
+.wnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;position:relative}
+.wnav .links{display:flex;gap:20px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;align-items:center}
+.pill{background:var(--ink);color:var(--sand);padding:9px 18px;border-radius:999px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:inline-block}
+.pill.o{background:transparent;border:1px solid currentColor;color:inherit}
+.strip{display:flex;gap:8px;margin-top:20px}
+.strip div{flex:1;aspect-ratio:3/4;border-radius:10px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-family:var(--ar);font-size:18px;direction:rtl}
+.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.shop div{background:var(--sand);border-radius:16px;padding:18px;aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:space-between}
+.shop .pimg{flex:1;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center}
+.shop b{font-family:var(--disp);font-weight:400;font-size:18px;display:block}
+.shop span{font-size:12px;color:var(--mute)}
+/* world */
+.world{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.scene{aspect-ratio:4/5;border-radius:24px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.box3{width:170px;height:230px;border-radius:18px;position:relative;box-shadow:-20px 30px 60px -20px rgba(42,38,34,.6)}
+.box3:after{content:"";position:absolute;inset:0;border-radius:18px;background:linear-gradient(100deg,rgba(255,255,255,.35),transparent 40%,rgba(0,0,0,.08))}
+.tee{width:230px;height:260px;background:var(--sand);border-radius:20px 20px 30px 30px;position:relative;clip-path:polygon(25% 0,75% 0,100% 18%,88% 26%,88% 100%,12% 100%,12% 26%,0 18%)}
+.stand{width:160px;height:20px;background:#C9A77A;border-radius:4px;position:absolute;bottom:90px;box-shadow:0 20px 40px -10px rgba(42,38,34,.4)}
+footer{padding:56px 0;border-top:1px solid rgba(42,38,34,.12);font-size:12px;color:var(--ink2);display:flex;justify-content:space-between}
+@media(max-width:1000px){.wrap{padding:0 22px}.hero{padding:40px 22px;grid-template-columns:1fr}.g2,.g3,.g4,.g6,.cards,.ig,.phones,.stories,.world,.shop,.igprofile{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.g2,.g3,.g4,.g6,.cards,.ig,.phones,.stories,.world,.shop,.igprofile{grid-template-columns:1fr}}
+.nc .a,.post .a,.ph .a,.story .ar,.hero .wall .a,.browser .ar,.scene .ar{line-height:1.45!important}
+.ph .sc div{min-width:0}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="mark" href="#top"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg>99names</a>
+  <div class="links"><a href="#cards">Cards</a><a href="#app">App</a><a href="#ig">Instagram</a><a href="#web">Website</a><a href="#world">World</a><a href="#why">Why Noor</a></div>
+</div></nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <div class="eyebrow">Direction 03 — Noor · The full world</div>
+    <h1 style="margin-top:20px">Light,<br><em>by name.</em></h1>
+    <p class="lede" style="margin-top:24px">Everything a person would touch in the first year of the brand: the deck in their hand, the app at Fajr, the post they save, the page they land on, the box on the shelf. One system — 99 rays, the colour of the hour, a serif that's kind, Arabic that flows.</p>
+    <div style="display:flex;gap:16px;align-items:center;margin-top:36px"><span class="pill">Scroll the world</span><div class="breath"></div><span class="note" style="font-size:12px">The dot breathes at the pace of slow dhikr — 4s in, 4s out.</span></div>
+  </div>
+  <div class="wall dawn-live">
+    <svg viewBox="0 0 400 400" class="rays" data-c="#2A2622" data-r1="120" data-r2="200" data-w="1"></svg>
+    <div class="c"><div class="a">ٱلنُّورُ</div><div class="t">The Light · An-Nur</div></div>
+  </div>
+</header>
+
+<!-- CARDS -->
+<section id="cards"><div class="wrap">
+  <div class="eyebrow">01 — Card explorations</div>
+  <h2>Six ways to hold <em>a name.</em></h2>
+  <p class="lede">Same system, six temperatures. The deck could ship as any one of these — or the Hour card as the base with the others as limited editions. Each one is 70 × 110mm, 10mm corners, soft-touch.</p>
+  <div class="cards" style="margin-top:56px">
+
+    <div><div class="nc dawn"><svg class="rays" viewBox="0 0 400 400" style="inset:-35%;width:170%;height:170%;opacity:.28" data-c="#2A2622" data-r1="105" data-r2="200" data-w=".8"></svg><div class="top"><span>99names</span><span>No. 93</span></div><div><div class="a">ٱلنُّورُ</div><div class="m">The Light</div><div class="l">An-Nur</div></div><div class="bot"><span>Fajr</span><span>٩٣</span></div></div>
+    <div class="cap"><b>A · The Hour card</b><span>The baseline. Gradient of the hour, 99 rays behind the name. This is the deck.</span></div></div>
+
+    <div><div class="nc" style="background:var(--sand);color:var(--ink)"><div class="top"><span>99names</span><span>No. 47</span></div><div><div class="a" style="font-size:72px">ٱلْوَدُودُ</div><div style="width:40px;height:1px;background:var(--ink);margin:16px auto;opacity:.4"></div><div class="m">The Most Loving</div><div class="l">Al-Wadud</div></div><div class="bot"><span>Blind emboss · no ink</span><span>٤٧</span></div></div>
+    <div class="cap"><b>B · The Paper card</b><span>No colour at all. Arabic blind-embossed, meaning letterpressed. For the person who finds gradients loud. Premium edition.</span></div></div>
+
+    <div><div class="nc dusk"><svg class="rays" viewBox="0 0 400 400" style="inset:-35%;width:170%;height:170%;opacity:.22" data-c="#F4EEE4" data-r1="105" data-r2="200" data-w=".8"></svg><div class="top"><span>99names</span><span>No. 99</span></div><div><div class="a">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div><div class="bot"><span>Isha</span><span>٩٩</span></div></div>
+    <div class="cap"><b>C · The Night card</b><span>The same card after dark. Navy, never black. Names 67–99 ship on night grounds so the deck fans from dawn to night.</span></div></div>
+
+    <div><div class="nc maghrib"><div class="top"><span>99names</span><span>No. 01</span></div><div><div class="ar" style="font-family:var(--nasta);font-size:22px;line-height:2;text-align:center;opacity:.85">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div><div class="a" style="font-size:56px;margin-top:8px">ٱلرَّحْمَـٰنُ</div><div class="m">The Most Gracious</div><div class="l">Ar-Rahman</div></div><div class="bot"><span>Maghrib</span><span>٠١</span></div></div>
+    <div class="cap"><b>D · The Verse card</b><span>Name plus the āyah it appears in, set in Nastaʿlīq above. Maghrib gradient — sun into night. The Ramadan 30-card edition uses this.</span></div></div>
+
+    <div><div class="nc" style="background:var(--sun);color:var(--ink)"><div class="top"><span>99names</span><span>No. 93</span></div><div style="position:relative;display:flex;align-items:center;justify-content:center;flex:1"><svg viewBox="0 0 400 400" class="rays" style="position:relative;width:88%;height:auto" data-c="#2A2622" data-r1="60" data-r2="190" data-w="1.2"></svg><div style="position:absolute;text-align:center"><div class="ar" style="font-size:44px;line-height:1">ٱلنُّورُ</div></div></div><div class="bot"><span>An-Nur · The Light</span><span>٩٣</span></div></div>
+    <div class="cap"><b>E · The Ray card</b><span>The logo becomes the composition. The name sits inside the 99 rays. Flat Fajr gold. Works as a poster at A2.</span></div></div>
+
+    <div><div class="nc asr"><div class="top"><span>99names</span><span>Send a name</span></div><div><div class="ar" style="font-family:var(--nasta);font-size:19px;line-height:1.9;text-align:center;opacity:.8">لمن يحتاجه هذا الأسبوع</div><div class="a" style="font-size:56px">ٱلْجَبَّارُ</div><div class="m">The Restorer</div><div class="l">Al-Jabbar</div></div><div style="position:relative;display:flex;justify-content:space-between;align-items:flex-end"><div class="bot" style="flex-direction:column;align-items:flex-start;gap:2px;opacity:.9"><span>To</span><span style="font-family:var(--disp);font-size:15px;text-transform:none;letter-spacing:0;font-style:italic">Nayla</span></div><div class="bot"><span>٦٤</span></div></div></div>
+    <div class="cap"><b>F · The Send-a-Name card</b><span>Single card + envelope, $6. A space to write who it's for. "For whoever needs it this week." This is the product that gets the brand into homes.</span></div></div>
+
+  </div>
+  <div class="grid g3" style="margin-top:56px">
+    <div style="background:#fff;border-radius:22px;padding:28px"><div class="eyebrow">Card back</div><p class="note" style="margin-top:10px">Every back is identical: sand ground, the 99-ray mark blind-embossed centre, "99names" at the foot. A fanned deck reads as one soft sun.</p></div>
+    <div style="background:#fff;border-radius:22px;padding:28px"><div class="eyebrow">The fan</div><p class="note" style="margin-top:10px">Cards 1–33 dawn, 34–66 day, 67–99 night. Spread the deck in order and it's a single gradient across a table — the Instagram unboxing shot designs itself.</p></div>
+    <div style="background:#fff;border-radius:22px;padding:28px"><div class="eyebrow">Recommendation</div><p class="note" style="margin-top:10px"><strong>A</strong> is the deck. <strong>F</strong> is the growth product. <strong>B</strong> is the $79 edition. <strong>D</strong> is the Ramadan release. E is a poster; C is already inside A.</p></div>
+  </div>
+</div></section>
+
+<!-- APP -->
+<section id="app"><div class="wrap">
+  <div class="eyebrow">02 — App</div>
+  <h2>An app that knows <em>what time it is.</em></h2>
+  <p class="lede">Eight screens across a day. The background is never chosen — it's the hour. Nothing pings. You're greeted, you're shown a name, you're asked gently if you remember.</p>
+  <div class="phones" style="margin-top:56px">
+
+    <div><div class="ph"><div class="sc dawn"><div class="st"><span>Welcome</span><span>1 / 3</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center"><svg viewBox="0 0 100 100" class="raymark" style="width:90px" data-c="#2A2622"></svg><div class="h">Ninety-nine names.<br><em>One at a time.</em></div><p class="note" style="font-size:12px;text-align:center">We'll show you one name a week, at the hour you choose. No streaks. No guilt.</p></div><div class="btn p">Begin with Ar-Rahman</div><div class="btn" style="background:transparent">I already know some</div></div></div><div class="cap"><b>Onboarding</b><span>Three screens. The third asks only: "When's your quiet hour?"</span></div></div>
+
+    <div><div class="ph"><div class="sc dawn"><div class="st"><span>Fajr · 05:14</span><span>Week 12</span></div><div class="h">Good morning,<br><em>Amaar.</em></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><div class="a" style="font-size:52px">ٱلصَّبُورُ</div><div class="m" style="font-size:15px">The Infinitely Patient</div><div class="l">As-Sabur · No. 99</div><div class="breath" style="margin-top:14px"></div></div><div class="row"><div class="btn p">Listen</div><div class="btn">Reflect</div></div><div class="tab"><span style="opacity:1;color:var(--ink)">Today</span><span>Names</span><span>Remember</span><span>You</span></div></div></div><div class="cap"><b>Home · Fajr</b><span>Blush. One name, one breath. Everything else is a tap away, not in your face.</span></div></div>
+
+    <div><div class="ph"><div class="sc" style="background:var(--sand)"><div class="st"><span>← Today</span><span>No. 99</span></div><div class="a" style="font-size:46px;margin-top:6px">ٱلصَّبُورُ</div><div class="m" style="font-size:15px">As-Sabur · The Infinitely Patient</div><div class="ar" style="font-family:var(--nasta);font-size:12px;line-height:1.9;text-align:center;opacity:.8;margin-top:6px">فَٱصْبِرْ صَبْرًا جَمِيلًا</div><div class="note" style="font-size:11.5px;margin-top:6px"><b style="font-weight:500">Root</b> ص-ب-ر · to bear, to endure, to hold steady.<br><br><b style="font-weight:500">This week</b> He has never once rushed you. Notice who you rush.<br><br><b style="font-weight:500">Dua</b> Rabbi afrigh ʿalaynā ṣabran — My Lord, pour patience over us.</div><div class="row" style="margin-top:auto"><div class="btn p">▶ Listen · 0:06</div><div class="btn">Save</div></div></div></div><div class="cap"><b>Name detail</b><span>Root, verse, one reflection, one dua. Short enough to read at a red light, deep enough to return to.</span></div></div>
+
+    <div><div class="ph"><div class="sc asr"><div class="st"><span>Asr · Remember</span><span>4 / 10</span></div><div class="a" style="font-size:58px;margin-top:18px">ٱلْوَدُودُ</div><div class="l" style="margin-bottom:10px">Which name is this?</div><div class="opt">The Light</div><div class="opt ok">The Most Loving ✓</div><div class="opt">The Patient</div><div class="opt">The Provider</div><div class="note" style="font-size:11px;text-align:center;margin-top:auto">Al-Wadud. You've met 41 names.</div></div></div><div class="cap"><b>Remember (quiz) · Asr</b><span>Sage hour. Called "Remember", never "Test". Wrong answers just show the name again, warmly.</span></div></div>
+
+    <div><div class="ph"><div class="sc" style="background:var(--sand)"><div class="st"><span>You</span><span>Week 12</span></div><div class="h">41 names<br><em>close.</em></div><div class="grid99" id="g99"></div><div class="note" style="font-size:11px">58 to meet. At one a week you'll know all 99 by <b style="font-weight:500">Ramadan 1449</b>.</div><div class="tab"><span>Today</span><span>Names</span><span>Remember</span><span style="opacity:1;color:var(--ink)">You</span></div></div></div><div class="cap"><b>Progress</b><span>The 99-dot grid borrowed from Direction 02 — the one device worth keeping. Dots fill in the hour's colour.</span></div></div>
+
+    <div><div class="ph"><div class="sc maghrib"><div class="st"><span>Maghrib · 18:52</span><span>Week 12</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><div class="a" style="font-size:52px">ٱلصَّبُورُ</div><div class="m" style="font-size:15px">Say it once, slowly.</div><div class="breath" style="margin-top:18px;background:var(--sand)"></div></div><div class="note" style="font-size:11px;text-align:center;color:inherit;opacity:.8">Dhikr · tap to count · 33</div><div class="tab" style="border-color:rgba(255,255,255,.2)"><span style="opacity:1">Today</span><span>Names</span><span>Remember</span><span>You</span></div></div></div><div class="cap"><b>Home · Maghrib</b><span>Same screen, different hour. Gold into night. A tap-to-count dhikr mode with the breathing dot as the counter.</span></div></div>
+
+    <div><div class="ph"><div class="sc dusk" style="justify-content:flex-start;gap:10px"><div class="st" style="opacity:.5"><span>Lock screen</span><span>22:41</span></div><div style="font-family:var(--disp);font-size:56px;text-align:center;font-weight:300;line-height:1;margin-top:20px">22:41</div><div class="notif" style="margin-top:30px;background:rgba(255,255,255,.12);color:var(--sand)"><div class="ic dawn"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg></div><div><b>99names</b>As-Sabur. The night is long; so is His patience.</div></div><div class="notif" style="background:rgba(255,255,255,.12);color:var(--sand);padding:16px"><div style="width:100%"><div class="st" style="opacity:.6"><span>Widget · This week</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="ar" style="font-size:26px">ٱلصَّبُورُ</div><div style="font-family:var(--disp);font-style:italic;font-size:14px">The Patient</div></div></div></div></div></div><div class="cap"><b>Notification + widget · Isha</b><span>One line, once a day, at the hour you chose. The widget is just the name. Reminders are gradients, not alarms.</span></div></div>
+
+    <div><div class="ph"><div class="sc" style="background:var(--sand)"><div class="st"><span>Names</span><span>99</span></div><div class="h" style="font-size:22px">All ninety-nine</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;overflow:hidden;flex:1">
+      <div class="dawn" style="border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلرَّحْمَـٰنُ</span></div>
+      <div class="dawn" style="border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلرَّحِيمُ</span></div>
+      <div class="dawn" style="border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلْمَلِكُ</span></div>
+      <div style="background:var(--dawn2);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلْقُدُّوسُ</span></div>
+      <div style="background:var(--dawn2);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلسَّلَامُ</span></div>
+      <div style="background:var(--dawn3);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px"><span class="ar" style="font-size:15px">ٱلْمُؤْمِنُ</span></div>
+      <div style="background:var(--dawn3);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;opacity:.5"><span class="ar" style="font-size:15px">ٱلْمُهَيْمِنُ</span></div>
+      <div style="background:var(--dawn4);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;opacity:.5"><span class="ar" style="font-size:15px">ٱلْعَزِيزُ</span></div>
+      <div style="background:var(--dawn4);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;opacity:.5"><span class="ar" style="font-size:15px">ٱلْجَبَّارُ</span></div>
+    </div><div class="tab"><span>Today</span><span style="opacity:1;color:var(--ink)">Names</span><span>Remember</span><span>You</span></div></div></div><div class="cap"><b>All names</b><span>The deck, on screen. Met names are full colour; unmet are faded. Scrolling down moves from dawn to night.</span></div></div>
+
+  </div>
+</div></section>
+
+<!-- INSTAGRAM -->
+<section id="ig"><div class="wrap">
+  <div class="eyebrow">03 — Instagram</div>
+  <h2>The calmest thing <em>in the feed.</em></h2>
+  <p class="lede">Six post types that rotate through the week, plus stories. The rule: a single name on a full screen is a complete post. The feed, viewed as a grid, should read as one slow gradient across the week.</p>
+
+  <div class="igprofile" style="margin-top:56px">
+    <div class="avatar dawn"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg></div>
+    <div><div style="font-size:22px;font-weight:500">99names</div><div style="font-size:14px;color:var(--ink2)">Light, by name.</div><p class="note" style="margin-top:10px">One name a week. Ninety-nine ways He's near.<br>Cards · App · Send a name to someone ↓<br><span style="color:var(--sky)">99names.net</span></p></div>
+  </div>
+
+  <div class="ig" style="margin-top:28px">
+    <div><div class="post dawn"><svg class="rays" viewBox="0 0 400 400" style="inset:-30%;width:160%;height:160%;opacity:.25" data-c="#2A2622" data-r1="110" data-r2="200" data-w=".8"></svg><div class="f"><span>99names</span><span>Mon · Fajr</span></div><div style="text-align:center;position:relative"><div class="a" style="font-size:76px;line-height:1">ٱلصَّبُورُ</div><div class="t" style="font-size:22px;margin-top:10px"><em>The Infinitely Patient</em></div></div><div class="f"><span>As-Sabur · No. 99</span><span>This week's name</span></div></div><div class="cap"><b>1 · The Name</b><span>Monday. The week's name introduced. Arabic huge, English small. Caption is the root letters and one sentence.</span></div></div>
+
+    <div><div class="post" style="background:var(--sand2);color:var(--ink)"><div class="f"><span>99names</span><span>Tue</span></div><div class="t">His <em>patience</em> is why you're still here.</div><div class="f"><span>As-Sabur</span><span>99names.net</span></div></div><div class="cap"><b>2 · The Line</b><span>Tuesday. One sentence, Fraunces on sand. The most-saved format — your current posts already prove it.</span></div></div>
+
+    <div><div class="post dusk"><div class="f" style="opacity:.5"><span>99names</span><span>Wed · Isha</span></div><div class="ar" style="font-family:var(--nasta);font-size:26px;line-height:2.1;text-align:center">فَٱصْبِرْ صَبْرًا جَمِيلًا</div><div><div class="t" style="font-size:18px;text-align:center;opacity:.85"><em>"So be patient with beautiful patience."</em></div><div class="f" style="opacity:.5;margin-top:14px"><span>Al-Ma'arij 70:5</span><span>As-Sabur</span></div></div></div><div class="cap"><b>3 · The Verse</b><span>Wednesday night. The āyah the name lives in, Nastaʿlīq on navy. Posted after Isha.</span></div></div>
+
+    <div><div class="post" style="background:var(--sand);color:var(--ink);padding:0"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="width:46%;aspect-ratio:5/7;border-radius:18px;transform:rotate(-6deg);box-shadow:0 30px 50px -20px rgba(42,38,34,.5);position:absolute;left:14%;top:22%" class="dawn"></div><div style="width:46%;aspect-ratio:5/7;border-radius:18px;transform:rotate(4deg);box-shadow:0 30px 50px -20px rgba(42,38,34,.5);position:absolute;right:14%;top:26%;display:flex;align-items:center;justify-content:center" class="dusk"><span class="ar" style="font-size:34px">ٱلصَّبُورُ</span></div></div><div class="f" style="padding:28px"><span>99names</span><span>Thu</span></div><div class="f" style="padding:28px"><span>The deck · $34</span><span>Link in bio</span></div></div><div class="cap"><b>4 · The Object</b><span>Thursday. Product, photographed in real window light on linen or a sill. The only "sell" post of the week.</span></div></div>
+
+    <div><div class="post asr"><div class="f"><span>99names</span><span>Fri · Remember</span></div><div style="text-align:center"><div class="a" style="font-size:80px;line-height:1">ٱلْوَدُودُ</div><div class="t" style="font-size:24px;margin-top:12px">Do you remember<br><em>this one?</em></div></div><div class="f"><span>Answer in the comments</span><span>No. 47</span></div></div><div class="cap"><b>5 · The Remember</b><span>Friday. A past name, Arabic only. Comments do the teaching. Highest engagement format.</span></div></div>
+
+    <div><div class="post maghrib"><div class="f" style="opacity:.8"><span>99names</span><span>Sun · Maghrib</span></div><div><div class="t" style="font-size:30px">Send <em>As-Sabur</em> to someone who's waiting on something.</div></div><div class="f" style="opacity:.8"><span>Send a name · $6</span><span>99names.net/send</span></div></div><div class="cap"><b>6 · The Send</b><span>Sunday. Closes the week by pointing the name outward. Drives the gifting product and the shares.</span></div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:64px">Stories · 9:16</div>
+  <div class="stories" style="margin-top:20px">
+    <div class="story dawn-live"><div class="bar"><i class="on"></i><i></i><i></i></div><div style="text-align:center"><div class="ar" style="font-size:64px;line-height:1">ٱلصَّبُورُ</div><div class="t" style="font-size:20px;margin-top:8px"><em>Say it once.</em></div></div><div class="breath" style="margin:0 auto"></div></div>
+    <div class="story" style="background:var(--sand);color:var(--ink)"><div class="bar" style="--c:var(--ink)"><i style="background:rgba(42,38,34,.2)"></i><i style="background:var(--ink)"></i><i style="background:rgba(42,38,34,.2)"></i></div><div><div class="eyebrow" style="font-size:9px">Poll</div><div class="t" style="margin-top:8px">Which name do you need today?</div></div><div style="display:flex;flex-direction:column;gap:8px"><div class="pill o" style="text-align:center">As-Sabur · Patience</div><div class="pill o" style="text-align:center">Al-Wadud · Love</div><div class="pill o" style="text-align:center">Al-Jabbar · Restore</div></div></div>
+    <div class="story dusk"><div class="bar"><i></i><i></i><i class="on"></i></div><div style="text-align:center"><div class="t">Isha.<br><em>Put the phone down after this one.</em></div></div><div class="ar" style="font-size:44px;text-align:center;line-height:1">ٱلنُّورُ</div></div>
+    <div class="story" style="background:var(--sun);color:var(--ink)"><div class="bar"><i style="background:rgba(42,38,34,.2)"></i></div><div style="text-align:center"><svg viewBox="0 0 100 100" class="raymark" style="width:120px" data-c="#2A2622"></svg><div class="t" style="margin-top:16px">Ramadan edition.<br><em>30 nights, 30 names.</em></div></div><div class="pill" style="text-align:center">Notify me</div></div>
+  </div>
+</div></section>
+
+<!-- WEBSITE -->
+<section id="web"><div class="wrap">
+  <div class="eyebrow">04 — Website</div>
+  <h2>99names.net, <em>rebuilt.</em></h2>
+  <p class="lede">Five screens. The site reads local prayer times and tints itself. The explanation you currently lead with moves to the bottom, set like a book's introduction. The name comes first. Always.</p>
+
+  <div class="browser" style="margin-top:56px">
+    <div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net · Lagos · Fajr</span></div>
+    <div class="page dawn-live">
+      <svg class="rays" viewBox="0 0 400 400" style="position:absolute;right:-140px;top:-140px;width:640px;height:640px;opacity:.2" data-c="#2A2622" data-r1="150" data-r2="200" data-w="1"></svg>
+      <div class="wnav"><div class="mark"><svg viewBox="0 0 100 100" class="raymark" data-c="#2A2622"></svg>99names</div><div class="links"><span>Names</span><span>Remember</span><span>Cards</span><span>App</span><span>Send a name</span><span class="pill">Shop</span></div></div>
+      <div style="position:relative;max-width:680px"><div class="eyebrow">This week · No. 99 of 99</div><h1 style="margin-top:14px">The Infinitely <em>Patient</em></h1><div class="ar" style="font-size:60px;margin:18px 0 8px;text-align:left">ٱلصَّبُورُ</div><p class="note" style="font-size:17px;max-width:40ch">As-Sabur. He has never once rushed you. Take your time today — He does.</p><div style="display:flex;gap:12px;margin-top:28px;align-items:center"><span class="pill">▶ Listen · 0:06</span><span class="pill o">Read this name</span><div class="breath" style="margin-left:10px"></div></div></div>
+      <div style="margin-top:56px;display:flex;justify-content:space-between;align-items:flex-end;position:relative"><div class="eyebrow">Ninety-nine names, dawn to night ↓</div><div class="note" style="font-size:11px">Scroll</div></div>
+    </div>
+  </div>
+  <div class="cap"><b>Home</b><span>First screen is the week's name, the hour's colour, one line. No two-column explainer above the fold.</span></div>
+
+  <div class="grid g2" style="margin-top:48px">
+    <div><div class="browser"><div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net/names</span></div><div class="page" style="background:var(--sand);min-height:420px"><div class="wnav"><div class="mark" style="font-size:18px"><svg viewBox="0 0 100 100" class="raymark" style="width:24px;height:24px" data-c="#2A2622"></svg>99names</div><div class="eyebrow">All ninety-nine</div></div><h1 style="font-size:44px">Ninety-nine, <em>dawn to night.</em></h1>
+      <div class="strip"><div style="background:var(--dawn1)">ٱلرَّحْمَـٰنُ</div><div style="background:var(--dawn1)">ٱلرَّحِيمُ</div><div style="background:var(--dawn2)">ٱلْمَلِكُ</div><div style="background:var(--dawn2)">ٱلْقُدُّوسُ</div><div style="background:var(--dawn3)">ٱلسَّلَامُ</div><div style="background:var(--dawn3)">ٱلْمُؤْمِنُ</div><div style="background:var(--dawn4)">ٱلْمُهَيْمِنُ</div><div style="background:var(--sky);color:#fff">ٱلْعَزِيزُ</div></div>
+      <div class="strip" style="margin-top:8px"><div style="background:var(--sage);color:#fff">ٱلْجَبَّارُ</div><div style="background:var(--sage);color:#fff">ٱلْمُتَكَبِّرُ</div><div style="background:#6B7A8C;color:#fff">ٱلْخَالِقُ</div><div style="background:#4F5A74;color:#fff">ٱلْبَارِئُ</div><div style="background:#3A4258;color:#fff">ٱلْمُصَوِّرُ</div><div style="background:#2A2F44;color:#fff">ٱلْغَفَّارُ</div><div style="background:#1F2334;color:#fff">ٱلْقَهَّارُ</div><div style="background:var(--night);color:#fff">ٱلْوَهَّابُ</div></div>
+      <div class="note" style="font-size:11px;margin-top:14px">…continues to As-Sabur. Hover a card to hear it. Click to read it.</div></div></div>
+      <div class="cap"><b>All names</b><span>A single gradient strip from Ar-Rahman (dawn) to As-Sabur (night). The colour-toggle idea from the current site becomes the structure of the page.</span></div></div>
+
+    <div><div class="browser"><div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net/names/as-sabur</span></div><div class="page dusk" style="min-height:420px"><div class="wnav"><div class="mark" style="font-size:18px"><svg viewBox="0 0 100 100" class="raymark" style="width:24px;height:24px" data-c="#F4EEE4"></svg>99names</div><div class="eyebrow" style="color:var(--sand);opacity:.6">No. 99 · Isha</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center"><div><div class="ar" style="font-size:72px;text-align:left;line-height:1">ٱلصَّبُورُ</div><h1 style="font-size:40px;margin-top:8px">As-Sabur<br><em>The Infinitely Patient</em></h1><div class="note" style="color:var(--sand);opacity:.75;font-size:13px;margin-top:14px"><b style="font-weight:500">Root</b> ص-ب-ر · to bear, endure, hold steady.<br><b style="font-weight:500">Appears</b> in the Sunnah; the attribute throughout the Qur'an.<br><b style="font-weight:500">Dua</b> Rabbi afrigh ʿalaynā ṣabran.</div><div style="display:flex;gap:10px;margin-top:20px"><span class="pill" style="background:var(--sand);color:var(--ink)">▶ Listen</span><span class="pill o">Send this name</span></div></div><div class="ar" style="font-family:var(--nasta);font-size:22px;line-height:2.2;opacity:.85;text-align:center">فَٱصْبِرْ صَبْرًا جَمِيلًا</div></div></div></div>
+      <div class="cap"><b>Name page</b><span>Each of the 99 gets its own URL, its own hour colour, audio, root, verse, dua and a "send this name" button. This is the SEO engine — 99 beautiful landing pages.</span></div></div>
+
+    <div><div class="browser"><div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net/shop</span></div><div class="page" style="background:#fff;min-height:420px"><div class="wnav"><div class="mark" style="font-size:18px"><svg viewBox="0 0 100 100" class="raymark" style="width:24px;height:24px" data-c="#2A2622"></svg>99names</div><div class="eyebrow">Shop · Ships worldwide</div></div>
+      <div class="shop"><div><div class="pimg dawn"><div style="width:50%;aspect-ratio:5/7;border-radius:10px;background:rgba(255,255,255,.5)"></div></div><b>The Deck</b><span>99 cards · $34</span></div><div><div class="pimg asr"><div style="width:50%;aspect-ratio:5/7;border-radius:10px;background:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center"><span class="ar" style="font-size:18px">ٱلْجَبَّارُ</span></div></div><b>Send a Name</b><span>1 card + envelope · $6</span></div><div><div class="pimg maghrib"><div style="width:50%;aspect-ratio:5/7;border-radius:10px;background:rgba(255,255,255,.25)"></div></div><b>Ramadan Edition</b><span>30 cards · $29 · Pre-order</span></div></div></div></div>
+      <div class="cap"><b>Shop</b><span>Three products, not thirty. Gradients as product photography until the real shots exist.</span></div></div>
+
+    <div><div class="browser"><div class="bar"><i></i><i></i><i></i><span style="margin-left:12px">99names.net/remember</span></div><div class="page asr" style="min-height:420px;display:flex;flex-direction:column"><div class="wnav"><div class="mark" style="font-size:18px"><svg viewBox="0 0 100 100" class="raymark" style="width:24px;height:24px" data-c="#2A2622"></svg>99names</div><div class="eyebrow">Remember · 4 of 10</div></div>
+      <div style="text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px"><div class="ar" style="font-size:80px;line-height:1">ٱلْوَدُودُ</div><div style="font-family:var(--disp);font-size:26px">Which name is this?</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><span class="pill o">The Light</span><span class="pill">The Most Loving</span><span class="pill o">The Patient</span><span class="pill o">The Provider</span></div></div></div></div>
+      <div class="cap"><b>Remember (quiz)</b><span>Full-screen, one question, hour-coloured. Shareable result card at the end: "I know 41 names." — that's the viral loop.</span></div></div>
+  </div>
+</div></section>
+
+<!-- WORLD -->
+<section id="world"><div class="wrap">
+  <div class="eyebrow">05 — The brand in the world</div>
+  <h2>Things you'd <em>keep.</em></h2>
+  <div class="world" style="margin-top:56px">
+    <div><div class="scene dawn-live"><div class="box3 dusk" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><svg viewBox="0 0 100 100" class="raymark" style="width:70px" data-c="#F4EEE4"></svg><div style="font-family:var(--disp);font-size:16px;margin-top:10px">99names</div><div class="eyebrow" style="color:var(--sand);opacity:.6;font-size:8px">The Deck · 99 cards</div></div></div><div class="cap"><b>The box</b><span>Navy rigid box, rays blind-embossed, nothing else. Lift the lid and the deck inside is a dawn gradient — the contrast is the unboxing.</span></div></div>
+    <div><div class="scene" style="background:var(--sand2)"><div style="position:relative;width:200px;height:260px;display:flex;align-items:flex-end;justify-content:center"><div class="stand"></div><div class="dawn" style="width:120px;aspect-ratio:5/7;border-radius:14px;position:absolute;bottom:104px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px -15px rgba(42,38,34,.5)"><span class="ar" style="font-size:30px">ٱلصَّبُورُ</span></div></div></div><div class="cap"><b>The nightstand</b><span>A small oak stand that holds one card upright. Change it every week. $69 with the deck. This is the product photo for the homepage.</span></div></div>
+    <div><div class="scene asr"><div class="tee" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px"><svg viewBox="0 0 100 100" class="raymark" style="width:54px" data-c="#2A2622"></svg><div class="ar" style="font-size:22px;margin-top:6px">ٱلنُّورُ</div></div></div><div class="cap"><b>The tee</b><span>Sand cotton, small rays at the chest, one name. Quiet enough to wear anywhere. Merch that doesn't shout is merch people actually wear.</span></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="scene dusk" style="aspect-ratio:16/10;flex-direction:column;gap:10px;padding:32px;text-align:center"><div class="ar" style="font-family:var(--nasta);font-size:26px;line-height:2">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ</div><div class="eyebrow" style="color:var(--sand);opacity:.5">A2 print · Isha</div></div>
+    <div class="scene" style="aspect-ratio:16/10;background:var(--sun);flex-direction:column;padding:32px"><svg viewBox="0 0 400 400" class="rays" style="width:70%" data-c="#2A2622" data-r1="80" data-r2="190" data-w="1.4"></svg><div class="eyebrow" style="position:absolute;bottom:24px">A2 print · Fajr</div></div>
+    <div class="scene dawn" style="aspect-ratio:16/10;flex-direction:column;padding:32px"><div style="width:64%;background:#fff;border-radius:10px;padding:14px;display:flex;gap:10px;align-items:center;box-shadow:0 20px 40px -20px rgba(42,38,34,.4)"><div style="width:44px;height:44px;border-radius:10px" class="dawn"></div><div><div style="font-weight:500;font-size:13px">99names</div><div style="font-size:11px;color:var(--mute)">Light, by name.</div></div><div class="pill" style="margin-left:auto;font-size:9px;padding:6px 12px">Get</div></div><div class="eyebrow" style="position:absolute;bottom:24px">App Store listing</div></div>
+  </div>
+</div></section>
+
+<!-- WHY -->
+<section id="why"><div class="wrap">
+  <div class="eyebrow">06 — Why Noor wins</div>
+  <h2>The honest <em>case.</em></h2>
+  <div class="grid g2" style="margin-top:48px">
+    <div style="background:#fff;border-radius:24px;padding:36px"><h3>For</h3><p class="note">The colour-of-the-hour idea is a retention mechanic nobody in the category has — the app literally looks different at Fajr and Isha, which gives people a reason to open it twice. The 99-ray mark is ownable, scales from favicon to A2, and doesn't touch a single cliché. Send-a-Name is a $6 product with a built-in reason to share. And the tone matches where your Instagram is already going.</p></div>
+    <div style="background:#fff;border-radius:24px;padding:36px"><h3>Against — and the answer</h3><p class="note"><strong>"It looks like a wellness app."</strong> It does, until the Arabic appears — which is why the Arabic is always large, always first, always Ruq'ah/Nastaʿlīq rather than a Latin-friendly Naskh. <strong>"Gradients are easy to copy."</strong> The gradient isn't the brand; the 99 rays, the hour system and the voice are. <strong>"Too soft for men / older buyers?"</strong> The Paper card (B) and the navy box exist for exactly that audience.</p></div>
+  </div>
+  <div class="dawn-live" style="border-radius:24px;padding:48px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center">
+    <div><div class="eyebrow">Next steps if this is the one</div><p class="note" style="font-size:16px;margin-top:10px;max-width:64ch">1 · Commission a Ruq'ah calligrapher for the 99 names (one-time, ~$1.5–3k, becomes your single biggest asset). 2 · Logo file set: rays mark + wordmark + ٩٩, SVG/PNG, icon sizes. 3 · Build the site on this system — home, 99 name pages, remember, shop. 4 · Print proof of card A and F with the paper + gradient spec.</p></div>
+    <svg viewBox="0 0 400 400" class="rays" style="width:160px" data-c="#2A2622" data-r1="90" data-r2="190" data-w="1.2"></svg>
+  </div>
+</div></section>
+
+<footer class="wrap"><span>99names · Direction 03 · Noor · The full world</span><span>Light, by name.</span></footer>
+
+<script>
+document.querySelectorAll('svg.rays').forEach(s=>{
+  const c=s.dataset.c||'#2A2622', r1=+s.dataset.r1||120, r2=+s.dataset.r2||190, w=+s.dataset.w||1;
+  let h='';
+  for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2;const x1=200+Math.cos(a)*r1,y1=200+Math.sin(a)*r1,x2=200+Math.cos(a)*r2,y2=200+Math.sin(a)*r2;h+=`<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;}
+  s.innerHTML=h;
+});
+document.querySelectorAll('svg.raymark').forEach(s=>{
+  const c=s.dataset.c||'#2A2622';let h='';
+  for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2;const x1=50+Math.cos(a)*26,y1=50+Math.sin(a)*26,x2=50+Math.cos(a)*48,y2=50+Math.sin(a)*48;h+=`<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${c}" stroke-width="1.4" stroke-linecap="round"/>`;}
+  s.innerHTML=h;
+});
+const g=document.getElementById('g99');if(g){let h='';for(let i=0;i<99;i++)h+=`<i class="${i<41?'on':''}" style="${i<41?'background:'+(i<33?'#E8A64B':'#8FA88F'):''}"></i>`;g.innerHTML=h;}
+</script>
+<script src="/hub/back.js" defer></script>
+</body></html>

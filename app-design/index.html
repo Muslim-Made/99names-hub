@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en" data-hour="fajr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>99names · The app · design reference</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..500,0..100;1,9..144,300..500,0..100&family=DM+Sans:wght@300;400;500&family=Scheherazade+New:wght@400;600;700&family=Amiri&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   99NAMES · THE APP — design reference for the Expo build
+   Every screen is 390 × 844 (iPhone 15). Tokens below are the
+   contract: copy them into the theme file as-is.
+   ============================================================ */
+:root{
+  /* ink */
+  --ink:#2A2622;--ink2:#5A534B;--mute:#8C847A;--sand:#F4EEE4;--sand2:#E8DFD0;--night:#171A26;--night2:#2A2F44;
+  /* accents */
+  --sun:#E8A64B;--rose:#D98C7C;--sage:#8FA88F;--sky:#8FB0C8;
+  /* type */
+  --disp:"Fraunces",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--ar:"Scheherazade New",serif;--nasta:"Amiri","Scheherazade New",serif;
+  /* radii */
+  --r-card:22px;--r-sheet:28px;--r-pill:999px;--r-chip:14px;
+  /* spacing (4pt) */
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s8:32px;--s10:40px;--s12:48px;
+  /* motion */
+  --ease:cubic-bezier(.2,.8,.2,1);--t-fast:.25s;--t-base:.5s;--t-slow:.9s;--breath:4s;
+  /* hour skies (the only backgrounds the app ever uses) */
+  --sky-fajr:linear-gradient(160deg,#F6DCCF,#EFD9B8 35%,#CFD9C4 70%,#C9DBE6);
+  --sky-morning:linear-gradient(160deg,#F4EEE4,#F3E3C2 50%,#EFD9B8);
+  --sky-dhuhr:linear-gradient(160deg,#F4EEE4,#EFD9B8 50%,#F2CFC0);
+  --sky-asr:linear-gradient(160deg,#EFD9B8,#CFD9C4 60%,#A9BFA6);
+  --sky-maghrib:linear-gradient(170deg,#E8A64B,#D98C7C 45%,#6B5A7A 80%,#2A2F44);
+  --sky-isha:linear-gradient(160deg,#2A2F44,#1B1E2C 60%,#171A26);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:#EDE6DA;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.ar{font-family:var(--ar);direction:rtl;font-weight:600;line-height:1.85}
+.disp{font-family:var(--disp);font-weight:300;letter-spacing:-.02em;line-height:1;font-variation-settings:"opsz" 96,"SOFT" 60}
+em{font-style:italic;font-weight:400}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;opacity:.65}
+
+/* ---- the document chrome ---- */
+.top{position:sticky;top:0;z-index:5;background:rgba(237,230,218,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(42,38,34,.1);padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.top b{font-family:var(--disp);font-weight:400;font-size:20px}
+.top .note{font-size:12px;color:var(--ink2)}
+.hours{display:flex;gap:6px;margin-left:auto;align-items:center}
+.hours span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-right:6px}
+.hours button{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.hours button.on{border-color:var(--ink)}
+.wrap{max-width:1500px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+section.wrap{padding-top:72px;padding-bottom:24px}
+h1{font-family:var(--disp);font-weight:300;font-size:clamp(40px,6vw,76px);line-height:.95;letter-spacing:-.02em;font-variation-settings:"opsz" 144,"SOFT" 60}
+h2{font-family:var(--disp);font-weight:300;font-size:clamp(30px,3.6vw,46px);line-height:1;letter-spacing:-.02em;margin:10px 0 14px;font-variation-settings:"opsz" 96,"SOFT" 60}
+.lede{font-size:17px;color:var(--ink2);max-width:62ch;line-height:1.55}
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:44px 32px;margin-top:40px;align-items:start}
+.cap{margin-top:16px;display:grid;gap:4px;font-size:13.5px;color:var(--ink2);max-width:36ch}
+.cap b{font-family:var(--disp);font-weight:400;font-size:18px;color:var(--ink)}
+.cap .spec{font-size:11.5px;color:var(--mute);letter-spacing:.02em;margin-top:4px;line-height:1.6}
+.cap .spec code{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;background:rgba(42,38,34,.06);padding:1px 5px;border-radius:4px}
+
+/* ---- the phone ---- */
+.ph{width:300px;aspect-ratio:390/844;border-radius:52px;background:#0d0e14;padding:10px;box-shadow:0 50px 100px -40px rgba(23,26,38,.55),inset 0 0 0 1px rgba(255,255,255,.06);margin:0 auto;position:relative}
+.ph::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:20px;background:#0d0e14;z-index:4}
+.sc{position:relative;border-radius:43px;height:100%;overflow:hidden;padding:56px 22px 22px;display:flex;flex-direction:column;gap:12px;color:var(--ink);background:var(--sky-fajr);font-size:13px;container-type:inline-size}
+.sc[data-hour=fajr]{background:var(--sky-fajr)}.sc[data-hour=morning]{background:var(--sky-morning)}.sc[data-hour=dhuhr]{background:var(--sky-dhuhr)}
+.sc[data-hour=asr]{background:var(--sky-asr)}.sc[data-hour=maghrib]{background:var(--sky-maghrib);color:var(--sand)}.sc[data-hour=isha]{background:var(--sky-isha);color:var(--sand)}
+.sc.paper{background:var(--sand);gap:10px}
+.sc.night{background:var(--night);color:var(--sand)}
+.sc .noor{position:absolute;inset:-40% -20% auto;height:120%;pointer-events:none;opacity:.22;color:currentColor}
+.sc>*{position:relative}
+.status{position:absolute;top:22px;left:28px;right:28px;display:flex;justify-content:space-between;font-size:11px;font-weight:500;letter-spacing:.02em;z-index:5}
+.st{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;font-weight:500}
+.h{font-family:var(--disp);font-weight:300;font-size:30px;line-height:1.02;letter-spacing:-.02em;font-variation-settings:"opsz" 72,"SOFT" 60}
+.h.sm{font-size:24px}
+.m{font-family:var(--disp);font-style:italic;font-weight:400;font-size:16px;line-height:1.2;font-variation-settings:"opsz" 48,"SOFT" 80}
+.l{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;opacity:.8}
+.note{font-size:12px;line-height:1.55;opacity:.8}
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px}
+.bigar{font-size:58px;line-height:1.75;padding:0 .2em}
+.btn{padding:14px 18px;border-radius:var(--r-pill);border:1px solid currentColor;text-align:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;flex:none}
+.row .btn{flex:1}
+.btn.p{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+.sc[data-hour=maghrib] .btn.p,.sc[data-hour=isha] .btn.p,.sc.night .btn.p{background:var(--sand);color:var(--night);border-color:var(--sand)}
+.btn.ghost{border-color:transparent;opacity:.7}
+.row{display:flex;gap:8px}
+.tab{margin-top:auto;display:flex;justify-content:space-around;align-items:flex-end;padding-top:14px;border-top:1px solid rgba(42,38,34,.12);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;opacity:.55}
+.tab span{display:grid;justify-items:center;gap:5px}.tab i{width:18px;height:18px;border-radius:50%;border:1.3px solid currentColor;opacity:.6}
+.tab .on{opacity:1}.tab .on i{background:currentColor;opacity:1}
+.sc[data-hour=maghrib] .tab,.sc[data-hour=isha] .tab,.sc.night .tab{border-color:rgba(244,238,228,.18)}
+.breath{width:14px;height:14px;border-radius:50%;background:var(--sun);animation:br var(--breath) ease-in-out infinite;box-shadow:0 0 0 0 rgba(232,166,75,.35)}
+@keyframes br{0%,100%{transform:scale(1);opacity:.85;box-shadow:0 0 0 0 rgba(232,166,75,.35)}50%{transform:scale(1.8);opacity:1;box-shadow:0 0 0 14px rgba(232,166,75,0)}}
+.breath.big{width:22px;height:22px}
+.grid99{display:grid;grid-template-columns:repeat(11,1fr);gap:5px;width:100%}
+.grid99 i{aspect-ratio:1;border-radius:50%;background:currentColor;opacity:.14}.grid99 i.on{opacity:1;background:var(--sun)}
+.opt{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.55);font-family:var(--disp);font-size:16px;line-height:1.2;border:1px solid transparent}
+.opt.ok{background:var(--ink);color:var(--sand)}
+.opt.ar{font-size:24px;line-height:1.7;padding:10px 16px}
+.sc[data-hour=asr] .opt{background:rgba(255,255,255,.5)}
+.card{background:rgba(255,255,255,.6);border-radius:18px;padding:12px 14px;display:grid;gap:3px}
+.sc[data-hour=maghrib] .card,.sc[data-hour=isha] .card,.sc.night .card{background:rgba(255,255,255,.1)}
+.chip{display:inline-flex;padding:8px 13px;border-radius:999px;border:1px solid rgba(42,38,34,.18);font-size:11px}
+.chip.on{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.sw{display:flex;gap:6px}.sw i{flex:1;height:26px;border-radius:8px}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;flex:1;min-height:0;overflow:hidden;align-content:start}
+.mini>div{aspect-ratio:5/7;border-radius:10px;display:flex;flex-direction:column;justify-content:space-between;padding:8px 7px;font-size:7px;letter-spacing:.14em;text-transform:uppercase;position:relative;overflow:hidden}
+.mini>div>.ar{font-size:15px;line-height:1.6;text-align:center;letter-spacing:0;text-transform:none}
+.mini .dim{opacity:.45}
+.ncard{aspect-ratio:5/7;border-radius:14px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 20px 40px -22px rgba(23,26,38,.55);color:var(--ink);container-type:inline-size}
+.ncard .top{position:static;background:none;border:0;padding:0;backdrop-filter:none;font-size:7px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;display:flex;justify-content:space-between}
+.ncard .mid{text-align:center;padding:0 .3em}
+.ncard .mid .ar{font-size:clamp(18px,15cqw,56px);line-height:1.7;margin-bottom:.1em}
+.ncard .mid .m{font-size:clamp(9px,6.5cqw,18px)}
+.ncard .mid .l{font-size:clamp(6px,2.8cqw,9px);margin-top:.6em}
+.ncard.h-fajr{background:var(--sky-fajr)}.ncard.h-asr{background:var(--sky-asr)}.ncard.h-isha{background:var(--sky-isha);color:var(--sand)}.ncard.h-maghrib{background:var(--sky-maghrib);color:var(--sand)}
+.ncard .rays{position:absolute;inset:-35%;width:170%;height:170%;opacity:.24;color:currentColor;pointer-events:none}
+.notif{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:20px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);font-size:12px;line-height:1.4}
+.notif .ic{width:34px;height:34px;border-radius:9px;background:var(--sky-fajr);display:grid;place-items:center;flex:none;color:var(--ink)}
+.notif b{display:block;font-weight:500;font-size:11px;margin-bottom:2px}
+.count{font-family:var(--disp);font-size:88px;line-height:1;font-weight:300;letter-spacing:-.03em}
+.ring{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;position:relative}
+.ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.ring::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+.toggle{width:38px;height:22px;border-radius:999px;background:rgba(42,38,34,.18);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff}
+.toggle.on{background:var(--ink)}.toggle.on::after{left:19px}
+.setting{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(42,38,34,.1);font-size:12.5px;gap:12px}
+.setting small{display:block;font-size:10.5px;opacity:.6}
+.env{position:relative;width:78%;aspect-ratio:1.42;margin:8px auto 0;--paper:#F4EEE4;--paper2:#E8DFD0;--paper3:#DCD2C0}
+.env-body{position:absolute;inset:0;background:var(--paper2);border-radius:10px;box-shadow:0 24px 50px -26px rgba(23,26,38,.55)}
+.env-card{position:absolute;left:50%;bottom:8%;width:56%;transform:translate(-50%,-36%);z-index:1}
+.env-pocket{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,var(--paper),var(--paper2));clip-path:polygon(0 0,50% 46%,100% 0,100% 100%,0 100%);border-radius:10px;display:flex;align-items:flex-end;padding:8% 9%;color:var(--ink);font-family:var(--disp);font-style:italic;font-size:16px}
+.env-pocket span{display:grid;line-height:1.1}.env-pocket span small{font:500 8px var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.6;font-style:normal}
+.ledge{width:66%;margin:0 auto;position:relative}
+.ledge::after{content:"";position:absolute;left:8%;right:8%;bottom:-18px;height:18px;border-radius:50%;background:radial-gradient(ellipse,rgba(23,26,38,.35),transparent 70%);filter:blur(3px)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;font-size:8px;text-align:center}
+.cal i{height:17px;border-radius:5px;background:rgba(42,38,34,.07);display:grid;place-items:center;font-style:normal}
+.cal i.on{background:var(--sun);color:var(--night)}.cal i.q{background:var(--sage);color:#fff}
+.flow{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--ink2);margin:26px 0 0;flex-wrap:wrap}
+.flow span{background:rgba(42,38,34,.06);padding:8px 14px;border-radius:999px}.flow b{opacity:.4}
+/* ---- token sheets ---- */
+.tokens{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px}
+.tk{background:#fff;border-radius:22px;padding:22px;display:grid;gap:10px;font-size:13px;color:var(--ink2)}
+.tk b{font-family:var(--disp);font-weight:400;font-size:19px;color:var(--ink)}
+.tk .swatch{display:flex;gap:6px}.tk .swatch i{flex:1;height:38px;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.tk code{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:rgba(42,38,34,.06);padding:2px 6px;border-radius:5px;color:var(--ink)}
+.tk ul{padding-left:16px;display:grid;gap:5px}
+.type-sample{display:grid;gap:8px}.type-sample div{display:flex;align-items:baseline;gap:12px}.type-sample small{font-size:10px;color:var(--mute);letter-spacing:.06em;min-width:120px}
+.rules{columns:2;column-gap:40px;margin-top:24px;font-size:15px;color:var(--ink2);line-height:1.6}
+.rules p{break-inside:avoid;margin-bottom:14px}.rules b{color:var(--ink);font-weight:500}
+.foot{padding:48px 0 64px;font-size:12px;color:var(--mute);border-top:1px solid rgba(42,38,34,.1);margin-top:48px}
+@media(max-width:700px){.rules{columns:1}.phones{gap:36px 16px}}
+</style>
+</head>
+<body>
+<div class="top">
+  <b>99names · the app</b><span class="note">Design reference for the Expo build · 390 × 844 · every screen follows the sky</span>
+  <div class="hours"><span>Preview hour</span>
+    <button data-h="fajr" style="background:var(--sky-fajr)" class="on" title="Fajr"></button><button data-h="morning" style="background:var(--sky-morning)" title="Morning"></button><button data-h="dhuhr" style="background:var(--sky-dhuhr)" title="Dhuhr"></button><button data-h="asr" style="background:var(--sky-asr)" title="Asr"></button><button data-h="maghrib" style="background:var(--sky-maghrib)" title="Maghrib"></button><button data-h="isha" style="background:var(--sky-isha)" title="Isha"></button>
+  </div>
+</div>
+<section class="wrap" id="intro">
+  <div class="eyebrow">99names · iOS &amp; Android · Expo</div>
+  <h1>An app you open <em>to feel the light.</em></h1>
+  <p class="lede" style="margin-top:18px">Nineteen screens. The background is never chosen — it's the hour, read from the local prayer times. One name at a time, a dot that breathes, a quiet "do you remember?" on Fridays. No streaks, no red badges, no guilt. Use the hour dots above to see how the sky-following screens change through the day.</p>
+  <div class="flow"><span>Splash</span><b>→</b><span>3 welcome screens</span><b>→</b><span>Home</span><b>→</b><span>Name</span><b>·</b><span>Names</span><b>·</b><span>Remember</span><b>·</b><span>You</span><b>·</b><span>Send</span><b>·</b><span>Breath</span></div>
+</section>
+
+<section class="wrap" id="onboarding">
+  <div class="eyebrow">01 — Arrive</div>
+  <h2>Four screens, <em>ninety seconds.</em></h2>
+  <p class="lede">The only question we ask is when they'd like their quiet hour. Everything else has a default that's already right.</p>
+  <div class="phones">
+
+    <div><div class="ph"><div class="sc" data-follow data-hour="fajr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <svg class="noor rays" data-r1="105" data-r2="200" data-w="0.8"></svg>
+      <div class="center" style="gap:18px"><svg class="mark" data-size="88"></svg><div class="h">99names</div><div class="m">Light, by name.</div><div class="breath" style="margin-top:8px"></div></div>
+    </div></div><div class="cap"><b>Splash</b><span>The mark breathes once (4s) while prayer times load. Never longer than one breath; if the location is unknown, fall back to the clock and continue.</span><div class="spec">Mark scales 1→1.06→1 over <code>--breath</code>. Background is today's hour. No logo wordmark animation.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="fajr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Welcome</span><span>1 / 3</span></div>
+      <div class="center" style="gap:14px"><div class="ar bigar" style="font-size:52px">ٱلرَّحْمَـٰنُ</div><div class="h">Ninety-nine names.<br><em>One at a time.</em></div><p class="note" style="text-align:center;max-width:26ch">One name a week. At that pace you'll know all 99 in under two years. Slower is fine.</p></div>
+      <div class="btn p">Begin with Ar-Rahman</div><div class="btn ghost">I already know some</div>
+    </div></div><div class="cap"><b>Welcome · 1</b><span>The first name is on screen before any promise about the app. "I already know some" opens a 60-second placement round and pre-fills progress.</span><div class="spec">Swipe or tap to advance. Buttons: 52pt tall, pill, 10px/0.16em caps.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="asr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Welcome</span><span>2 / 3</span></div>
+      <div class="center" style="gap:16px;justify-content:center">
+        <div class="h">It follows <em>the sky.</em></div>
+        <div class="sw" style="width:100%"><i style="background:var(--sky-fajr)"></i><i style="background:var(--sky-morning)"></i><i style="background:var(--sky-dhuhr)"></i><i style="background:var(--sky-asr)"></i><i style="background:var(--sky-maghrib)"></i><i style="background:var(--sky-isha)"></i></div>
+        <div class="st" style="width:100%;opacity:.6"><span>Fajr</span><span>Isha</span></div>
+        <p class="note" style="text-align:center;max-width:28ch">Blush at Fajr, sage at Asr, navy at Isha. The app reads your prayer times and wears the hour — you never pick a theme.</p>
+      </div>
+      <div class="btn p">Use my location</div><div class="btn ghost">Set my city instead</div>
+    </div></div><div class="cap"><b>Welcome · 2</b><span>The location ask, explained by showing the six skies. Manual city is a first-class path, not a fallback.</span><div class="spec">Location: <code>whenInUse</code>, cached daily. Prayer times via <code>adhan</code>, Muslim World League by default.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="isha"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Welcome</span><span>3 / 3</span></div>
+      <div class="center" style="gap:16px">
+        <div class="h">When's your <em>quiet hour?</em></div>
+        <p class="note" style="text-align:center;max-width:28ch">One line, once a day, at this time. It's a gradient, not an alarm. Change it any time.</p>
+        <div class="chips" style="justify-content:center"><span class="chip" style="border-color:rgba(244,238,228,.3)">After Fajr</span><span class="chip" style="border-color:rgba(244,238,228,.3)">Lunch</span><span class="chip on" style="background:var(--sand);color:var(--night);border-color:var(--sand)">Before sleep</span><span class="chip" style="border-color:rgba(244,238,228,.3)">A time…</span></div>
+      </div>
+      <div class="btn p">That's my hour</div><div class="btn ghost">No reminders</div>
+    </div></div><div class="cap"><b>Welcome · 3</b><span>The only real question. "No reminders" is a full-size option — the app must feel complete without notifications.</span><div class="spec">Requests notification permission only after this tap, never on launch.</div></div></div>
+
+  </div>
+</section>
+
+<section class="wrap" id="home">
+  <div class="eyebrow">02 — Today</div>
+  <h2>The screen you <em>come back to.</em></h2>
+  <p class="lede">One name in the middle, the hour behind it, a dot that breathes at the pace of slow dhikr. Everything else is a tap away, not in your face. The same screen, at four hours, below.</p>
+  <div class="phones">
+
+    <div><div class="ph"><div class="sc" data-follow data-hour="fajr"><div class="status"><span>5:14</span><span>●●●</span></div>
+      <svg class="noor rays" data-r1="110" data-r2="200" data-w="0.7"></svg>
+      <div class="st"><span data-hourlabel>Fajr · 05:14</span><span>Week 12</span></div>
+      <div class="h">Good morning,<br><em>Amaar.</em></div>
+      <div class="center" style="gap:6px"><div class="ar bigar">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur · No. 99</div><div class="breath" style="margin-top:18px"></div></div>
+      <div class="row"><div class="btn p">▶ Listen</div><div class="btn">Reflect</div></div>
+      <div class="tab"><span class="on"><i></i>Today</span><span><i></i>Names</span><span><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>Home</b><span>Greeting changes with the hour (Good morning / afternoon / evening / night). The name is this week's; tapping it opens the detail. The dot is the only animation on screen.</span><div class="spec">Arabic 58px Scheherazade New, line-height 1.75, padding 0 .2em so diacritics never clip. Tab bar: 4 items, no badges, ever.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="maghrib"><div class="status"><span>18:52</span><span>●●●</span></div>
+      <svg class="noor rays" data-r1="110" data-r2="200" data-w="0.7"></svg>
+      <div class="st"><span>Maghrib · 18:52</span><span>Dhikr</span></div>
+      <div class="center" style="gap:10px"><div class="ar bigar">ٱلصَّبُورُ</div><div class="m">Say it once, slowly.</div><div class="ring" style="margin-top:14px"><div class="count">27</div></div><div class="l" style="opacity:.7">of 33 · tap anywhere</div></div>
+      <div class="row"><div class="btn ghost" style="border-color:rgba(244,238,228,.3)">Reset</div><div class="btn p">Done for now</div></div>
+      <div class="tab"><span class="on"><i></i>Today</span><span><i></i>Names</span><span><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>Home · Dhikr mode</b><span>Long-press the breathing dot to enter. The whole screen is the tap target; haptic on each count, a softer one at 33. Nothing to "complete".</span><div class="spec">Count in Fraunces 88px. Light haptic per tap, medium at 33/99. Screen stays awake.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="dhuhr"><div class="status"><span>13:20</span><span>●●●</span></div>
+      <svg class="noor rays" data-r1="110" data-r2="200" data-w="0.7"></svg>
+      <div class="st"><span>Friday · Jumu'ah</span><span>Week 12</span></div>
+      <div class="h">Do you <em>remember?</em></div>
+      <p class="note">Twelve names so far. A gentle round of five, before the khutbah or after.</p>
+      <div class="center"><div class="ledge" style="width:58%"><div class="ncard h-fajr"><svg class="rays" data-r1="105" data-r2="200" data-w="0.8"></svg><div class="top"><span>99names</span><span>No. 09</span></div><div class="mid"><div class="ar">ٱلْجَبَّارُ</div><div class="m">The Restorer</div><div class="l">Al-Jabbar</div></div><div class="top"><span>Fajr</span><span>٩</span></div></div></div></div>
+      <div class="row"><div class="btn p">Five names, gently</div><div class="btn ghost">Not today</div></div>
+      <div class="tab"><span class="on"><i></i>Today</span><span><i></i>Names</span><span><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>Home · Friday</b><span>Once a week the Today screen offers a five-question round. "Not today" is not remembered against you; it simply returns next Friday.</span><div class="spec">Card lifts 6pt with a soft shadow ("ledge"). Never a streak counter.</div></div></div>
+
+    <div><div class="ph"><div class="sc night"><div class="status"><span>22:41</span><span>●●●</span></div>
+      <div class="center" style="gap:12px;justify-content:center">
+        <div class="ring" style="width:210px;height:210px"><div style="text-align:center"><div class="count" style="font-size:64px">4</div><div class="l" style="opacity:.6;margin-top:4px">breathe in</div></div></div>
+        <div class="ar" style="font-size:34px;margin-top:8px">ٱلسَّلَامُ</div><div class="m">As-Salam · The Source of Peace</div>
+      </div>
+      <div class="note" style="text-align:center;opacity:.6">4 in · 4 hold · 6 out · with one name</div>
+      <div class="row"><div class="btn ghost" style="border-color:rgba(244,238,228,.3)">2 min</div><div class="btn p">5 min</div><div class="btn ghost" style="border-color:rgba(244,238,228,.3)">10 min</div></div>
+    </div></div><div class="cap"><b>Breath</b><span>A full-screen breathing timer with one name. The ring expands on the in-breath, holds, releases. Reachable from Today (swipe up) and from the widget.</span><div class="spec">Ring: 210pt, scale 1→1.35 over 4s in, hold 4s, 6s out. Optional generative pad (the site's Ambience), off by default.</div></div></div>
+
+  </div>
+</section>
+
+<section class="wrap" id="names">
+  <div class="eyebrow">03 — The names</div>
+  <h2>The deck, <em>on screen.</em></h2>
+  <div class="phones">
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>← Today</span><span>No. 99 · Isha</span></div>
+      <div class="ar" style="font-size:50px;line-height:1.7;text-align:center;padding:0 .2em">ٱلصَّبُورُ</div>
+      <div style="text-align:center;margin-top:-6px"><div class="m">As-Sabur · The Infinitely Patient</div></div>
+      <div class="ar" style="font-family:var(--nasta);font-weight:400;font-size:14px;line-height:2;text-align:center;opacity:.8;margin-top:4px">فَٱصْبِرْ صَبْرًا جَمِيلًا</div>
+      <div class="note" style="text-align:center;font-size:11px;opacity:.6;margin-top:-6px">So be patient with a beautiful patience — 70:5</div>
+      <div class="card" style="margin-top:6px"><span class="l" style="opacity:.6">Root</span><span><span class="ar" style="font-size:18px;line-height:1.4">ص-ب-ر</span> · to bear, to endure, to hold steady.</span></div>
+      <div class="card"><span class="l" style="opacity:.6">This week</span><span class="m" style="font-size:15px">He has never once rushed you. Notice who you rush.</span></div>
+      <div class="card"><span class="l" style="opacity:.6">Say it</span><span style="font-size:12px">Once, slowly, after a prayer. <em>Yā Sabūr</em>.</span></div>
+      <div class="row" style="margin-top:auto"><div class="btn p">▶ Listen · 0:06</div><div class="btn">Send</div><div class="btn" style="flex:0;padding:14px 16px">♡</div></div>
+    </div></div><div class="cap"><b>Name detail</b><span>Root, one verse, one reflection, one dua. Short enough to read at a red light, deep enough to return to. Swipe left/right for the neighbouring names.</span><div class="spec">Verse in Amiri 14px/2.0. Audio: one warm voice, ≤ 8s per name, offline-bundled. "Send" opens the in-app Send-a-Name with this name preselected.</div></div></div>
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Names</span><span>41 of 99 met</span></div>
+      <div class="h sm">All <em>ninety-nine.</em></div>
+      <div class="chips"><span class="chip on">By hour</span><span class="chip">By number</span><span class="chip">Met</span><span class="chip">Search</span></div>
+      <div class="mini" id="mini"></div>
+      <div class="tab"><span><i></i>Today</span><span class="on"><i></i>Names</span><span><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>All names</b><span>Scrolling down moves from dawn to night; the grid is one slow gradient. Met names are full colour, unmet are faded. Tap a card to open it, long-press to send it.</span><div class="spec">3 columns, 5:7 cards, 8pt gap. Section headers per hour (Fajr… Isha) pin while scrolling.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="asr"><div class="status"><span>16:05</span><span>●●●</span></div>
+      <div class="st"><span>← Remember · Level 4</span><span>4 / 11</span></div>
+      <div style="height:4px;border-radius:2px;background:rgba(42,38,34,.12)"><div style="width:36%;height:100%;border-radius:2px;background:var(--sun)"></div></div>
+      <div class="ar bigar" style="text-align:center;margin-top:10px">ٱلْوَدُودُ</div>
+      <div class="l" style="text-align:center;margin-bottom:6px">What does this name mean?</div>
+      <div class="opt">The Light</div><div class="opt ok">The Most Loving ✓</div><div class="opt">The Patient</div><div class="opt">The Provider</div>
+      <div class="note" style="text-align:center;margin-top:auto">Al-Wadud. <em>He loved you before you were lovable.</em></div>
+      <div class="btn p">Continue</div>
+    </div></div><div class="cap"><b>Remember · question</b><span>Called "Remember", never "Test". Four formats (Arabic→meaning, meaning→Arabic, transliteration→meaning, meaning→name). A wrong answer just shows the name again, warmly — the correct one lights, nothing shakes or buzzes.</span><div class="spec">Mastery: right twice in two formats. A miss returns the name to learning. Mirrors the web model in <code>Quiz.tsx</code>.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="asr"><div class="status"><span>16:09</span><span>●●●</span></div>
+      <div class="st"><span>Level 4 · done</span><span>Asr</span></div>
+      <div class="center" style="gap:12px"><svg class="mark" data-size="56"></svg><div class="h" style="text-align:center">9 of 11 <em>this round.</em></div><p class="note" style="text-align:center;max-width:26ch">Forty-one names are yours now. The rest will come back around, gently.</p>
+        <div class="grid99" data-on="41" style="width:88%"></div></div>
+      <div class="row"><div class="btn p">Share "41 names"</div><div class="btn">Back to the path</div></div>
+      <div class="tab"><span><i></i>Today</span><span><i></i>Names</span><span class="on"><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>Remember · result</b><span>The 99-dot grid fills in the hour's gold. Share renders a 1080×1920 story card with the dots and "I know 41 names" — the viral loop, without a leaderboard.</span><div class="spec">Level certificates match the web ones (hour ribbon, nine medallions). Grand certificate at 99/99.</div></div></div>
+
+  </div>
+</section>
+
+<section class="wrap" id="you">
+  <div class="eyebrow">04 — You &amp; Send</div>
+  <h2>Progress without pressure. <em>Giving without friction.</em></h2>
+  <div class="phones">
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>You</span><span>Week 12</span></div>
+      <div class="h sm">41 names <em>close.</em></div>
+      <div class="grid99" data-on="41" style="gap:4px"></div>
+      <div class="note" style="font-size:11px">58 to meet. At one a week you'll know all 99 by <b style="font-weight:500">Ramadan 1449</b>.</div>
+      <div class="card" style="gap:8px"><span class="l" style="opacity:.6">The last two weeks</span><div class="cal" id="cal"></div><span class="note" style="font-size:10.5px;opacity:.6">Gold: read a name · Sage: a Remember round. Gaps are fine.</span></div>
+      <div class="card"><span class="l" style="opacity:.6">Certificates</span><div class="row" style="gap:6px"><i style="flex:1;height:10px;border-radius:99px;background:var(--sky-fajr)"></i><i style="flex:1;height:10px;border-radius:99px;background:var(--sky-morning)"></i><i style="flex:1;height:10px;border-radius:99px;background:var(--sky-dhuhr)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i><i style="flex:1;height:10px;border-radius:99px;background:rgba(42,38,34,.08)"></i></div></div>
+      <div class="tab"><span><i></i>Today</span><span><i></i>Names</span><span><i></i>Remember</span><span class="on"><i></i>You</span></div>
+    </div></div><div class="cap"><b>You</b><span>Ninety-nine dots. A calendar that shows presence, not absence — there is no "missed" state, no broken chain. The projected finish date is the only forward-looking number.</span><div class="spec">The dots are the single progress device (kept from Direction 02). Never a percentage.</div></div></div>
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Send a name</span><span>1 · Choose</span></div>
+      <div class="h sm">Who is it <em>for?</em></div>
+      <div class="chips"><span class="chip on">Grieving</span><span class="chip">Unwell</span><span class="chip">Anxious</span><span class="chip">A new baby</span><span class="chip">Exams</span><span class="chip">Just because</span><span class="chip">…</span></div>
+      <div class="m" style="font-size:14px;opacity:.8">For someone carrying a loss.</div>
+      <div class="mini" style="grid-template-columns:repeat(2,1fr);gap:10px">
+        <div class="ncard h-isha" style="border-radius:12px"><div class="top"><span>99names</span><span>No. 99</span></div><div class="mid"><div class="ar">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div><div class="top"><span>Isha</span><span>٩٩</span></div></div>
+        <div class="ncard h-fajr" style="border-radius:12px"><div class="top"><span>99names</span><span>No. 09</span></div><div class="mid"><div class="ar">ٱلْجَبَّارُ</div><div class="m">The Restorer</div><div class="l">Al-Jabbar</div></div><div class="top"><span>Fajr</span><span>٩</span></div></div>
+      </div>
+      <div class="note" style="text-align:center;opacity:.6;font-size:11px">Or search all 99 ↓</div>
+      <div class="tab"><span><i></i>Today</span><span><i></i>Names</span><span><i></i>Remember</span><span><i></i>You</span></div>
+    </div></div><div class="cap"><b>Send · choose</b><span>The same "who is it for" layer as the web (<code>lib/moods.ts</code>): a feeling maps to five names. Tap a card to pick it.</span><div class="spec">Reachable from any name (Send) and from the Today screen's long-press menu.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-follow data-hour="fajr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>← Send a name</span><span>2 · Write</span></div>
+      <div class="env"><div class="env-body"></div><div class="env-card"><div class="ncard h-isha"><svg class="rays" data-r1="105" data-r2="200" data-w="0.8"></svg><div class="top"><span>99names</span><span>No. 99</span></div><div class="mid"><div class="ar">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div><div class="top"><span>Isha</span><span>٩٩</span></div></div></div><div class="env-pocket"><span><small>For</small>Nayla</span></div></div>
+      <div class="card" style="margin-top:14px"><span class="l" style="opacity:.6">To</span><span style="font-size:15px">Nayla</span></div>
+      <div class="card"><span class="l" style="opacity:.6">A line, if you like</span><span class="m" style="font-size:14px">I thought of you when I read this one. Rest, sis.</span><span class="note" style="font-size:10px;opacity:.5;text-align:right">49 / 240</span></div>
+      <div class="row" style="margin-top:auto"><div class="btn p">Send the link · free</div></div>
+      <div class="btn ghost">Post the real card · $6</div>
+    </div></div><div class="cap"><b>Send · write</b><span>Every keystroke lands on the envelope. Free link first; the printed card is a quiet second option that opens the same checkout as the web (Squad).</span><div class="spec">Envelope = the site's <code>Envelope</code> component, state <code>peek</code>. Note ≤ 240 chars. Link generated on device (no account, no server).</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-follow data-hour="fajr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Sent</span><span>As-Sabur for Nayla</span></div>
+      <div class="center" style="gap:10px"><div class="ledge" style="width:56%"><div class="ncard h-isha"><svg class="rays" data-r1="105" data-r2="200" data-w="0.8"></svg><div class="top"><span>99names</span><span>No. 99</span></div><div class="mid"><div class="ar">ٱلصَّبُورُ</div><div class="m">The Infinitely Patient</div><div class="l">As-Sabur</div></div><div class="top"><span>Isha</span><span>٩٩</span></div></div></div><div class="h sm" style="margin-top:22px;text-align:center">It's <em>ready.</em></div><p class="note" style="text-align:center;max-width:26ch">Send it however you talk to Nayla. She'll open an envelope with her name on it.</p></div>
+      <div class="card" style="flex-direction:row;display:flex;align-items:center;justify-content:space-between;font-size:11px;opacity:.9"><span>99names.net/for/eyJuIjo5…</span><b style="font-weight:500;letter-spacing:.14em;font-size:9px">COPY</b></div>
+      <div class="row"><div class="btn p">WhatsApp</div><div class="btn">Message</div><div class="btn" style="flex:0 0 auto;padding:14px 16px">…</div></div>
+    </div></div><div class="cap"><b>Send · share</b><span>The card settles on a ledge, the link sits under it, the doors are the ones people actually use. Later, a quiet "Nayla opened it" notification — the one notification that isn't about you.</span><div class="spec">Uses the native share sheet for "More". Opened-receipt is optional, off if the recipient declines.</div></div></div>
+
+  </div>
+</section>
+
+<section class="wrap" id="system">
+  <div class="eyebrow">05 — Outside the app</div>
+  <h2>Reminders are gradients, <em>not alarms.</em></h2>
+  <div class="phones">
+
+    <div><div class="ph"><div class="sc night" style="justify-content:flex-start;gap:10px;padding-top:70px"><div class="status" style="opacity:.6"><span>Lock</span><span>●●●</span></div>
+      <div class="disp" style="font-size:64px;text-align:center;font-weight:300;line-height:1">22:41</div><div class="note" style="text-align:center;opacity:.6;font-size:12px">Thursday 12 March</div>
+      <div class="notif" style="margin-top:34px"><div class="ic"><svg class="mark" data-size="22"></svg></div><div><b>99names · now</b>As-Sabur. The night is long; so is His patience.</div></div>
+      <div class="notif" style="padding:16px;flex-direction:column;gap:8px"><div class="st" style="opacity:.6;width:100%"><span>Widget · This week</span><span>No. 99</span></div><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><div class="ar" style="font-size:28px;line-height:1.5">ٱلصَّبُورُ</div><div class="m" style="font-size:14px">The Patient</div></div></div>
+    </div></div><div class="cap"><b>Lock screen · notification + widget</b><span>One line, once a day, at the chosen hour. The line is the name's reflection, never "You haven't opened the app". The widget is just the name.</span><div class="spec">Notification: title "99names", body ≤ 70 chars, no emoji, no sound by default. Never more than one per day. No re-engagement campaigns, ever.</div></div></div>
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Widgets</span><span>iOS · Android</span></div>
+      <div class="h sm">Three sizes, <em>one name.</em></div>
+      <div class="row" style="align-items:flex-start">
+        <div class="ncard h-fajr" style="aspect-ratio:1;width:44%;border-radius:18px;justify-content:center;align-items:center;padding:10px"><div class="ar" style="font-size:26px;line-height:1.5">ٱلصَّبُورُ</div><div class="l" style="font-size:6px">As-Sabur</div></div>
+        <div class="card" style="flex:1;font-size:11px;gap:2px;align-self:stretch;justify-content:center"><span class="l" style="opacity:.6">Small</span><span>Arabic + transliteration. Tap opens the name.</span></div>
+      </div>
+      <div class="ncard h-asr" style="aspect-ratio:2.1;border-radius:18px;padding:12px 14px;flex-direction:row;align-items:center;gap:12px"><div><div class="l" style="font-size:6px;opacity:.7">This week · No. 99</div><div class="m" style="font-size:14px;margin-top:4px">The Infinitely Patient</div><div class="note" style="font-size:9px;margin-top:4px;opacity:.75">He has never once rushed you.</div></div><div class="ar" style="font-size:30px;line-height:1.5;margin-left:auto">ٱلصَّبُورُ</div></div>
+      <div class="ncard h-isha" style="aspect-ratio:2.1;border-radius:18px;padding:12px 14px;flex-direction:row;align-items:center;gap:12px"><div class="breath big" style="flex:none"></div><div><div class="l" style="font-size:6px;opacity:.7">Breath</div><div class="m" style="font-size:14px;margin-top:2px">Two quiet minutes</div></div><div class="grid99" style="width:34%;margin-left:auto;grid-template-columns:repeat(9,1fr);gap:3px" data-on="41" data-n="27"></div></div>
+      <div class="note" style="font-size:11px;opacity:.7">Widgets wear the current hour, like the app. They refresh at each prayer time.</div>
+    </div></div><div class="cap"><b>Widgets</b><span>Small: the name. Medium: name + line. A second medium launches Breath directly. Backgrounds follow the hour via a shared timeline of the day's prayer times.</span><div class="spec">WidgetKit / Glance. Timeline entries at Fajr, sunrise, Dhuhr, Asr, Maghrib, Isha.</div></div></div>
+
+    <div><div class="ph"><div class="sc paper"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>Settings</span><span></span></div>
+      <div class="h sm">Quiet <em>settings.</em></div>
+      <div class="setting"><div>Quiet hour<small>Before sleep · 22:30</small></div><span class="chip">Change</span></div>
+      <div class="setting"><div>Follow the sky<small>Prayer times for Lagos</small></div><div class="toggle on"></div></div>
+      <div class="setting"><div>Friday round<small>Five questions on Jumu'ah</small></div><div class="toggle on"></div></div>
+      <div class="setting"><div>Sound<small>A quiet pad in Breath</small></div><div class="toggle"></div></div>
+      <div class="setting"><div>Arabic size<small>Larger, for beginners</small></div><span class="chip">A · <b style="font-weight:500">A</b></span></div>
+      <div class="setting"><div>Calculation method<small>Muslim World League</small></div><span class="chip">Change</span></div>
+      <div class="setting" style="border:0"><div>Opened receipts<small>Tell me when a sent name is opened</small></div><div class="toggle on"></div></div>
+      <div class="note" style="font-size:10.5px;opacity:.55;margin-top:auto">99names 1.0 · Nothing here is tracked beyond your phone. Progress backs up to iCloud / Google Drive.</div>
+    </div></div><div class="cap"><b>Settings</b><span>Seven rows. No account, no profile photo, no subscription screen. Progress backs up to the platform's own store so the app never needs a login.</span><div class="spec">If a paid tier ever exists it is one purchase (the audio pack), never a subscription, never a paywall on names.</div></div></div>
+
+    <div><div class="ph"><div class="sc" data-hour="fajr"><div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="st"><span>App Store</span><span>Screenshot 1 of 5</span></div>
+      <div class="center" style="gap:8px"><div class="h" style="text-align:center;font-size:34px">The app that<br><em>knows what<br>time it is.</em></div><p class="note" style="text-align:center;max-width:24ch;margin-top:4px">One name a week. No streaks. No guilt.</p>
+        <div class="ledge" style="width:52%;margin-top:18px"><div class="ncard h-maghrib"><svg class="rays" data-r1="105" data-r2="200" data-w="0.8"></svg><div class="top"><span>99names</span><span>No. 47</span></div><div class="mid"><div class="ar">ٱلْوَدُودُ</div><div class="m">The Most Loving</div><div class="l">Al-Wadud</div></div><div class="top"><span>Maghrib</span><span>٤٧</span></div></div></div></div>
+      <div class="l" style="text-align:center;opacity:.6">99names · Light, by name.</div>
+    </div></div><div class="cap"><b>Store listing</b><span>Five screenshots, one sentence each: knows the time · one name a week · remember, gently · send a name · breathe. Category: Lifestyle (Productivity as secondary). No feature lists in the images.</span><div class="spec">Subtitle: "The 99 Names, one a week." Keywords: asma ul husna, 99 names, dhikr, prayer times, calm.</div></div></div>
+
+  </div>
+</section>
+
+<section class="wrap" id="tokens">
+  <div class="eyebrow">06 — The system</div>
+  <h2>Tokens, <em>for the theme file.</em></h2>
+  <div class="tokens">
+    <div class="tk"><b>Skies</b><div class="swatch"><i style="background:var(--sky-fajr)"></i><i style="background:var(--sky-morning)"></i><i style="background:var(--sky-dhuhr)"></i><i style="background:var(--sky-asr)"></i><i style="background:var(--sky-maghrib)"></i><i style="background:var(--sky-isha)"></i></div>
+      <ul><li><code>fajr</code> #F6DCCF → #EFD9B8 → #CFD9C4 → #C9DBE6</li><li><code>morning</code> #F4EEE4 → #F3E3C2 → #EFD9B8</li><li><code>dhuhr</code> #F4EEE4 → #EFD9B8 → #F2CFC0</li><li><code>asr</code> #EFD9B8 → #CFD9C4 → #A9BFA6</li><li><code>maghrib</code> #E8A64B → #D98C7C → #6B5A7A → #2A2F44 · light ink</li><li><code>isha</code> #2A2F44 → #1B1E2C → #171A26 · light ink</li></ul>
+      <span>Angle 160° (170° for Maghrib). Cross-fade between hours over 1.2s when the prayer time passes — never a hard cut.</span></div>
+    <div class="tk"><b>Ink</b><div class="swatch"><i style="background:#2A2622"></i><i style="background:#5A534B"></i><i style="background:#8C847A"></i><i style="background:#F4EEE4"></i><i style="background:#E8A64B"></i><i style="background:#171A26"></i></div>
+      <ul><li><code>ink</code> #2A2622 · <code>ink2</code> #5A534B · <code>mute</code> #8C847A</li><li><code>sand</code> #F4EEE4 (ink on dark hours) · <code>night</code> #171A26</li><li><code>sun</code> #E8A64B — the only accent: the breathing dot, progress, the correct answer</li><li>No pure black, no pure white, no gold foil, no crescents.</li></ul></div>
+    <div class="tk"><b>Type</b><div class="type-sample">
+      <div><small>Display</small><span class="disp" style="font-size:28px">Fraunces 300 <em>italic 400</em></span></div>
+      <div><small>Body</small><span style="font-size:15px">DM Sans 300 · 400 · 500</span></div>
+      <div><small>Arabic</small><span class="ar" style="font-size:26px;line-height:1.5">ٱلرَّحْمَـٰنُ</span></div>
+      <div><small>Verse</small><span class="ar" style="font-family:var(--nasta);font-weight:400;font-size:18px;line-height:1.6">فَٱصْبِرْ صَبْرًا جَمِيلًا</span></div></div>
+      <ul><li>Arabic: Scheherazade New 600, <b>line-height 1.75–1.9</b>, side padding .2em. Its ink exceeds the em box; never sit Latin directly under it without ≥ .1em margin.</li><li>Labels: 9.5–10px, 0.24em tracking, uppercase, 500.</li><li>Sizes scale with the container (cqw), not the screen.</li></ul></div>
+    <div class="tk"><b>Shape &amp; space</b><ul><li>Cards <code>22</code> · sheets <code>28</code> · chips <code>14</code> · pills <code>999</code></li><li>4pt grid: 4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48</li><li>Screen padding 22pt; safe-area aware.</li><li>Card ratio always 5:7. Shadow <code>0 30 60 -30 rgba(23,26,38,.5)</code>.</li><li>Surfaces: white at 55–60% on light hours, 10–14% on dark.</li></ul></div>
+    <div class="tk"><b>Motion</b><ul><li>Ease <code>cubic-bezier(.2,.8,.2,1)</code> · fast .25s · base .5s · slow .9s</li><li>The breath: 4s in/out, scale 1→1.8, opacity .85→1. The one loop allowed on screen.</li><li>Screens rise 24pt + fade on entry. Cards lift 6pt on press. Envelope flap .55s, card out 1s.</li><li>Reduced-motion: all of it off except the breath at half amplitude.</li><li>Haptics: light on picks, medium on 33 / 99, none on errors.</li></ul></div>
+    <div class="tk"><b>Voice</b><ul><li>Present tense, second person, gentle. "It will come back around."</li><li>Never: streak, test, score, missed, fail, unlock, badge, premium.</li><li>Always: remember, meet, met, close, gently, whenever.</li><li>Names are written <em>As-Sabur</em> (hyphen, capitalised article). The Prophet's name carries ﷺ.</li></ul></div>
+  </div>
+
+  <h2 style="margin-top:56px">Rules that make it <em>#1.</em></h2>
+  <div class="rules">
+    <p><b>The first thing on screen is a name, not a feature.</b> Every screen, including onboarding and the store listing, leads with Arabic.</p>
+    <p><b>Nothing counts against you.</b> No streaks, no "missed days", no red. Progress is dots that fill; absence is invisible.</p>
+    <p><b>One animation per screen.</b> The breath. Everything else is a transition, and transitions are slow (.5–.9s) and eased the same way.</p>
+    <p><b>The hour does the theming.</b> There is no dark mode toggle; Maghrib and Isha are the dark mode. Widgets and notifications follow the same clock.</p>
+    <p><b>Offline first.</b> All 99 names, meanings, verses and audio are bundled. The app is complete on a plane.</p>
+    <p><b>No account.</b> Progress lives on the device and backs up to iCloud / Google Drive. Send-a-Name works without login; payment happens in a web sheet.</p>
+    <p><b>Notifications are a gift, not a hook.</b> One per day at most, each one a reflection line. Never "we miss you".</p>
+    <p><b>Arabic breathes.</b> Line-height ≥ 1.75, padding on both sides, Latin never touches it. If it's tight, the Arabic gets smaller, not the space.</p>
+    <p><b>Every screen has an exit.</b> "Not today", "No reminders", "Back to the path" are always full-size, never grey links.</p>
+    <p><b>Share, don't compete.</b> The only social feature is sending a name to someone. No friends list, no leaderboard.</p>
+  </div>
+</section>
+
+<div class="wrap foot">99names · app design reference · tokens mirror <code>site/app/globals.css</code> · names and moods come from <code>site/lib/names.ts</code> and <code>site/lib/moods.ts</code></div>
+
+<script>
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  /* the 99-ray mark, one ray per name */
+  function rays(svg, r1, r2, w){
+    svg.setAttribute("viewBox","0 0 400 400");
+    const g=document.createElementNS(NS,"g"); g.setAttribute("stroke","currentColor"); g.setAttribute("stroke-width",w); g.setAttribute("stroke-linecap","round");
+    for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2; const l=document.createElementNS(NS,"line");
+      l.setAttribute("x1",200+Math.cos(a)*r1); l.setAttribute("y1",200+Math.sin(a)*r1); l.setAttribute("x2",200+Math.cos(a)*r2); l.setAttribute("y2",200+Math.sin(a)*r2); g.appendChild(l);}
+    svg.appendChild(g);
+  }
+  document.querySelectorAll("svg.rays").forEach(s=>rays(s,+s.dataset.r1||110,+s.dataset.r2||200,+s.dataset.w||.8));
+  document.querySelectorAll("svg.mark").forEach(s=>{const n=+s.dataset.size||28; s.setAttribute("width",n); s.setAttribute("height",n); s.setAttribute("viewBox","0 0 100 100");
+    const g=document.createElementNS(NS,"g"); g.setAttribute("stroke","currentColor"); g.setAttribute("stroke-width","1.4"); g.setAttribute("stroke-linecap","round");
+    for(let i=0;i<99;i++){const a=i/99*Math.PI*2-Math.PI/2; const l=document.createElementNS(NS,"line"); l.setAttribute("x1",50+Math.cos(a)*28); l.setAttribute("y1",50+Math.sin(a)*28); l.setAttribute("x2",50+Math.cos(a)*48); l.setAttribute("y2",50+Math.sin(a)*48); g.appendChild(l);}
+    s.appendChild(g); const t=document.createElementNS(NS,"text"); t.setAttribute("x","50"); t.setAttribute("y","51.5"); t.setAttribute("text-anchor","middle"); t.setAttribute("dominant-baseline","central"); t.setAttribute("fill","currentColor"); t.setAttribute("style","font-family:var(--disp);font-size:27px;font-weight:400;letter-spacing:-.04em"); t.textContent="99"; s.appendChild(t);});
+  /* 99 dots */
+  document.querySelectorAll(".grid99").forEach(g=>{const on=+g.dataset.on||0, n=+g.dataset.n||99; for(let i=0;i<n;i++){const d=document.createElement("i"); if(i<on) d.className="on"; g.appendChild(d);}});
+  /* calendar of presence */
+  const cal=document.getElementById("cal"); if(cal){const p=[1,0,1,1,0,2,1,1,0,0,1,2,1,0]; p.forEach((v,i)=>{const d=document.createElement("i"); d.textContent=i+1; if(v===1) d.className="on"; if(v===2) d.className="q"; cal.appendChild(d);});}
+  /* the all-names grid, dawn to night */
+  const mini=document.getElementById("mini"); if(mini){const N=[["ٱلرَّحْمَـٰنُ","fajr",1],["ٱلرَّحِيمُ","fajr",1],["ٱلْمَلِكُ","fajr",1],["ٱلْقُدُّوسُ","fajr",1],["ٱلسَّلَامُ","fajr",1],["ٱلْمُؤْمِنُ","fajr",0],["ٱلْمُهَيْمِنُ","fajr",0],["ٱلْعَزِيزُ","fajr",1],["ٱلْجَبَّارُ","fajr",0],["ٱلْمُتَكَبِّرُ","morning",0],["ٱلْخَالِقُ","morning",1],["ٱلْبَارِئُ","morning",0]];
+    const sky={fajr:"var(--sky-fajr)",morning:"var(--sky-morning)"}; N.forEach(([a,h,m],i)=>{const d=document.createElement("div"); d.style.background=sky[h]; if(!m) d.classList.add("dim"); d.innerHTML=`<span>No. ${String(i+1).padStart(2,"0")}</span><span class="ar">${a}</span><span>${h}</span>`; mini.appendChild(d);});}
+  /* preview hour */
+  const LABEL={fajr:"Fajr · 05:14",morning:"Morning · 09:40",dhuhr:"Dhuhr · 13:20",asr:"Asr · 16:05",maghrib:"Maghrib · 18:52",isha:"Isha · 20:30"};
+  document.querySelectorAll(".hours button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".hours button").forEach(x=>x.classList.toggle("on",x===b));
+    document.querySelectorAll("[data-follow]").forEach(s=>{s.dataset.hour=b.dataset.h; s.querySelectorAll("[data-hourlabel]").forEach(l=>l.textContent=LABEL[b.dataset.h]);});}));
+})();
+</script>
+<script src="/hub/back.js" defer></script>
+</body>
+</html>
