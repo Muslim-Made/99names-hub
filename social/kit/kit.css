@@ -127,3 +127,33 @@ b{font-weight:500}
 html.export .toolbar{display:none}
 [contenteditable="true"]:hover{outline:2px dashed rgba(232,166,75,.6);outline-offset:6px}
 [contenteditable="true"]:focus{outline:2px solid rgba(232,166,75,.9);outline-offset:6px}
+
+/* ---- the profile: picture + highlight covers (31–43) ----
+   Instagram shows these as circles, so only the inscribed circle of the
+   square survives. On screen the corners are dimmed to show that crop;
+   the export is the full square and Instagram does its own cropping.
+   The rim is the mark itself, enlarged until only its inner edge shows. */
+.k-cover{display:flex;align-items:center;justify-content:center;padding:0}
+.k-cover::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;background:radial-gradient(circle at center,transparent 538px,rgba(23,26,38,.42) 540px)}
+html.export .k-cover::after{display:none}
+.rays99--rim{inset:-27%;width:154%;height:154%;opacity:.3}
+.canvas[data-hour="maghrib"] .rays99--rim,.canvas[data-hour="isha"] .rays99--rim{opacity:.22}
+.k-cov{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.k-glyph{font-family:var(--disp);font-weight:300;line-height:1;letter-spacing:-.04em;font-variation-settings:"opsz" 144,"SOFT" 60;color:var(--fg)}
+.k-cov .k-ar,.k-cov .k-nasta{color:var(--fg)}
+/* objects: night objects on light skies, dawn objects on night skies */
+.k-night{background:linear-gradient(160deg,#2A2F44,#171A26);color:#F4EEE4}
+.k-cov-shadow{box-shadow:0 44px 90px -34px rgba(23,26,38,.6)}
+.k-cov-deck{position:relative;width:560px;height:540px}
+.k-cov-card{position:absolute;left:50%;top:50%;width:300px;height:420px;margin:-210px 0 0 -150px;border-radius:30px;display:flex;align-items:center;justify-content:center;color:#2A2622}
+.k-cov-card .k-ar{font-size:150px;line-height:1;opacity:.85;color:inherit}
+.k-cov-env{position:relative;width:480px;height:330px;border-radius:30px;overflow:hidden}
+.k-cov-env svg{position:absolute;inset:0;width:100%;height:100%}
+.k-cov-box{position:relative;width:420px;height:420px;border-radius:44px;display:flex;align-items:center;justify-content:center}
+.k-cov-box .mark99{color:#F4EEE4;opacity:.4}
+.k-cov-phone{width:330px;height:640px;border-radius:60px;background:#F4EEE4;padding:12px}
+.k-cov-phone .screen{height:100%;border-radius:50px;background:linear-gradient(165deg,#F6DCCF,#EFD9B8 35%,#CFD9C4 70%,#C9DBE6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;color:#2A2622}
+.k-cov-phone .k-ar{font-size:120px;line-height:1;color:inherit}
+.k-cov-sun{width:260px;height:260px;border-radius:50%;background:var(--sun);box-shadow:0 0 160px 50px rgba(232,166,75,.42)}
+.k-cov-bands{position:absolute;inset:0;display:flex;flex-direction:column}
+.k-cov-bands .k-band{flex:1;padding:0}

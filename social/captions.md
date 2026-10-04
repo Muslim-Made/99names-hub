@@ -60,4 +60,6 @@ no guilt. Hashtags stay small — five max, the same core set every time:
 
 **29 · Story · quiz.** [Add a poll sticker over the panel. Answer in the next story.]
 
-**30 · Highlight cover.** [Not a post — use as story-highlight cover and profile avatar.]
+**30 · The mark, alone.** [Not a post. Superseded by 31–43: the profile picture and twelve highlight covers, exported ready to upload in `covers/`.]
+
+**31–43 · The profile.** [Not posts. 31 is the profile picture (dawn; a night one is in `covers/`). 32–43 are highlight covers: Start here, Names, Hours, The Deck, Send, Shop, App, Remember, Breathe, Jumu'ah, Readers, Ramadan. Upload the PNGs whole; Instagram crops the circle. Keep the highlight titles to one word where you can.]

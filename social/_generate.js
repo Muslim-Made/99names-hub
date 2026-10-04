@@ -43,7 +43,7 @@ const CARD = (n, w = 620, live = true) => {
       </div>`;
 };
 
-const wrap = (num, slug, title, { size = "feed", hour = "fajr", nameTemplate = false, body, label = "The 99 Names", foot = true, chrome = true }) => `<!doctype html>
+const wrap = (num, slug, title, { size = "feed", hour = "fajr", nameTemplate = false, body, label = "The 99 Names", foot = true, chrome = true, cover = false }) => `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${title}</title>
@@ -51,7 +51,7 @@ const wrap = (num, slug, title, { size = "feed", hour = "fajr", nameTemplate = f
 </head>
 <body data-name="99names-${num}-${slug}"${nameTemplate ? " data-name-template" : ""}>
 <div class="stage"><div class="stage-inner">
-  <div class="canvas canvas--${size} pad" data-hour="${hour}"${nameTemplate ? " data-hour-from-name" : ""}>
+  <div class="canvas canvas--${size}${cover ? " k-cover" : " pad"}" data-hour="${hour}"${nameTemplate ? " data-hour-from-name" : ""}>
 ${chrome ? CHROME_TOP(label) : ""}
 ${body}
 ${foot ? CHROME_FOOT : ""}
@@ -409,6 +409,90 @@ const POSTS = [
       <span class="rays99 rays99--halo" data-r1="118" data-r2="200" data-w="1.4" style="opacity:.3"></span>
       <span class="mark99" data-size="360"></span>
     </div>`,
+  }],
+
+  /* ---------------- the profile: picture + highlight covers ----------------
+     Instagram crops each to a circle. The rim is the mark enlarged until only
+     its inner edge shows; the centre holds one thing, big enough to read at
+     77px. Night objects on light skies, dawn objects on night skies. */
+  ["31", "profile-picture", {
+    size: "square", hour: "fajr", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="mark99" data-size="760"></span>`,
+  }],
+  ["32", "highlight-start-here", {
+    size: "square", hour: "fajr", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-glyph" style="font-size:600px" data-edit>99</div></div>`,
+  }],
+  ["33", "highlight-names", {
+    size: "square", hour: "morning", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-ar" style="font-size:440px;line-height:1" data-edit>${nur.ar}</div></div>`,
+  }],
+  ["34", "highlight-hours", {
+    size: "square", hour: "fajr", chrome: false, foot: false, cover: true,
+    body: `
+    <div class="k-cov-bands"><i class="k-band k-band--fajr"></i><i class="k-band k-band--morning"></i><i class="k-band k-band--dhuhr"></i><i class="k-band k-band--asr"></i><i class="k-band k-band--maghrib"></i><i class="k-band k-band--isha"></i></div>`,
+  }],
+  ["35", "highlight-deck", {
+    size: "square", hour: "isha", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-cov-deck">
+      <div class="k-cov-card k-card--morning k-cov-shadow" style="transform:rotate(11deg) translate(72px,-4px)"></div>
+      <div class="k-cov-card k-card--fajr k-cov-shadow" style="transform:rotate(-8deg) translate(-44px,16px)"><span class="k-ar">٩٩</span></div>
+    </div></div>`,
+  }],
+  ["36", "highlight-send", {
+    size: "square", hour: "fajr", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-cov-env k-night k-cov-shadow"><svg viewBox="0 0 480 330" aria-hidden="true"><path d="M-4 8 L240 196 L484 8" fill="none" stroke="#F4EEE4" stroke-width="13" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/></svg></div></div>`,
+  }],
+  ["37", "highlight-shop", {
+    size: "square", hour: "morning", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-cov-box k-night k-cov-shadow"><span class="mark99" data-size="300"></span></div></div>`,
+  }],
+  ["38", "highlight-app", {
+    size: "square", hour: "isha", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-cov-phone k-cov-shadow"><div class="screen"><span class="k-ar">${nur.ar}</span><span class="k-breath" style="width:34px;height:34px"></span></div></div></div>`,
+  }],
+  ["39", "highlight-remember", {
+    size: "square", hour: "asr", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-glyph" style="font-size:720px" data-edit>?</div></div>`,
+  }],
+  ["40", "highlight-breathe", {
+    size: "square", hour: "isha", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><span class="k-cov-sun"></span></div>`,
+  }],
+  ["41", "highlight-jumuah", {
+    size: "square", hour: "maghrib", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-nasta" style="font-size:360px;line-height:1.3" data-edit>جمعة</div></div>`,
+  }],
+  ["42", "highlight-readers", {
+    size: "square", hour: "dhuhr", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-glyph" style="font-size:900px;transform:translateY(22%)" data-edit>“</div></div>`,
+  }],
+  ["43", "highlight-ramadan", {
+    size: "square", hour: "isha", chrome: false, foot: false, cover: true,
+    body: `
+    <span class="rays99 rays99--rim" data-r1="104" data-r2="192" data-w="2.4"></span>
+    <div class="k-cov"><div class="k-nasta" style="font-size:320px;line-height:1.3" data-edit>رمضان</div></div>`,
   }],
 ];
 
